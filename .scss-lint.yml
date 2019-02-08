@@ -1,0 +1,3 @@
+exclude: 'node_modules/**'
+exclude: 'front_end/fonts/**'
+exclude: 'front_end/styles/fonts/**'
