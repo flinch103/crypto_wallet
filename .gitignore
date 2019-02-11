@@ -35,3 +35,8 @@ yarn-error.log*
 .overcommit.yml
 .postcssrc.yml
 /deployment/*key.json
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
