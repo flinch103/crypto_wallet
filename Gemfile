@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Figaro was written to make it easy to securely configure Rails applications.
 # Need to load this very first in app boot cycle
 gem 'figaro'
+gem 'webpacker', '~> 3.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
