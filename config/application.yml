@@ -1,0 +1,5 @@
+development:
+  DB_NAME: vodix_development
+  DB_USERNAME: postgres
+  DB_PASSWORD: postgres
+  DB_HOST: localhost
