@@ -1,0 +1,253 @@
+html body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+body .right-field-block {
+    padding: 0;
+}
+
+.right-field-block h2 {
+  color: #030e27;
+  font-size: 36px;
+}
+
+
+.right-field-block p {
+  color: #666e80;
+  font-size: 18px;
+}
+
+.main-auth-field-section,.auth-form-block,.phrase-associated-block {
+  padding: 47px 155px 80px;
+}
+
+.tabs-block-wrapper {
+  background: #edeef2;
+  display: inline-block;
+  width: 100%;
+}
+
+.tabs-block-wrapper ul.nav {
+  display: table;
+  margin: 0 auto;
+}
+
+.tabs-block-wrapper ul.nav li a {
+  color: #030e27;
+  font-size: 15px;
+  padding: 10px 60px;
+}
+
+.tabs-block-wrapper ul.nav li.active a,.tabs-block-wrapper ul.nav li.active:hover a {
+  background: none;
+  border: 0;
+  border-bottom: 2px #f37226 solid;
+}
+
+.tabs-block-wrapper ul.nav li.active a {
+  color: #f37226;
+  border-bottom: 2px #f37226 solid;
+}
+
+.auth-form-block {
+  border-bottom: 1px #cbccd0 solid;
+}
+
+.auth-form-block .field {
+  padding-bottom: 35px;
+  display: inline-block;
+  width: 100%;
+
+}
+
+.auth-form-block .field input {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  box-shadow: none;
+  border-radius: 0;
+  border-color: #cbccd0;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.auth-form-block .field input:focus {
+  box-shadow: none;
+}
+
+
+.auth-form-block .field input::-webkit-input-placeholder {
+  color: #cbccd0;
+}
+.auth-form-block .field input::-moz-placeholder {
+  color: #cbccd0;
+}
+.auth-form-block .field input:-ms-input-placeholder {
+  color: #cbccd0;
+}
+.auth-form-block .field input:-moz-placeholder {
+  color: #cbccd0;
+}
+
+
+.radio-btn input[type= "text"] {
+  height: 45px;
+  border-radius: 5px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  color: #030e27;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+input[type="radio"] + label span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: -1px 4px 0 6px;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+input[type="radio"] + label span {
+  background-color: none;
+  border:2px #cbccd0 solid;
+}
+
+input[type="radio"]:checked + label span {
+  background-color: #f37226;
+}
+
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+  -webkit-transition: background-color 0.4s linear;
+  -o-transition: background-color 0.4s linear;
+  -moz-transition: background-color 0.4s linear;
+  transition: background-color 0.4s linear;
+  float: left;
+  margin-right: 10px;
+}
+
+
+.radio-one {
+  float: left;
+  padding: 0 75px 0 0;
+}
+
+.radio-one label {
+  font-weight: 400;
+}
+
+
+.actions .btn {
+  background: #f37226;
+  font-size: 17px;
+  border-radius: 25px;
+  color: #fff;
+  padding: 11px 35px;
+}
+
+body .create-acc {
+  background: none !important;
+  border-color: #f37226;
+  color: #f37226 !important;
+}
+
+.phrase-associated-block p{
+  color: #030e27
+}
+
+.phrase-associated-block .restore-wallet {
+  font-size: 17px;
+  border-radius: 25px;
+  color: #030e27;
+  margin-top: 10px;
+  padding: 12px 22px;
+}
+
+.terms-condition {
+  display: inline-block;
+  width: 100%;
+  padding-top: 130px;
+}
+
+.terms-condition p {
+  font-size: 15px;
+  color: #2a2a31;
+}
+
+.terms-condition p a {
+  color: #f37226;
+}
+
+
+.forget-pass {
+  color: #030e27;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.forget-pass:hover {
+  text-decoration: none;
+  color: #f37226;
+}
+
+
+.border-btm {
+  border-bottom: 0;
+}
+
+
+@media screen and (max-width: 767px) {
+
+  .main-auth-field-section, .auth-form-block, .phrase-associated-block {
+    padding: 47px 45px 40px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .tabs-block-wrapper ul.nav li {
+    float: left;
+  }
+
+  .tabs-block-wrapper ul.nav li a {
+    padding: 10px 33px;
+  }
+
+  .actions .btn {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .phrase-associated-block {
+    padding-bottom: 10px;
+  }
+
+  .terms-condition {
+    padding-top: 50px;
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .main-auth-field-section, .auth-form-block, .phrase-associated-block {
+    padding: 47px 45px 40px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .tabs-block-wrapper ul.nav li a {
+    padding: 10px 33px;
+  }
+
+}

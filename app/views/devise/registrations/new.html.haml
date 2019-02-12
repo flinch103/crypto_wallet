@@ -1,0 +1,44 @@
+.login-page-wrapper
+  = render 'devise/shared/devise_sidenav'
+  .col-md-6.col-xs-12.col-sm-12.right-field-block
+    .main-auth-field-section
+      %h2
+        Create your Account
+      %p
+        Get your free VodiX account now.
+
+    .tabs-block-wrapper
+      %ul.nav.nav-tabs.nav-justified
+        %li.active
+          %a{:href => "#"} VODIANT
+        %li
+          %a{:href => "#"} VODEER
+        %li
+          %a{:href => "#"} ARBITEER
+
+    .auth-form-block.border-btm
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.text_field :full_name, autofocus: true, class: 'form-control' , placeholder: 'Fullname'
+        .field
+          = f.text_field :username, autofocus: true, class: 'form-control' , placeholder: 'Username'
+        .field
+          = f.email_field :email, autofocus: true, class: 'form-control' , placeholder: 'Email Address'
+        .field
+          = f.password_field :password, autofocus: true, class: 'form-control' , placeholder: 'Password'
+        .field
+          = f.password_field :c_passsword, autofocus: true, class: 'form-control' , placeholder: 'Confirm Password'
+
+        .actions
+          = f.submit "Sign up", class: 'btn btn-default pull-left'
+          - if devise_mapping.registerable? && controller_name != 'registrations'
+            = link_to "Create Account", new_registration_path(resource_name), class: 'btn btn-default pull-right create-acc'
+          = link_to "Already have an acount?", new_password_path(resource_name), class: 'pull-right forget-pass'
+
+
+      .terms-condition.text-left
+        %p
+          By Login, you agree to accept the
+          %a{:href => "/terms_and_conditions"} Terms of services
+          \&amp;
+          %a{:href => "/privacy_policy"} Privacy Policy

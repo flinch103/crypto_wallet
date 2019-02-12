@@ -1,0 +1,56 @@
+.login-page-wrapper
+  = render 'devise/shared/devise_sidenav'
+  .col-md-6.col-xs-12.col-sm-12.right-field-block
+    .main-auth-field-section
+      %h2
+        Welcome :)
+      %p
+        To keep connected with us please login with your personal
+        %br
+        information by email address and password
+
+    .tabs-block-wrapper
+      %ul.nav.nav-tabs.nav-justified
+        %li.active
+          %a{:href => "#"} VODIANT
+        %li
+          %a{:href => "#"} VODEER
+        %li
+          %a{:href => "#"} ARBITEER
+
+    .auth-form-block
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' , placeholder: 'Username'
+        .field
+          = f.password_field :password, autocomplete: "current-password", class: 'form-control' ,  placeholder: 'Password'
+        - if devise_mapping.rememberable?
+          .field
+            .radio-btn
+              .radio-one
+                %input#radio_10{:name => "1", :type => "radio", :value => "Yes"}/
+                %label{:for => "radio_10"}
+                  = f.label :remember_me
+                  %span
+
+        .actions
+          = f.submit "Log in", class: 'btn btn-default pull-left'
+          - if devise_mapping.registerable? && controller_name != 'registrations'
+            = link_to "Create Account", new_registration_path(resource_name), class: 'btn btn-default pull-right create-acc'
+
+      /= render "devise/shared/links"
+
+
+    .phrase-associated-block
+      %p
+        Use the associated phrase associated with your existing Vodix wallet
+        %br
+        to access it.
+      = link_to "Restore wallet", restore_wallets_path, class: 'btn btn-default pull-left restore-wallet'
+      .terms-condition.text-left
+        %p
+          By Login, you agree to accept the
+          %a{:href => "/terms_and_conditions"} Terms of services
+          \&amp;
+          %a{:href => "/privacy_policy"} Privacy Policy
+
