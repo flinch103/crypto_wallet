@@ -1,0 +1,508 @@
+// Place all the styles related to the setup_accounts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+header {
+  box-shadow: 0px 3px 36px #ddd inset;
+  display: inline-block;
+  padding: 14px 30px;
+  width: 100%;
+  vertical-align: top;
+}
+
+
+.logo-field {
+  float: left;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+
+.middle-bg-wrapper {
+  display: inline-block;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+
+.setup-account {
+  .container {
+    width: 1030px;
+  }
+}
+
+
+.setup-account {
+  margin: -105px auto;
+  position: relative;
+  text-align: center;
+  z-index: 999;
+
+  h2 {
+    color: #1e1e1e;
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  p {
+    color: #757575;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .thumbnail {
+    padding: 0;
+    border-radius: 14px;
+
+    .acc-tab-bg {
+      background: #f8f9fa;
+      border-top: 1px solid #dcdcdc;
+      border-bottom: 1px solid #dcdcdc;
+
+      li {
+        a {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+
+.create-field {
+  padding: 18px 0;
+
+  h4 {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  p {
+    padding: 15px 0;
+  }
+}
+
+.nav-tabs {
+  .active {
+    a {
+      font-weight: 700;
+    }
+  }
+}
+
+
+.access-block {
+  display: inline-block;
+  margin: 0 auto;
+
+  p {
+    float: left;
+    color: #212121;
+    padding-left: 9px;
+
+  }
+
+  label {
+    float: left;
+  }
+}
+
+.access-block .form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.access-block .form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.access-block .form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: #f37226;
+  border: 2px solid #f37226;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.access-block .form-group input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+.acc-btn {
+  margin-top: 25px;
+  display: inline-block;
+  width: 100%;
+}
+
+.review-block-f {
+  display: table;
+  margin: 0 auto;
+  width: 64%;
+}
+
+
+.vodix-field-wrapper {
+  padding: 25px 0;
+}
+
+@media screen and (max-width: 767px) {
+.setup-account {
+  margin: -24px auto;
+}
+
+.acc-tab-bg {
+  .nav {
+    li {
+      float: none !important;
+      font-size: 15px;
+      display: inline-block;
+    }
+  }
+}
+
+.access-block  {
+  padding: 0 17px 40px;
+
+  p {
+    float: none;
+    font-size: 15px;
+  }
+}
+
+
+.create-field {
+  h4 {
+    font-size: 21px;
+  }
+}
+
+.setup-account .container {
+  width: 100%;
+}
+
+.logo-field {
+  float: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+body footer {
+  position: inherit;
+  margin-top: 20px;
+}
+
+.tab-content {
+  padding: 0 15px;
+}
+
+
+.tab-content .setup-block-input-b {
+  padding: 30px 0;
+}
+
+.setup-account a {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.copy-field a {
+  display: table;
+  width: auto;
+  margin: 0 auto;
+}
+
+.qr-field .modal-body {
+  padding: 50px 15px;
+}
+
+.thumbnail .set-up-tabs li {
+  width: 32.33%;
+}
+
+.thumbnail .set-up-tabs li a {
+  margin: 0;
+}
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .setup-account {
+    margin: -56px auto;
+
+    .container {
+      width: 620px;
+    }
+  }
+  .thumbnail .set-up-tabs li {
+    width: 32.33%;
+  }
+
+  .thumbnail .set-up-tabs li a {
+    margin: 0;
+  }
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+   .setup-account {
+    margin: -84px auto;
+
+    .container {
+      width: 800px;
+    }
+  }
+
+  .thumbnail .set-up-tabs li {
+    width: 32.33%;
+  }
+
+  .thumbnail .set-up-tabs li a {
+    margin: 0;
+  }
+}
+
+
+
+.set-up-tabs {
+  li {
+    padding: 0;
+    width: 331px;
+
+    a {
+      border-radius: 0;
+      color: #1e1e1e;
+      position: relative;
+      font-size: 15px;
+
+      &:hover {
+        background: none;
+      }
+
+      &:after {
+        background: url("/assets/arrow-line.png");
+        float: right;
+        content: '';
+        position: absolute;
+        right: -6px;
+        width: 6px;
+        height: 43px;
+        top: 0;
+      }
+
+    }
+
+    &.active {
+      a {
+        background: #e8e9eb;
+        color: #f37226;
+        font-weight: 700;
+        position: relative;
+
+        &:after {
+          background: url("/assets/arrow-ine-dark.png");
+          float: right;
+          content: '';
+          position: absolute;
+          right: -6px;
+          width: 6px;
+          height: 43px;
+          top: 0;
+        }
+
+        &:hover,&:focus {
+          background: none;
+          color: #f37226;
+        }
+      }
+    }
+
+    &:last-child {
+      a {
+        &:after {
+          background: none;
+        }
+      }
+    }
+
+  }
+}
+
+
+.setup-block-input-b {
+  display: inline-block;
+  width: 100%;
+  padding: 30px 40px;
+
+  input {
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: none;
+    font-size: 18px;
+    color: #030e27;
+  }
+
+  label {
+    font-size: 19px;
+    font-weight: 400;
+    color: #030e27;
+    text-align: right;
+    padding: 0;
+    line-height: 40px;
+  }
+}
+
+.setup-block-input-b input::-webkit-input-placeholder {
+  color: #030e27;
+  font-size: 18px;
+}
+.setup-block-input-b input::-moz-placeholder {
+  color: #030e27;
+  font-size: 18px;
+}
+.setup-block-input-b input:-ms-input-placeholder {
+  color: #030e27;
+  font-size: 18px;
+}
+.setup-block-input-b input:-moz-placeholder {
+  color: #030e27;
+  font-size: 18px;
+}
+
+
+.copy-field {
+
+  img {
+    float: left;
+    padding-right: 10px;
+  }
+
+  a {
+    border-radius: 25px;
+    border-color: #f37226;
+    padding: 8px 15px;
+    font-size: 15px;
+
+  }
+}
+
+
+.setup-account .grey-field {
+  background: #e8e9eb;
+  color: #030e27;
+}
+
+.qr-field {
+  .modal-body {
+    text-align: center;
+    padding: 50px 0;
+
+    h2 {
+      font-weight: 700;
+    }
+  }
+}
+
+.address-encryp {
+  padding-top: 20px;
+  input {
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: none;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+}
+
+
+.qr-code-field {
+  img {
+    box-shadow: 0px 5px 27px #dcdcdc;
+  }
+}
+
+
+.address-encryp {
+  label {
+    font-weight: 400;
+  }
+}
+
+
+.address-encryp input::-webkit-input-placeholder {
+  color: #757575;
+  font-size: 18px;
+  font-weight: 700;
+}
+.address-encryp input::-moz-placeholder {
+  color: #757575;
+  font-size: 18px;
+  padding-bottom: 35px;
+  font-weight: 700;
+}
+
+.address-encryp input:-ms-input-placeholder {
+  color: #757575;
+  font-size: 18px;
+  font-weight: 700;
+}
+.address-encryp input:-moz-placeholder {
+  color: #757575;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.download-field {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+
+  .circular-field {
+    display: inline-block;
+    padding-right: 12px;
+
+    a {
+      background: #f9f8fa;
+      border-radius: 25px;
+      color: #1e1e1e;
+      font-size: 14px;
+    }
+  }
+}
