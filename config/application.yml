@@ -3,3 +3,4 @@ development:
   DB_USERNAME: postgres
   DB_PASSWORD: postgres
   DB_HOST: localhost
+  HOST: http://localhost:3000
