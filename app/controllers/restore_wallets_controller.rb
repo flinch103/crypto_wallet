@@ -1,4 +1,5 @@
+# RestoreWallets Controller
 class RestoreWalletsController < ApplicationController
-	layout 'devise'
-	def index; end
+  layout 'devise'
+  def index; end
 end

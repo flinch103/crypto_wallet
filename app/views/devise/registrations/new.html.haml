@@ -10,35 +10,42 @@
     .tabs-block-wrapper
       %ul.nav.nav-tabs.nav-justified
         %li.active
-          %a{:href => "#"} VODIANT
+          %a{ href: '#' } VODIANT
         %li
-          %a{:href => "#"} VODEER
+          %a{ href: '#' } VODEER
         %li
-          %a{:href => "#"} ARBITEER
+          %a{ href: '#' } ARBITEER
 
     .auth-form-block.border-btm
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
-          = f.text_field :full_name, autofocus: true, class: 'form-control' , placeholder: 'Fullname'
+          = f.text_field :full_name, autofocus: true, class: 'form-control',
+           placeholder: 'Fullname'
         .field
-          = f.text_field :username, autofocus: true, class: 'form-control' , placeholder: 'Username'
+          = f.text_field :username, autofocus: true, class: 'form-control',
+           placeholder: 'Username'
         .field
-          = f.email_field :email, autofocus: true, class: 'form-control' , placeholder: 'Email Address'
+          = f.email_field :email, autofocus: true, class: 'form-control',
+           placeholder: 'Email Address'
         .field
-          = f.password_field :password, autofocus: true, class: 'form-control' , placeholder: 'Password'
+          = f.password_field :password, autofocus: true, class: 'form-control',
+           placeholder: 'Password'
         .field
-          = f.password_field :c_passsword, autofocus: true, class: 'form-control' , placeholder: 'Confirm Password'
+          = f.password_field :c_passsword, autofocus: true, class: 'form-control',
+           placeholder: 'Confirm Password'
 
         .actions
-          = f.submit "Sign up", class: 'btn btn-default pull-left'
+          = f.submit 'Sign up', class: 'btn btn-default pull-left'
           - if devise_mapping.registerable? && controller_name != 'registrations'
-            = link_to "Create Account", new_registration_path(resource_name), class: 'btn btn-default pull-right create-acc'
-          = link_to "Already have an acount?", new_password_path(resource_name), class: 'pull-right forget-pass'
+            = link_to 'Create Account', new_registration_path(resource_name),
+             class: 'btn btn-default pull-right create-acc'
+          = link_to 'Already have an acount?', new_password_path(resource_name),
+           class: 'pull-right forget-pass'
 
 
       .terms-condition.text-left
         %p
           By Login, you agree to accept the
-          %a{:href => "/terms_and_conditions"} Terms of services
+          %a{ href: '/terms_and_conditions' } Terms of services
           \&amp;
-          %a{:href => "/privacy_policy"} Privacy Policy
+          %a{ href: '/privacy_policy' } Privacy Policy

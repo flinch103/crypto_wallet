@@ -13,97 +13,74 @@
             %label.col-md-2.col-sm-2.col-xs-2
               01
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 1st word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 1st word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               02
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 2nd word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 2nd word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               03
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 3rd word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 3rd word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               04
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 4th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 4th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               05
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 5th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 5th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               06
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 6th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 6th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               07
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 7th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 7th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               08
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 8th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 8th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               09
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 9th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 9th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               10
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 10th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 10th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               11
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 11th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 11th word', type: 'text' }/
         .col-md-6.col-sm-6.col-xs-12
           .form-group
             %label.col-md-2.col-sm-2.col-xs-2
               12
             .col-md-10.col-sm-10.col-xs-10
-              %input.form-control{:placeholder => "Enter 12th word", :type => "text"}/
+              %input.form-control{ placeholder: 'Enter 12th word', type: 'text' }/
       .restore-btn
-        %a.btn.btn-default{"data-target" => "#confirm-popup", "data-toggle" => "modal", :href => "#"}
+        %a.btn.btn-default{ 'data-target' => '#confirm-popup', 'data-toggle' => 'modal', href: '#' }
           Restore
-
-
-
-
-#confirm-popup.modal.fade.confirm-field{:role => "dialog"}
-  .modal-dialog
-    .modal-content
-      .modal-body
-        .icon-field
-          = image_tag("/assets/checkmark.png")
-        %p
-          Please note that by restoring an account,  you will be logged out
-          %br
-          of the current account, and you will only be able to access it again by
-          %br
-          restoring its private key from the 12 words backup phrase
-        %h2
-          Are you sure you want to proceed.
-        .restore-btn.modal-btn
-          %a.btn.btn-default.grey-field{"data-target" => "#confirm-popup", "data-toggle" => "modal", :href => "#"}
-            Cancel
-          %a.btn.btn-default{"data-target" => "#confirm-popup", "data-toggle" => "modal", :href => "#"}
-            Ok
-
+= render 'restore_wallet_alert'
