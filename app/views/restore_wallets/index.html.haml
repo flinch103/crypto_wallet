@@ -1,0 +1,86 @@
+.login-page-wrapper
+  = render 'devise/shared/devise_sidenav'
+  .col-md-6.col-sm-12.col-xs-12.restore-wallet
+    .main-auth-field-section.restore-field-block
+      .main-heading-block
+        %h2
+          Restore Wallet
+        %p
+          Use the backup phrase associated with your existing VodiX to access it.
+      %form.form-horizontal.input-block-wallet
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              01
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 1st word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              02
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 2nd word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              03
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 3rd word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              04
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 4th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              05
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 5th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              06
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 6th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              07
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 7th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              08
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 8th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              09
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 9th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              10
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 10th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              11
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 11th word', type: 'text' }/
+        .col-md-6.col-sm-6.col-xs-12
+          .form-group
+            %label.col-md-2.col-sm-2.col-xs-2
+              12
+            .col-md-10.col-sm-10.col-xs-10
+              %input.form-control{ placeholder: 'Enter 12th word', type: 'text' }/
+      .restore-btn
+        %a.btn.btn-default{ 'data-target' => '#confirm-popup', 'data-toggle' => 'modal', href: '#' }
+          Restore
+= render 'restore_wallet_alert'

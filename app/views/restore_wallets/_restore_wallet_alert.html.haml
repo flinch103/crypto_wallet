@@ -1,0 +1,19 @@
+.modal.fade.confirm-field#confirm-popup{ role: 'dialog' }
+  .modal-dialog
+    .modal-content
+      .modal-body
+        .icon-field
+          = image_tag('/assets/checkmark.png')
+        %p
+          Please note that by restoring an account,  you will be logged out
+          %br
+          of the current account, and you will only be able to access it again by
+          %br
+          restoring its private key from the 12 words backup phrase
+        %h2
+          Are you sure you want to proceed.
+        .restore-btn.modal-btn
+          %a.btn.btn-default.grey-field{ 'data-target': '#confirm-popup', 'data-toggle': 'modal', href: '#' }
+            Cancel
+          %a.btn.btn-default{ 'data-target' => '#confirm-popup', 'data-toggle' => 'modal', href: '#' }
+            Ok
