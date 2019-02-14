@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
 
   resources :restore_wallets
-
+  resources :setup_accounts do
+  	collection do
+	  	get :setup, to: 'setup_accounts#setup'
+	end
+  end
 end
