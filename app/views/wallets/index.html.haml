@@ -4,39 +4,39 @@
       %nav.navbar.navbar-default.navbar-fixed-top
         .container-fluid
           .navbar-header
-            %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+            %button.navbar-toggle.collapsed{ "aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button" }
               %span.sr-only Toggle navigation
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            %a.navbar-brand{:href => "#"}
-              %img{:src => "/assets/logo-main.png"}/
+            %a.navbar-brand{ :href => "#" }
+              %img{ :src => "/assets/logo-main.png" }/
           #navbar.navbar-collapse.collapse
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
-                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %a.dropdown-toggle{ "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button" }
                   %span.round-icon
-                    %img{:src => "assets/dashboard/profile pic.jpg"}/
+                    %img{ :src => "assets/dashboard/profile pic.jpg" }/
                   Rebecca Young
                 %ul.dropdown-menu
                   %li
-                    %a{:href => "#"} Account
+                    %a{ :href => "#" } Account
                   %li
-                    %a{:href => "#"} Settings
+                    %a{ :href => "#" } Settings
                   %li
-                    %a{:href => "#"} Log out
+                    %a{ :href => "#" } Log out
           / /.nav-collapse
     %aside.left-sidebar
       .sidebar-nav
         %ul.list-unstyled
           %li.sidebar-item
-            %a.sidebar-link.link-active{:href => "#"} Dashboard
+            %a.sidebar-link.link-active{ :href => "#" } Dashboard
           %li.sidebar-item
-            %a.sidebar-link{:href => "#"} Tasks
+            %a.sidebar-link{ :href => "#" } Tasks
           %li.sidebar-item
-            %a.sidebar-link{:href => "#"} Wallet
+            %a.sidebar-link{ :href => "#" } Wallet
     .dash-content-wrapper
-      .wallet-banner{:style => "background-image:url('../assets/dashboard/color_bg.png');"}
+      .wallet-banner{ :style => "background-image:url('../assets/dashboard/color_bg.png');" }
       .wallet-container
         .my-wallet
           .wallet-header
@@ -46,25 +46,25 @@
             .walbal-bar
               .walbal-inner
                 .walbar-icon
-                  %img{:src => "assets/dashboard/vodix_balance.png"}/
+                  %img{ :src => "assets/dashboard/vodix_balance.png" }/
                 .walbal-value
                   %span Vodix Balance
                   %span 780VDX
               .walbal-inner
                 .walbar-icon
-                  %img{:src => "assets/dashboard/ether.png"}/
+                  %img{ :src => "assets/dashboard/ether.png" }/
                 .walbal-value
                   %span Ether
                   %span 814.33
               .walbal-inner
                 .walbar-icon
-                  %img{:src => "assets/dashboard/staked_tokens.png"}/
+                  %img{ :src => "assets/dashboard/staked_tokens.png" }/
                 .walbal-value
                   %span Staked Tokens
                   %span 340
             .wallet-qr-box
               .qr-icon
-                %img{:src => "assets/dashboard/qr-code.png"}/
+                %img{ :src => "assets/dashboard/qr-code.png" }/
               .qr-info
                 .info-item
                   %small Wallet Address
@@ -75,11 +75,11 @@
           .wallet-footer
             %button.wal-action-btn
               %i
-                %img{:src => "assets/dashboard/copy.png"}/
+                %img{ :src => "assets/dashboard/copy.png" }/
               Copy
             %button.wal-action-btn
               %i
-                %img{:src => "assets/dashboard/download.png"}/
+                %img{ :src => "assets/dashboard/download.png" }/
               Download
         .history-section
           .section-title Transaction History
@@ -89,7 +89,7 @@
                 %tr
                   %td
                     %i
-                      %img{:src => "assets/dashboard/profile pic.jpg"}/
+                      %img{ :src => "assets/dashboard/profile pic.jpg" }/
                     Alex marthin
                   %td 02/12/2018 03:15PM
                   %td 15 VDX
@@ -97,11 +97,11 @@
                     .red
                       Sent
                       %i
-                        %img{:src => "assets/dashboard/sent.png"}/
+                        %img{ :src => "assets/dashboard/sent.png" }/
                 %tr
                   %td
                     %i
-                      %img{:src => "assets/dashboard/profile pic.jpg"}/
+                      %img{ :src => "assets/dashboard/profile pic.jpg" }/
                     Alex marthin
                   %td 02/12/2018 03:15PM
                   %td 15 VDX
@@ -109,11 +109,11 @@
                     .green
                       received
                       %i
-                        %img{:src => "assets/dashboard/received.png"}/
+                        %img{ :src => "assets/dashboard/received.png" }/
                 %tr
                   %td
                     %i
-                      %img{:src => "assets/dashboard/profile pic.jpg"}/
+                      %img{ :src => "assets/dashboard/profile pic.jpg" }/
                     Alex marthin
                   %td 02/12/2018 03:15PM
                   %td 15 VDX
@@ -121,11 +121,11 @@
                     .green
                       received
                       %i
-                        %img{:src => "assets/dashboard/received.png"}/
+                        %img{ :src => "assets/dashboard/received.png" }/
                 %tr
                   %td
                     %i
-                      %img{:src => "assets/dashboard/profile pic.jpg"}/
+                      %img{ :src => "assets/dashboard/profile pic.jpg" }/
                     Alex marthin
                   %td 02/12/2018 03:15PM
                   %td 15 VDX
@@ -133,11 +133,11 @@
                     .red
                       Sent
                       %i
-                        %img{:src => "assets/dashboard/sent.png"}/
+                        %img{ :src => "assets/dashboard/sent.png" }/
                 %tr
                   %td
                     %i
-                      %img{:src => "assets/dashboard/profile pic.jpg"}/
+                      %img{ :src => "assets/dashboard/profile pic.jpg" }/
                     Alex marthin
                   %td 02/12/2018 03:15PM
                   %td 15 VDX
@@ -145,4 +145,4 @@
                     .red
                       Sent
                       %i
-                        %img{:src => "assets/dashboard/sent.png"}/
+                        %img{ :src => "assets/dashboard/sent.png" }/
