@@ -1,0 +1,15 @@
+# wallets Controller
+class WalletsController < ApplicationController
+  def create
+    outcome = Wallets::CreateIntr.run(create_wallet_params.merge(user: current_user))
+    return render json: { response: { message: I18n.t('wallets.created') } } if outcome.valid?
+
+    render json: { message: outcome.errors.full_messages.to_sentence }, status: :bad_request
+  end
+
+  private
+
+  def create_wallet_params
+    params.permit(:address, :balance)
+  end
+end
