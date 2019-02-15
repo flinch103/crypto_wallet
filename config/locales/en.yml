@@ -32,3 +32,11 @@
 en:
   hello: "Hello world"
   title: "Vodix"
+  users:
+    not_found: 'User not found'
+    invalid: 'Invalid user'
+  wallets:
+    created: 'Wallet successfully created'
+  onboarding:
+    sessions:
+      try_later: Please try again later
