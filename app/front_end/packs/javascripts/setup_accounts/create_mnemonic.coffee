@@ -50,6 +50,7 @@ $(document).ready ->
 
   $('.back-mnemonic').unbind('click').click (event) ->
     event.preventDefault()
+    $('.forward-mnemonic').attr("disabled", false);
     tab = $(this).attr('rel');
     if tab == 'policy'
       window.location.href = '/setup_accounts/policy';
@@ -107,7 +108,7 @@ $(document).ready ->
         return
       success: (result) ->
         $('#qr-code').modal('hide');
-        toastr.info(result.response.message)
+        toastr.info(result.response.message + '. You will be redirected to your dashboard')
         setTimeout (->
           window.location.href = '/'
           return
@@ -118,7 +119,6 @@ $(document).ready ->
     return
 
   $('.tab-setup').unbind('click').click (event) ->
-    debugger
     changeHeading('Setup Account', 'Write down your 12 word backup phrase in correct order')
     removeActiveClassFromTab()
     updateBackButton('/setup_accounts/policy', 'policy')

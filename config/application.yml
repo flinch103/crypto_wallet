@@ -3,4 +3,8 @@ development:
   DB_USERNAME: postgres
   DB_PASSWORD: postgres
   DB_HOST: localhost
-  HOST: http://localhost:3000
+  HOST: http://35.190.27.31
+  SMTP_ADDRESS: smtp.sendgrid.net
+  SMTP_DOMAIN: sendgrid.com
+  SMTP_USERNAME: HighValueCollaborative
+  SMTP_PASSWORD: ^nPQQ6azU6h@

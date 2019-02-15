@@ -63,16 +63,28 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: Figaro.env.HOST }
+
+  # ActionMailer::Base.smtp_settings = {
+  #   :user_name => 'test-account-sendgrid',
+  #   :password => 'abcabc123',
+  #   :domain => 'localhost:3000',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: Figaro.env.HOST }
-
-  ActionMailer::Base.smtp_settings = {
-    :user_name => 'test-account-sendgrid',
-    :password => 'abcabc123',
-    :domain => 'localhost:3000',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+  # SMTP settings for Sending mails
+  config.action_mailer.smtp_settings = {
+    address: Figaro.env.SMTP_ADDRESS,
+    port: '587',
+    user_name: Figaro.env.SMTP_USERNAME,
+    password: Figaro.env.SMTP_PASSWORD,
+    domain: Figaro.env.SMTP_DOMAIN,
+    authentication: :plain
   }
 end

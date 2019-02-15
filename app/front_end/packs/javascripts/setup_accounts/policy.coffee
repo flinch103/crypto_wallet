@@ -10,17 +10,14 @@ $(document).ready ->
     return
 
   $('.import-tab').unbind('click').click (event) ->
-    debugger
     $('.access-block').hide();
     return
 
   $('.create-tab').unbind('click').click (event) ->
-    debugger
     $('.access-block').show();
     return
 
   $('.import-submit').unbind('click').click (event) ->
-    debugger
     mnemonics = walletMnemonics().join(" ")
     if wallet.validateMnemonic(mnemonics)
       keys = wallet.generateKeys(mnemonics);
@@ -60,7 +57,7 @@ $(document).ready ->
         return
       success: (result) ->
         $('#qr-code').modal('hide');
-        toastr.info(result.response.message)
+        toastr.info(result.response.message + '. You will be redirected to your dashboard')
         setTimeout (->
           window.location.href = '/'
           return
