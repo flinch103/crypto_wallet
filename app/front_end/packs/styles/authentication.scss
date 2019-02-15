@@ -51,7 +51,7 @@ body .right-field-block {
 }
 
 .auth-form-block {
-  border-bottom: 1px #cbccd0 solid;
+ /* border-bottom: 1px #cbccd0 solid;*/
 }
 
 .auth-form-block .field {
@@ -147,13 +147,27 @@ input[type="radio"]:checked + label span {
   font-weight: 400;
 }
 
-
 .actions .btn {
   background: #f37226;
   font-size: 17px;
   border-radius: 25px;
   color: #fff;
   padding: 11px 35px;
+}
+
+.f-password a,.f-password a:hover {
+    color: #030e27;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.create-account-link {
+    margin-top: 50px;
+    font-size: 16px;
+}
+
+.f-password {
+    margin-top: 9px;
 }
 
 body .create-acc {
@@ -177,7 +191,8 @@ body .create-acc {
 .terms-condition {
   display: inline-block;
   width: 100%;
-  padding-top: 130px;
+  padding-top: 150px;
+  padding-left: 155px;
 }
 
 .terms-condition p {
@@ -206,6 +221,20 @@ body .create-acc {
   border-bottom: 0;
 }
 
+.already-acc {
+  font-size: 16px;
+  margin-top: 15px;
+
+  .login-link {
+    color: #f37226;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
 
 @media screen and (max-width: 767px) {
 
@@ -215,12 +244,19 @@ body .create-acc {
     width: 100%;
   }
 
+  .tabs-block-wrapper {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
   .tabs-block-wrapper ul.nav li {
-    float: left;
+    float: none;
+    display: inline-block;
   }
 
   .tabs-block-wrapper ul.nav li a {
-    padding: 10px 33px;
+    padding: 10px 25px;
   }
 
   .actions .btn {
@@ -228,13 +264,36 @@ body .create-acc {
     margin-bottom: 15px;
   }
 
+  .f-password {
+      margin-top: 9px;
+      width: 100%;
+      text-align: center;
+  }
+
+  .already-acc {
+      text-align: center;
+      width: 100%;
+  }
+
+  .create-account-link {
+      text-align: center;
+  }
+
   .phrase-associated-block {
     padding-bottom: 10px;
   }
 
   .terms-condition {
-    padding-top: 50px;
+    padding-top: 30px;
+    padding-left: 0;
+    text-align: center !important;
   }
+
+  .terms-condition span {
+      display: block;
+  }
+
+
 }
 
 

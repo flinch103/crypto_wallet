@@ -36,17 +36,23 @@
                   = f.label :remember_me
                   %span
 
-        .actions
-          = f.submit 'Log in', class: 'btn btn-default pull-left'
+        .actions.clearfix
+          = f.submit 'Login', class: 'btn btn-default pull-left'
+          .pull-right.f-password
+            %a{:clss => "bt-f-password", :href => "#"} Forgot Password?
+            %a
+        .create-account-link
           - if devise_mapping.registerable? && controller_name != 'registrations'
-            = link_to 'Create Account', new_registration_path(resource_name),
-             class: 'btn btn-default pull-right create-acc'
+            Don't have an account?
+            = link_to 'Sign Up', new_registration_path(resource_name),
+             class: 'create-acc' 
 
-      .terms-condition.text-left
-        %p
-          By Login, you agree to accept the
+    .terms-condition.text-left
+      %p
+        By Login, you agree to accept the
+        %span
           %a{ href: '#' } Terms of services
           \&amp;
           %a{ href: '#' } Privacy Policy
-- content_for :footer do
-  = javascript_pack_tag 'javascripts/users/session'
+  - content_for :footer do
+    = javascript_pack_tag 'javascripts/users/session'

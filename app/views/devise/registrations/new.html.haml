@@ -23,7 +23,7 @@
           = f.text_field :full_name, autofocus: true, class: 'form-control',
            placeholder: 'Fullname'
         .field
-          = f.text_field :username, autofocus: true, class: 'form-control',
+          = f.text_field :username, autofocus: false, class: 'form-control',
            placeholder: 'Username'
         .field
           = f.email_field :email, autofocus: true, class: 'form-control',
@@ -35,15 +35,16 @@
           = f.password_field :password_confirmation, autofocus: true, class: 'form-control',
            placeholder: 'Confirm Password'
 
-        .actions
+        .actions.clearfix
           = f.submit 'Sign up', class: 'btn btn-default pull-left'
-          = link_to 'Already have an acount?', new_user_session_path,
-           class: 'pull-right forget-pass'
+          .already-acc.pull-right  
+            Already have an acount?
+            = link_to 'Login', new_user_session_path,class: 'login-link'
 
-
-      .terms-condition.text-left
-        %p
-          By Signup, you agree to accept the
+    .terms-condition.text-left
+      %p
+        By Signup, you agree to accept the
+        %span
           %a{ href: '#' } Terms of services
           \&amp;
           %a{ href: '#' } Privacy Policy
