@@ -9,12 +9,18 @@
     = csrf_meta_tags
     = csp_meta_tag
 
+    = stylesheet_pack_tag 'styles/application'
+    = javascript_pack_tag 'javascripts/application'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = yield :header
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
 
   %body
+    .loading-panel
+    = render 'shared/flash'
     = yield
+    = yield :footer
 
 :javascript
   $(document).ready(function(){

@@ -11,17 +11,18 @@
 
     .tabs-block-wrapper
       %ul.nav.nav-tabs.nav-justified
-        %li.active
-          %a{ href: '#' } VODIANT
-        %li
-          %a{ href: '#' } VODEER
-        %li
-          %a{ href: '#' } ARBITEER
+        %li.active#vodiant
+          %a{ href: 'javascript:void(0)' } VODIANT
+        %li#vodeer
+          %a{ href: 'javascript:void(0)' } VODEER
+        %li#arbiter
+          %a{ href: 'javascript:void(0)' } ARBITER
 
     .auth-form-block
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.hidden_field :role, class: 'user-role', value: 'vodiant'
         .field
-          = f.email_field :email, autofocus: true, autocomplete: 'email',
+          = f.text_field :username, autofocus: true, autocomplete: 'username',
            class: 'form-control', placeholder: 'Username'
         .field
           = f.password_field :password, autocomplete: 'current-password',
@@ -57,4 +58,5 @@
           %a{ href: '/terms_and_conditions' } Terms of services
           \&amp;
           %a{ href: '/privacy_policy' } Privacy Policy
-
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/users/session'
