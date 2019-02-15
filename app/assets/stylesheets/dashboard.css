@@ -1,0 +1,340 @@
+
+.pl-0{
+	padding-left: 0;
+}
+
+.pr-0{
+	padding-right: 0;
+}
+
+.plr-0{
+	padding-left: 0;
+	padding-right:0;
+}
+
+header.topbar {
+    height: 70px;
+    box-shadow: none;
+    border-bottom: 1px solid #dadce0;
+    padding: 0;
+}
+
+header.topbar .navbar-default {
+    min-height: 70px;
+    background: #fff;
+}
+
+header.topbar .navbar-brand {
+    padding: 8px;
+    width: 250px;
+    min-height: 70px;
+    border-right: 1px solid #dadce0;
+}
+
+span.round-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 40px;
+    margin-right: 10px;
+}
+
+span.round-icon img {
+    border-radius: 40px;
+    max-width: 100%;
+}
+
+/*====================Left Sidebar===========================*/
+
+.left-sidebar {
+    position:fixed;
+    width: 250px;
+    height: 100%;
+    top: 70px;
+    z-index: 10;
+    padding-top: 15px;
+    background: #fff;
+    border-right: 1px solid #dadce0;
+}
+
+.sidebar-nav .sidebar-item .sidebar-link {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    font-size:14px;
+}
+
+.sidebar-nav .sidebar-item .sidebar-link.link-active,
+.sidebar-nav .sidebar-item .sidebar-link:hover {
+    background: #f8f9fb;
+    text-decoration: none;
+    position: relative;
+}
+
+.sidebar-nav .sidebar-item .sidebar-link.link-active:before,
+.sidebar-nav .sidebar-item .sidebar-link:hover:before{
+   content:"";
+   width:3px;
+   height:100%;
+   position:absolute;
+   background: #f37226;
+   left:0;
+   top: 0;
+}
+
+/*====================Dash-content-wrapper===========================*/
+
+.dash-content-wrapper {
+    margin-left: 250px;
+    background: #f5f6f8;
+}
+
+.task-analytics-area {
+    display: flex;
+    justify-content: left;
+    background: #fff;
+    border-bottom: 1px solid #dadce0;
+}
+.analytics-box {
+    width: 17%;
+    background: #fff;
+    margin: 0 10px;
+    border-radius: 4px;
+    /* border: 1px solid #ccc; */
+    padding:10px;
+    box-shadow: 0px 0px 6px #ccc;
+}
+
+.analytics-btn-box{
+	width: 17%;
+	background: #fff;
+	margin: 0 10px;
+	display:flex;
+	display:-webkit-flex
+}
+.metric-icon {
+    width: 32px;
+    height: 32px;
+    background: #ff9900;
+    vertical-align: middle;
+    border-radius: 40px;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.task-value {
+    font-size:36px;
+    line-height:36px;
+}
+.btn-create {
+    background-color: #f6793c;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    background-image: url(../assets/dashboard/btn-bg.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+.btn.btn-create i {
+    margin-right: 5px;
+}
+.dash-container{
+	padding: 15px;
+}
+
+.panel .panel-header {
+    padding:15px 15px 0 15px;
+}
+
+.filter-box span {
+    display: block;
+}
+
+.panel-body .table{margin-bottom:0;}
+
+.panel-body .table thead tr th {
+    border-bottom: none;
+    background: #e7e8ea;
+}
+
+.panel-body .table>tbody>tr>td,.panel-body .table>tbody>tr>th,.panel-body .table>tfoot>tr>td,.panel-body .table>tfoot>tr>th, 
+.panel-body .table>thead>tr>td,.panel-body .table>thead>tr>th {
+    padding: 15px;
+}
+
+.panel .panel-footer {
+    padding:0 15px 15px 15px;
+    background:#fff;
+}
+
+
+
+a.pan-link {
+    color: #f37226;
+    font-size: 16px;
+    display: inline-block;
+    padding-top: 15px;
+    text-decoration: none;
+}
+
+
+
+/**===============================Wallet-page======================================*/
+
+.wallet-banner {
+    height: 150px;
+    background: #d26d5b;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wallet-container {
+    width:1030px;
+    margin: 0 auto;
+}
+.my-wallet {
+    background: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 6px;
+    margin-top: -107px;
+    position: relative;
+    box-shadow: 1px 2px 4px #ccc;
+    overflow: hidden;
+}
+
+.my-wallet:after {
+    content: "";
+    width: 100%;
+    background: #f5f6f8;
+    height:180px;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
+.wallet-header {
+    text-align: center;
+    font-size: 24px;
+    padding: 15px;
+    border-bottom: 1px solid #dadce0;
+}
+.wallet-body {
+    padding: 30px 50px;
+}
+.wal-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.walbal-bar {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.walbal-inner {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.walbar-icon{
+	margin-right:15px;
+}
+
+.walbal-value span {
+    display: block;
+}
+.walbal-value span:first-child {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #757575;
+}
+.walbal-value span:last-child {
+    font-weight: 600;
+    color: #1e1e1e;
+    font-size: 16px;
+}
+.wallet-qr-box {
+    display: flex;
+    display: -webkit-flex;
+    margin-top:50px;
+    z-index: 2;
+    position: relative;
+}
+.qr-icon {
+    width: 160px;
+    height: 160px;
+    margin-right: 15px;
+    box-shadow: 0px 1px 6px #ccc;
+}
+
+.qr-info .info-item:first-child {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.info-item {
+    padding: 10px 0;
+}
+.info-item small {
+    display: block;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+.info-item strong {color: #757575;}
+
+
+.wallet-footer {
+    position: relative;
+    z-index: 2;
+    padding: 15px 50px;
+}
+
+button.wal-action-btn {
+    background: #e8e9eb;
+    border: none;
+    padding: 8px 21px;
+    border-radius: 30px;
+    margin-right: 8px;
+}
+
+.history-section {
+    margin-top: 50px;
+}
+
+.history-section .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 0;
+}
+
+.transaction-table {
+    background: #fff;
+}
+
+.transaction-table .table tr td {
+    vertical-align: middle;
+}
+
+.transaction-table .table tr td:first-child i img {
+    border-radius: 30px;
+    margin-right: 5px;
+}
+
+.transaction-table .table tr td:last-child {
+    text-align: right;
+}
+
+.transaction-table .table tr td:last-child .red {
+    color: #ff3f38;
+}
+
+.transaction-table .table tr td:last-child .green {
+    color: #00c75d;
+}
+
+
+
+

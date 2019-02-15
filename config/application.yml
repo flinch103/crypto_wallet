@@ -1,7 +1,7 @@
 development:
   DB_NAME: vodix_development
-  DB_USERNAME: postgres
-  DB_PASSWORD: postgres
+  DB_USERNAME: rails
+  DB_PASSWORD: rails
   DB_HOST: localhost
   HOST: http://35.190.27.31
   SMTP_ADDRESS: smtp.sendgrid.net
