@@ -1,0 +1,156 @@
+- content_for :header do
+  = stylesheet_pack_tag 'styles/restore_wallets', media: 'all'
+  = stylesheet_pack_tag 'styles/setup_accounts', media: 'all'
+= render 'layouts/header'
+.setup-account
+  .container
+    .thumbnail
+      %h2
+        Setup Account
+      %p
+        Enter your mnemonic or generate a new one
+      .tabs-block-wrapper.acc-tab-bg
+        %ul.nav.nav-tabs.nav-justified
+          %li.active
+            %a.create-tab{ href: '#create' } CREATE
+          %li
+            %a.import-tab{"data-toggle" => "tab", "data-rel" => 'verify', :href => "#import"} IMPORT
+      .tab-content.clearfix
+        %input#verify-mnemonic{name: 'name', :type => "hidden", :value => "false"}/
+        #create.tab-pane.fade.in.active.create-field
+          %h4
+            Your wallet is secured by a 12 word backup phrase.
+          %p
+            Keep your backup phrase safe! We don't have it and we can not access it.
+            %br
+            You'll need your backup phrase if you lose your device or delete your app.
+          %p
+            Write down your backup phrase and store  it in several places.
+
+        #import.tab-pane
+          %form.form-horizontal.setup-block-input-b
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  01
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#1word{:placeholder => "rest", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  02
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#2word{:placeholder => "hospital", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  03
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#3word{:placeholder => "legal", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  04
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#4word{:placeholder => "vicious", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  05
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#5word{:placeholder => "two", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  06
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#6word{:placeholder => "wife", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  07
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#7word{:placeholder => "arrive", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  08
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#8word{:placeholder => "amateur", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  09
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#9word{:placeholder => "music", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  10
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#10word{:placeholder => "fruit", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  11
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#11word{:placeholder => "input", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  12
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#12word{:placeholder => "gas", :type => "text"}/
+            .restore-btn
+              %a.btn.btn-default.grey-field.import-submit{ :href => 'javascript:void(0)' }
+                Submit
+
+
+    .access-block
+      %form
+        .form-group
+          %input.mnemonic-backup-checkbox#html{:type => "checkbox"}/
+          %label{:for => "html"}
+          %p
+            I understand that my backup phrase is the only way i can restore my wallet if i lose access.
+      .restore-btn.modal-btn.acc-btn
+        %a.btn.btn-default.grey-field.policy-continue{ href: setup_accounts_path(:create_mnemonic)}
+          Continue
+
+#qr-code.modal.fade.qr-field{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %h2
+          Your VodiX Wallet QR Code
+        %p
+          Scan or Share QR code to receive Ether or Vodix Team
+        .qr-code-field
+          %canvas.display-center#canvas
+        .address-encryp
+          .form-group
+            %input.form-control#wallet-address{:placeholder => "1shkhkjjpoi4ddddd", :type => "text"}/
+            %label
+              WALLET ADDRESS
+          .form-group
+            %input.form-control#private-key{:placeholder => "1shkhkjjpoi4ddddd", :type => "text"}/
+            %label
+              PRIVATE KEY
+
+        .download-field
+          .circular-field
+            %a.btn.btn-default.copy-wallet-button{:href=> 'javascript:void(0)'}
+              = image_tag("/assets/copy.png")
+              Copy
+          .circular-field
+            %a.btn.btn-default.download-button{:href=> 'javascript:void(0)'}
+              = image_tag("/assets/Download.png")
+              Download
+        .restore-btn.modal-btn
+          %span.btn.btn-default.create-wallet{:href => 'javascript:void(0)'}
+            Countinue
+
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/setup_accounts/policy'
+
+= render 'layouts/footer'

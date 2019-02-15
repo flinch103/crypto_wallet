@@ -1,0 +1,191 @@
+- content_for :header do
+  = stylesheet_pack_tag 'styles/restore_wallets', media: 'all'
+  = stylesheet_pack_tag 'styles/setup_accounts', media: 'all'
+= render 'layouts/header'
+.setup-account
+  .container
+    .thumbnail
+      %h2.heading-setup-block
+        Setup Account
+      %p.subheading-setup-block
+        Write down your 12 word backup phrase in correct order
+      #exTab1.set-up-tabs.acc-tab-bg
+        %ul.nav.nav-pills
+          %li.active.setup-nav
+            %a.tab-setup{rel: 'setup', tab: '#1a', :href => 'javascript:void(0)'} SETUP
+          %li.verify-nav
+            %a.tab-verify{rel: 'verify', tab: '#2a', :href => 'javascript:void(0)'} VERIFY
+          %li.review-nav
+            %a.tab-review{rel: 'review', tab: '#3a', :href => 'javascript:void(0)'} REVIEW
+      %input#verify-mnemonic{name: 'name', :type => "hidden", :value => "false"}/      
+      .tab-content.clearfix
+        #1a.tab-pane.active
+          %form.form-horizontal.setup-block-input-b
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  01
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#1word{:placeholder => "rest", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  02
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#2word{:placeholder => "hospital", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  03
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#3word{:placeholder => "legal", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  04
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#4word{:placeholder => "vicious", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  05
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#5word{:placeholder => "two", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  06
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#6word{:placeholder => "wife", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  07
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#7word{:placeholder => "arrive", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  08
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#8word{:placeholder => "amateur", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  09
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#9word{:placeholder => "music", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  10
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#10word{:placeholder => "fruit", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  11
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#11word{:placeholder => "input", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  12
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#12word{:placeholder => "gas", :type => "text"}/
+            .copy-field
+              %span.btn.btn-default.copy-button{href: '#'}
+                = image_tag("/assets/copy.png")
+                Copy mnemonic
+
+        #2a.tab-pane
+          %form.form-horizontal.setup-block-input-b
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  04
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#4verify{:placeholder => "Enter 4th word", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  07
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#7verify{:placeholder => "Enter 7th word", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  09
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#9verify{:placeholder => "Enter 9th word", :type => "text"}/
+            .col-md-3.col-sm-3.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  12
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control#12verify{:placeholder => "Enter 12th word", :type => "text"}/
+        #3a.tab-pane
+          .vodix-field-wrapper
+            .access-block.review-block-f
+              %form
+                .form-group
+                  %input.create-mnemonic-checkbox1#html{:type => "checkbox"}/
+                  %label{:for => "html"}
+                  %p
+                    VodiX does not have access to my private keys.
+            .access-block.review-block-f
+              %form
+                .form-group
+                  %input.create-mnemonic-checkbox2#html2{:type => "checkbox"}/
+                  %label{:for => "html2"}
+                  %p
+                    The only way to way to recover my assets is to use the 12-word backup phrase.
+
+
+    .restore-btn
+      %a.btn.btn-default.grey-field.back-mnemonic{ rel: 'policy', tab: '', href: 'javascript:void(0)' }
+        Back
+      %a.btn.btn-default.forward-mnemonic{rel: 'verify', tab: '#2a', :href => 'javascript:void(0)'}
+        I've copied it somewhere safe
+      / %a.btn.btn-default{"data-target" => "#qr-code", "data-toggle" => "modal", :href => "#"}
+      /   Verify
+
+
+#qr-code.modal.fade.qr-field{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %h2
+          Your VodiX Wallet QR Code
+        %p
+          Scan or Share QR code to receive Ether or Vodix Team
+        .qr-code-field
+          %canvas.display-center#canvas
+        .address-encryp
+          .form-group
+            %input.form-control#wallet-address{:placeholder => "1shkhkjjpoi4ddddd", :type => "text"}/
+            %label
+              WALLET ADDRESS
+          .form-group
+            %input.form-control#private-key{:placeholder => "1shkhkjjpoi4ddddd", :type => "text"}/
+            %label
+              PRIVATE KEY
+
+        .download-field
+          .circular-field
+            %a.btn.btn-default.copy-wallet-button{:href=> 'javascript:void(0)'}
+              = image_tag("/assets/copy.png")
+              Copy
+          .circular-field
+            %a.btn.btn-default.download-button{:href=> 'javascript:void(0)'}
+              = image_tag("/assets/Download.png")
+              Download
+        .restore-btn.modal-btn
+          %span.btn.btn-default.create-wallet{:href => 'javascript:void(0)'}
+            Countinue
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/setup_accounts/create_mnemonic'
+
+
+
+= render 'layouts/footer'
