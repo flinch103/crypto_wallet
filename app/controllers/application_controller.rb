@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # :reek:NilCheck
   def after_sign_in_path_for(resource)
-    unless resource.role.eql?(params[:user][:role])
+    unless resource.role.eql?(params.dig(:user)&.dig(:role))
       sign_out resource
       flash.delete(:notice)
       set_flash_message!(:error, :role_not_match)

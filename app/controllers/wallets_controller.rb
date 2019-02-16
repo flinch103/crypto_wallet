@@ -1,5 +1,6 @@
 # wallets Controller
 class WalletsController < ApplicationController
+  before_action :authenticate_user!
   def create
     outcome = Wallets::CreateIntr.run(create_wallet_params.merge(user: current_user))
     return render json: { response: { message: I18n.t('wallets.created') } } if outcome.valid?

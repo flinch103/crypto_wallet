@@ -42,21 +42,11 @@
             = link_to 'Create Account', new_registration_path(resource_name),
              class: 'btn btn-default pull-right create-acc'
 
-      /= render 'devise/shared/links'
-
-
-    .phrase-associated-block
-      %p
-        Use the associated phrase associated with your existing Vodix wallet
-        %br
-        to access it.
-      = link_to 'Restore wallet', restore_wallets_path,
-       class: 'btn btn-default pull-left restore-wallet'
       .terms-condition.text-left
         %p
           By Login, you agree to accept the
-          %a{ href: '/terms_and_conditions' } Terms of services
+          %a{ href: '#' } Terms of services
           \&amp;
-          %a{ href: '/privacy_policy' } Privacy Policy
+          %a{ href: '#' } Privacy Policy
 - content_for :footer do
   = javascript_pack_tag 'javascripts/users/session'
