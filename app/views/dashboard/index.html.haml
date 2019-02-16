@@ -24,7 +24,7 @@
                   %li
                     %a{ :href => "#" } Settings
                   %li
-                    %a{ :href => "#" } Log out
+                    %a{ :href => destroy_user_session_path, 'data-method': 'delete' } Log out
           / /.nav-collapse
     %aside.left-sidebar
       .sidebar-nav
