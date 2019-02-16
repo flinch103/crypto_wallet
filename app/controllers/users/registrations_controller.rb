@@ -11,9 +11,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    flash[:error] = resource.errors.full_messages.to_sentence if resource.errors.present?
+  # :reek:TooManyStatements
+  def create # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource, location: response_to_sign_up_failure(resource)
+    end
   end
 
   # GET /resource/edit
@@ -60,5 +78,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(_resource)
     new_user_session_path
+  end
+
+  def response_to_sign_up_failure(resource)
+    flash[:error] = resource.errors.full_messages.to_sentence
+    new_user_registration_path
   end
 end
