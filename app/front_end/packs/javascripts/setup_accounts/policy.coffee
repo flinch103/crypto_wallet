@@ -7,6 +7,9 @@ $(document).ready ->
     if $(this).is(':checked')
       $('.policy-continue').attr("disabled", false);
       $('.policy-continue').attr('href', '/setup_accounts/create_mnemonic');
+    else
+      $('.policy-continue').attr("disabled", true);
+      $('.policy-continue').removeAttr('href');
     return
 
   $('.import-tab').unbind('click').click (event) ->
