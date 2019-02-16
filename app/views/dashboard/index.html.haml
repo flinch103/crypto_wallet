@@ -17,7 +17,7 @@
                 %a.dropdown-toggle{ "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button" }
                   %span.round-icon
                     %img{ :src => "assets/dashboard/profile pic.jpg" }/
-                  Rebecca Young
+                  = current_user&.username || 'Rebecca Young'
                 %ul.dropdown-menu
                   %li
                     %a{ :href => "#" } Account

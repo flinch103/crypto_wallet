@@ -119,6 +119,7 @@ $(document).ready ->
     return
 
   $('.tab-setup').unbind('click').click (event) ->
+    $('.forward-mnemonic').attr("disabled", false);
     changeHeading('Setup Account', 'Write down your 12 word backup phrase in correct order')
     removeActiveClassFromTab()
     updateBackButton('/setup_accounts/policy', 'policy')
@@ -127,6 +128,8 @@ $(document).ready ->
     $('#1a').addClass('active')
 
   $('.tab-verify').unbind('click').click (event) ->
+    $('.forward-mnemonic').attr("disabled", false);
+    
     changeHeading('Verify Backup Phrase', 'Please write the correct words')
     removeActiveClassFromTab()
     updateBackButton('#1a', 'setup')
@@ -138,8 +141,9 @@ $(document).ready ->
     if $('#verify-mnemonic').val() == 'false'
       toastr.error('First verify your mnemonics')
       return
-    $('.forward-mnemonic').attr("disabled", true);
-    $('.forward-mnemonic').removeAttr('href');
+    if !$('.create-mnemonic-checkbox1').is(':checked') || !$('.create-mnemonic-checkbox2').is(':checked')
+      $('.forward-mnemonic').attr("disabled", true);
+      $('.forward-mnemonic').removeAttr('href');
     changeHeading('Review', 'By using the VodiX Wallet I unserstand that:')
     removeActiveClassFromTab()
     updateBackButton('#2a', 'verify')
