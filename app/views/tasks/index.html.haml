@@ -1,2 +1,20 @@
-%h1 Tasks#index
-%p Find me in app/views/tasks/index.html.haml
+= link_to 'create task', :controller => :tasks, :action => :new
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th StartDate
+    %th EndDate
+    %th Cost
+    %th Max No. of Vodeer
+    %th{:colspan => "6"}
+  - unless @tasks.empty?
+    - @tasks.each do |task|
+      %tr
+        %td= task.title
+        %td= task.description
+        %td= task.start_date
+        %td= task.end_date
+        %td= task.wage
+        %td= task.max_vodeer
