@@ -20,11 +20,9 @@
                   = current_user&.username || 'Rebecca Young'
                 %ul.dropdown-menu
                   %li
-                    %a{ :href => "#" } Account
+                    %a{ :href => "/user_profiles" } Profile
                   %li
-                    %a{ :href => "#" } Settings
-                  %li
-                    %a{ :href => destroy_user_session_path, 'data-method': 'delete' } Log out
+                    %a{ :href => destroy_user_session_path, 'data-method': 'delete' } Logout
           / /.nav-collapse
     %aside.left-sidebar
       .sidebar-nav
@@ -32,28 +30,32 @@
           %li.sidebar-item
             %a.sidebar-link.link-active{ :href => "#" } Dashboard
           %li.sidebar-item
-            %a.sidebar-link{ :href => "#" } Tasks
+            %a.sidebar-link{ :href => "/tasks" } Tasks
           %li.sidebar-item
             %a.sidebar-link{ :href => "/wallets" } Wallet
     .dash-content-wrapper
       .task-analytics-area.panel-body
         .analytics-box
-          .task-value.d-inline-block 15
+          .task-value.d-inline-block
+            = current_user.tasks.open.length
           .metric-icon.d-inline-block.pull-right
             %img{ :src => "/assets/dashboard/task_icon.png" }/
           %h5 Task open
         .analytics-box
-          .task-value.d-inline-block 12
+          .task-value.d-inline-block
+            = current_user.tasks.completed.length
           .metric-icon.d-inline-block.pull-right
             %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
           %h5 Task Completed
         .analytics-box
-          .task-value.d-inline-block 8
+          .task-value.d-inline-block
+            = current_user.tasks.progress.length
           .metric-icon.d-inline-block.pull-right
             %img{ :src => "/assets/dashboard/task_ongoing_icon.png" }/
           %h5 Task Ongoing
         .analytics-box
-          .task-value.d-inline-block 15
+          .task-value.d-inline-block
+            = current_user.tasks.disputed.length
           .metric-icon.d-inline-block.pull-right
             %img{ :src => "/assets/dashboard/task_disputed_icon.png" }/
           %h5 Task Disputed
@@ -66,7 +68,7 @@
           %button.btn.btn-create
             %i
               %img{ :src => "assets/dashboard/create_new_task.png" }/
-            Create new task
+            %a.sidebar-link{ :href => "/tasks/new" } Create new task
       .dash-container
         .panel
           .panel-header
@@ -82,53 +84,29 @@
                 %thead
                   %tr
                     %th Title
-                    %th Desctiption
+                    %th Description
                     %th Vodeer
                     %th Cost
+                    %th Start Date
                     %th End Date
                     %th Status
                 %tbody
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
+                - unless @tasks.empty?
+                  - @tasks.each do |task|
+                    %tr
+                      %td= task.title
+                      %td= task.description
+                      %td= task.vodeer || ""
+                      %td= task.wage
+                      %td= task.start_date
+                      %td= task.end_date
+                      %td= task.status
           .panel-footer
             .text-right
-              %a.pan-link{ :href => "#" } View All Task
+              %a.pan-link{ :href => "/tasks" } View All Task
         .panel
           .panel-header
-            %h4.d-inline-block Recent Microtask
+            %h4.d-inline-block Disputed Task
             .pull-right.d-inline-block.filter-box
               %span Filter by
               %select
@@ -143,44 +121,19 @@
                     %th Desctiption
                     %th Vodeer
                     %th Cost
+                    %th Start Date
                     %th End Date
-                    %th Status
                 %tbody
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
+                - unless @disputed_tasks.empty?
+                  - @disputed_tasks.each do |task|
+                    %tr
+                      %td= task.title
+                      %td= task.description
+                      %td= task.vodeer || ""
+                      %td= task.wage
+                      %td= task.start_date
+                      %td= task.end_date
+                    
           .panel-footer
             .text-right
-              %a.pan-link{ :href => "#" } View All Task
+              %a.pan-link{ :href => "/tasks" } View All Task
