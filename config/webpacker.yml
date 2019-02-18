@@ -4,7 +4,9 @@ default: &default
   source_path: app/front_end
   source_entry_path: packs
   public_output_path: packs
-
+  resolved_paths: ['app/assets']
+  cache_path: tmp/cache/webpacker
+  
   extensions:
     - .coffee
     - .erb
