@@ -17,7 +17,7 @@
             %a.tab-verify{rel: 'verify', tab: '#2a', :href => 'javascript:void(0)'} VERIFY
           %li.review-nav
             %a.tab-review{rel: 'review', tab: '#3a', :href => 'javascript:void(0)'} REVIEW
-      %input#verify-mnemonic{name: 'name', :type => "hidden", :value => "false"}/      
+      %input#verify-mnemonic{name: 'name', :type => "hidden", :value => "false"}/
       .tab-content.clearfix
         #1a.tab-pane.active
           %form.form-horizontal.setup-block-input-b
@@ -181,7 +181,7 @@
               = image_tag("/assets/Download.png")
               Download
         .restore-btn.modal-btn
-          %span.btn.btn-default.create-wallet{:href => 'javascript:void(0)'}
+          %a.btn.btn-default.create-wallet{:href => 'javascript:void(0)'}
             Countinue
 - content_for :footer do
   = javascript_pack_tag 'javascripts/setup_accounts/create_mnemonic'

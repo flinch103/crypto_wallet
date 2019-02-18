@@ -1,186 +1,89 @@
-%body
-  %section.main
-    %header.topbar
-      %nav.navbar.navbar-default.navbar-fixed-top
-        .container-fluid
-          .navbar-header
-            %button.navbar-toggle.collapsed{ "aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button" }
-              %span.sr-only Toggle navigation
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a.navbar-brand{ :href => "#" }
-              %img{ :src => "/assets/logo-main.png" }/
-          #navbar.navbar-collapse.collapse
-            %ul.nav.navbar-nav.navbar-right
-              %li.dropdown
-                %a.dropdown-toggle{ "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button" }
-                  %span.round-icon
-                    %img{ :src => "assets/dashboard/profile pic.jpg" }/
-                  = current_user&.username || 'Rebecca Young'
-                %ul.dropdown-menu
-                  %li
-                    %a{ :href => "#" } Account
-                  %li
-                    %a{ :href => "#" } Settings
-                  %li
-                    %a{ :href => destroy_user_session_path, 'data-method': 'delete' } Log out
-          / /.nav-collapse
-    %aside.left-sidebar
-      .sidebar-nav
-        %ul.list-unstyled
-          %li.sidebar-item
-            %a.sidebar-link.link-active{ :href => "#" } Dashboard
-          %li.sidebar-item
-            %a.sidebar-link{ :href => "#" } Tasks
-          %li.sidebar-item
-            %a.sidebar-link{ :href => "/wallets" } Wallet
-    .dash-content-wrapper
-      .task-analytics-area.panel-body
-        .analytics-box
-          .task-value.d-inline-block 15
-          .metric-icon.d-inline-block.pull-right
-            %img{ :src => "/assets/dashboard/task_icon.png" }/
-          %h5 Task open
-        .analytics-box
-          .task-value.d-inline-block 12
-          .metric-icon.d-inline-block.pull-right
-            %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
-          %h5 Task Completed
-        .analytics-box
-          .task-value.d-inline-block 8
-          .metric-icon.d-inline-block.pull-right
-            %img{ :src => "/assets/dashboard/task_ongoing_icon.png" }/
-          %h5 Task Ongoing
-        .analytics-box
-          .task-value.d-inline-block 15
-          .metric-icon.d-inline-block.pull-right
-            %img{ :src => "/assets/dashboard/task_disputed_icon.png" }/
-          %h5 Task Disputed
-        .analytics-box
-          .task-value.d-inline-block 170
-          .metric-icon.d-inline-block.pull-right
-            %img{ :src => "/assets/dashboard/wallet.png" }/
-          %h5 Wallet Balance
-        .analytics-btn-box
-          %button.btn.btn-create
-            %i
-              %img{ :src => "assets/dashboard/create_new_task.png" }/
-            Create new task
-      .dash-container
-        .panel
-          .panel-header
-            %h4.d-inline-block Recent Microtask
-            .pull-right.d-inline-block.filter-box
-              %span Filter by
-              %select
-                %option All
-                %option option
-          .panel-body.plr-0
-            .table-responsive
-              %table.table
-                %thead
-                  %tr
-                    %th Title
-                    %th Desctiption
-                    %th Vodeer
-                    %th Cost
-                    %th End Date
-                    %th Status
-                %tbody
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-          .panel-footer
-            .text-right
-              %a.pan-link{ :href => "#" } View All Task
-        .panel
-          .panel-header
-            %h4.d-inline-block Recent Microtask
-            .pull-right.d-inline-block.filter-box
-              %span Filter by
-              %select
-                %option All
-                %option option
-          .panel-body.plr-0
-            .table-responsive
-              %table.table
-                %thead
-                  %tr
-                    %th Title
-                    %th Desctiption
-                    %th Vodeer
-                    %th Cost
-                    %th End Date
-                    %th Status
-                %tbody
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-                  %tr
-                    %td Design a Shirt to Build the wall
-                    %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    %td Alex Martin
-                    %td 15VDX
-                    %td 02/15/2018
-                    %td Ongoing
-          .panel-footer
-            .text-right
-              %a.pan-link{ :href => "#" } View All Task
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+.dash-content-wrapper
+  .task-analytics-area.panel-body
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block 15
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_icon.png" }/
+      %h5 Task open
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block 12
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
+      %h5 Task Completed
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block 8
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_ongoing_icon.png" }/
+      %h5 Task Ongoing
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block 15
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_disputed_icon.png" }/
+      %h5 Task Disputed
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block 170
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/wallet.png" }/
+      %h5 Wallet Balance
+    .analytics-btn-box.col-md-2.col-sm-6.col-xs-12
+      %button.btn.btn-create
+        %i
+          %img{ :src => "assets/dashboard/create_new_task.png" }/
+        Create new task
+  .dash-container
+    .panel
+      .panel-header
+        %h4.d-inline-block
+          %b
+            Recent Microtask
+        .pull-right.d-inline-block.filter-box
+          %span Filter by
+          %select
+            %option All
+            %option option
+      .panel-body.plr-0
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Task Name
+                %th Desctiption
+                %th.text-center Max No. of Vodeer
+                %th.text-center Start Date
+                %th.text-center End Date
+                %th.text-center Accepted
+                %th.text-center Waiting for Approval
+                %th.text-center Approved
+                %th.text-center Rejected
+                %th.text-center Disputed
+                %th
+            %tbody
+              - (1..10).each do |i|
+                %tr
+                  %td Design a Shirt to Build the wall
+                  %td Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  %td.text-center 100
+                  %td.text-center
+                    02/15/2018
+                    %br
+                    10:15EST
+                  %td.text-center
+                    02/15/2018
+                    %br
+                    10:15EST
+                  %td.text-center 20
+                  %td.text-center 6
+                  %td.text-center 1
+                  %td.text-center 1
+                  %td.text-center 1
+                  %td.detail-btn
+                    %span.btn.btn-default
+                      Detail
+
+      .panel-footer
+        .text-right
+          %a.pan-link{ :href => "#" }
+            %b
+              View All Task
