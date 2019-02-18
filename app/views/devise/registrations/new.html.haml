@@ -36,7 +36,7 @@
            placeholder: 'Confirm Password'
 
         .actions.clearfix
-          = f.submit 'Sign up', class: 'btn btn-default pull-left'
+          = f.submit 'Sign up', type: 'button', class: 'btn btn-default pull-left', data: {target: "#confirmation-popup", toggle: "modal"}
           .already-acc.pull-right
             Already have an acount?
             = link_to 'Login', new_user_session_path,class: 'login-link'
@@ -48,5 +48,22 @@
           %a{ href: '#' } Terms of services
           \&amp;
           %a{ href: '#' } Privacy Policy
+
+.flex-f
+  #confirmation-popup.modal.fade.confirmation-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          = image_tag('/assets/email.png')
+          %h3
+            Confirm Your Email
+          %p
+            An email has been  sent to your email address.
+            Follow the instruction in the email to confirm
+          .confirm-btn.modal-btn
+            %span.btn.btn-default{:href => 'javascript:void(0)'}
+              Okay
+
+
 - content_for :footer do
   = javascript_pack_tag 'javascripts/users/registration'
