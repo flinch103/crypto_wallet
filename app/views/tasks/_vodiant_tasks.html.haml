@@ -1,0 +1,53 @@
+.dash-content-wrapper
+  .task-analytics-area.panel-body
+    .analytics-btn-box.col-md-2.col-sm-6.col-xs-12
+      %button.btn.btn-create
+        %i
+          %img{ :src => "assets/dashboard/create_new_task.png" }/
+        = link_to 'Create New Task', :controller => :tasks, :action => :new
+  .dash-container
+    .panel
+      .panel-header
+        %h4.d-inline-block
+          %b
+            Open Microtasks
+        .pull-right.d-inline-block.filter-box
+          %span Filter by
+          %select
+            %option All
+            %option option
+      .panel-body.plr-0
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Task Name
+                %th Description
+                %th.text-center Max No. of Vodeer
+                %th.text-center Start Date
+                %th.text-center End Date
+                %th.text-center Accepted
+                %th.text-center Waiting for Approval
+                %th.text-center Approved
+                %th.text-center Rejected
+                %th.text-center Disputed
+                %th
+            %tbody
+              - unless @tasks.empty?
+                - @tasks.each do |task|
+                  %tr
+                    %td= task.title
+                    %td= task.description
+                    %td.text-center= task.max_vodeer
+                    %td.text-center
+                      = task.start_date
+                    %td.text-center
+                      = task.end_date
+                    %td.text-center 20
+                    %td.text-center 6
+                    %td.text-center 1
+                    %td.text-center 1
+                    %td.text-center 1
+                    %td.detail-btn
+                      %span.btn.btn-default
+                        Detail

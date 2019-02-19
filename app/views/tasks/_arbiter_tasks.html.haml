@@ -1,0 +1,46 @@
+.dash-content-wrapper
+  .task-analytics-area.panel-body
+
+  .dash-container
+    .panel
+      .panel-header
+        %h4.d-inline-block
+          %b
+            Open Microtasks
+        .pull-right.d-inline-block.filter-box
+          %span Filter by
+          %select
+            %option All
+            %option option
+      .panel-body.plr-0
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Title
+                %th Description
+                %th.text-center Vodiant
+                %th.text-center Vodeer
+                %th.text-center Cost
+                %th.text-center Start Date
+                %th.text-center End Date
+                %th.text-center Status
+                %th
+            %tbody
+              - unless Task.open.empty?
+                - Task.open.each do |task|
+                  %tr
+                    %td= task.title
+                    %td= task.description
+                    %td.text-center= task.vodiant.full_name
+                    %td.text-center
+                      = task.vodeer&.full_name
+                    %td.text-center= task.wage
+                    %td.text-center
+                      = task.start_date
+                    %td.text-center
+                      = task.end_date
+                    %td.text-center= task.status
+                    %td.detail-btn
+                      %span.btn.btn-default
+                        Detail
