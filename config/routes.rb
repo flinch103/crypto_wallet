@@ -18,4 +18,11 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
+  
+  resources :user_profiles do
+    collection do
+      post :update_avatar
+    end
+  end
+
 end
