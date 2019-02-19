@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/_health', to: 'health_checks#health'
   get '/_healthz', to: 'health_checks#health'
 
-  resources :wallets, only: %i[create update]
+  resources :wallets, only: %i[create update index]
 
   scope 'setup_accounts' do
     get '/:page_name', to: 'setup_accounts#index', as: 'setup_accounts'
