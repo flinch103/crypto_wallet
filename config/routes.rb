@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
   resources :restore_wallets
   resources :task_details
+  resources :create_new_task
 
   # Health check Endpoints
   get '/_liveness', to: 'health_checks#health'
