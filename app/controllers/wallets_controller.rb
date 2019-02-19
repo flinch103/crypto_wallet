@@ -8,6 +8,9 @@ class WalletsController < ApplicationController
     render json: { message: outcome.errors.full_messages.to_sentence }, status: :bad_request
   end
 
+  def show
+    @wallet = current_user.wallet
+  end
   private
 
   def create_wallet_params

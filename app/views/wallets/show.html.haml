@@ -1,0 +1,32 @@
+.container
+  .thumbnail
+    %h2.heading-setup-block
+      My Vodix Wallet
+    %p.subheading-setup-block
+      Wallet balance
+    %p.subheading-setup-block
+      vodix balance
+      %span.vodix-balance
+        = @wallet.balance
+    %p.subheading-setup-block
+      ETHER
+      %span.eth-balance
+        = @wallet.balance
+    %p.wallet-address-qrcode
+    %p.subheading-setup-block.wallet-address
+      = @wallet.address
+    .qr-code-field
+      %canvas.display-center#canvas
+  .copy-field
+    %span.btn.btn-default.wallet-address-copy
+      = image_tag("/assets/copy.png")
+      Copy
+  .pagination-list
+    - @wallet.transactions.each do |tx|
+      .top-offers-b
+        = tx.tx_hex || '' 
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/wallets/show'
+
+:javascript
+  window.wallet_address = "#{@wallet.address}"
