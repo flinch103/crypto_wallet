@@ -14,7 +14,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = yield :header
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
+    %link{:href => "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900", :rel => "stylesheet"}/
+
 
   %body
     .loading-panel
