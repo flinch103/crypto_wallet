@@ -1,0 +1,43 @@
+// Place all the styles related to the completed_task controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.reject-field {
+  text-align: center;
+
+  img {
+    max-width: 10%;
+  }
+
+  p {
+    font-size: 18px;
+    padding: 15px 0;
+    margin: 0;
+  }
+
+  textarea {
+    resize: none;
+    border-color: #dcdcdc;
+    height: 112px;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #aeaeae;
+    }
+  }
+
+  .poup-btn {
+    span {
+      padding: 10px 26px;
+      font-size: 15px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .back-btn {
+    display: none;
+  }
+}
+

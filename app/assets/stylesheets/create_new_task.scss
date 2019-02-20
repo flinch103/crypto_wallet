@@ -1,0 +1,287 @@
+// Place all the styles related to the create_new_task controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-task {
+  text-align: center;
+  .create-new-task{
+    padding: 15px 0;
+    h2 {
+      border: 0 !important;
+      padding: 0 !important;
+      font-weight: 700;
+      font-size: 27px !important;
+    }
+
+    span {
+      color: #757575;
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 600;
+      padding-top: 10px;
+    }
+  }
+}
+
+.acc-tab-bg {
+  background: #f8f9fa;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  display: inline-block;
+  width: 100%;
+
+  li {
+    a {
+      border-bottom: 0;
+    }
+  }
+}
+
+.set-up-tabs {
+  li {
+    padding: 0;
+    width: 568px;
+
+    a {
+      border-radius: 0;
+      color: #1e1e1e;
+      position: relative;
+      font-size: 15px;
+
+      &:hover {
+        background: none;
+        border: transparent;
+      }
+
+      &:after {
+        background: url("/assets/arrow-line.png");
+        float: right;
+        content: '';
+        position: absolute;
+        right: -9px;
+        width: 6px;
+        height: 43px;
+        top: 0;
+        z-index: 99;
+      }
+
+    }
+
+    &.active {
+      a {
+        background: #e8e9eb;
+        color: #f37226;
+        font-weight: 700;
+        position: relative;
+
+        &:after {
+          background: url("/assets/arrow-ine-dark.png");
+          float: right;
+          content: '';
+          position: absolute;
+          right: -6px;
+          width: 6px;
+          height: 43px;
+          top: 0;
+        }
+
+        &:hover,&:focus {
+          background: #e8e9eb !important;
+          color: #f37226;
+        }
+      }
+    }
+
+    &:last-child {
+      a {
+        &:after {
+          background: none;
+        }
+      }
+    }
+
+  }
+}
+
+
+.form-field-block {
+  display: inline-block;
+  width: 100%;
+  padding: 22px 22px;
+
+  .form-group {
+    padding: 12px 15px;
+
+    input {
+      box-shadow: none;
+      border-radius: 0;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #aeaeae;
+        font-size: 17px;
+      }
+
+      &:focus {
+        border-color: #f37226;
+      }
+    }
+  }
+}
+
+
+.next-btn-field {
+  margin-bottom: 15px;
+  span {
+    background: #f37226;
+    border: 0;
+    color: #fff;
+    border-radius: 25px;
+    padding: 11px 55px;
+    font-size: 17px;
+  }
+}
+
+.token-value-field {
+  background: #f8f9fb;
+  display: table;
+  margin: 0 auto;
+  padding: 11px 20px 4px;
+  border: 0;
+  box-shadow: none;
+
+  img {
+    float: left;
+    max-width: 30%;
+  }
+
+  h3 {
+    color: #f37226;
+    float: left;
+    margin: 0;
+    font-weight: 700;
+    font-size: 35px;
+    padding-left: 8px;
+  }
+
+  span {
+    font-size: 18px;
+    line-height: 46px;
+    padding-left: 2px;
+  }
+}
+
+.pay-vdx {
+  h4 {
+    padding: 15px 0;
+  }
+}
+
+.encrypt-address {
+  display: table;
+  margin: 0 auto;
+  padding: 30px 0;
+  width: 42%;
+
+  input {
+    box-shadow: none;
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    text-align: center;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #757575;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    &:focus {
+      border-color: #f37226;
+      box-shadow: none;
+    }
+  }
+}
+
+.pay-vdx-btns {
+  .back-btn {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    border: 0;
+    border-radius: 25px;
+    padding: 11px 55px;
+    margin-right: 13px;
+    font-size: 17px;
+  }
+
+  .stack-btns {
+    background: #f37226;
+    color: #fff;
+    border: 0;
+    border-radius: 25px;
+    padding: 11px 55px;
+    font-size: 17px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .set-up-tabs {
+    li {
+      width: 444px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .set-up-tabs {
+    li {
+      width: 275px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .set-up-tabs {
+    li {
+      width: 164px;
+    }
+  }
+
+  .task-btn-field {
+    padding: 30px 0;
+
+    span {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+
+  .next-btn-field {
+    margin-bottom: 0;
+  }
+}
+
+.create-field {
+  text-align: center;
+  h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #757575;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  p {
+    font-size: 18px;
+    color: #1e1e1e;
+    padding: 23px 0;
+  }
+
+  .modal-body {
+    padding: 40px 0;
+  }
+}

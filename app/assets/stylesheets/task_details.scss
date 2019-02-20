@@ -1,0 +1,120 @@
+// Place all the styles related to the task_details controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bg-wrapper-field {
+  background: url("/assets/color_bg.png");
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: cover;
+  padding-left: 250px;
+
+  .thumbnail {
+    display: inline-block;
+    margin: 50px auto;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    border-radius: 11px;
+    box-shadow: 0px 1px 7px #dcdcdc;
+
+    h2{
+      border-bottom: 1px #dcdcdc solid;
+      display: inline-block;
+      font-size: 25px;
+      margin: 0;
+      padding: 19px 0;
+      width: 100%;
+    }
+
+    .back-btn {
+      float: left;
+      color: #f37226;
+      position: absolute;
+      top: 29px;
+      left: 20px;
+
+
+      img {
+        float: left;
+        max-width: 7%;
+        padding-right: 15px;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+.task-detail-block {
+  h4 {
+    padding: 15px 45px;
+    font-weight: 700;
+  }
+}
+
+.status-ongoing {
+  background: #e8e9eb;
+  display: inline-block;
+  width: 100%;
+  padding: 15px 31px;
+  vertical-align: top;
+
+  span {
+    color: #757575;
+    font-size: 15px;
+  }
+
+  p {
+    color: #1e1e1e;
+    font-size: 16px;
+  }
+}
+
+
+.description-field {
+  @extend .status-ongoing;
+  background: none;
+  padding: 15px 46px;
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .bg-wrapper-field {
+    padding-left: 199px;
+
+    .container {
+      width: 920px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .bg-wrapper-field {
+    padding-left: 183px;
+
+    .container {
+      width: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .bg-wrapper-field {
+    padding-left: 0;
+
+    .thumbnail {
+      margin: 110px auto;
+
+      a {
+        img {
+          max-width: 11%;
+        }
+      }
+    }
+  }
+}

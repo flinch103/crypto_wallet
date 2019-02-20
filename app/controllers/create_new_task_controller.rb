@@ -1,0 +1,2 @@
+class CreateNewTaskController < ApplicationController
+end

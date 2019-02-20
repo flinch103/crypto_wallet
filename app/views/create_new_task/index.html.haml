@@ -1,0 +1,79 @@
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+
+.bg-wrapper-field.new-task
+  .container
+    .thumbnail
+      .create-new-task
+        %h2.text-center
+          Create New Microtask
+        %span
+          Enter Task Details
+
+      #exTab1.set-up-tabs.acc-tab-bg
+        %ul.nav.nav-tabs#myTabs
+          %li.active{:role => "presentation"}
+            %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"} TASK DETAIL
+          %li{:role => "presentation"}
+            %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#payvdx", :role => "tab"}  PAY VDX
+      .tab-content.clearfix
+        #task-detail.tab-pane.active
+          %form.form-horizontal.form-field-block
+            .col-md-12
+              .form-group
+                %input.form-control{:placeholder => "Task Title", :type => "text"}/
+            .col-md-4
+              .form-group
+                %input.form-control{:placeholder => "Cost", :type => "text"}/
+            .col-md-4
+              .form-group
+                %input.form-control{:placeholder => "Start Date", :type => "text"}/
+            .col-md-4
+              .form-group
+                %input.form-control{:placeholder => "End Date", :type => "text"}/
+            .col-md-12
+              .form-group
+                %input.form-control{:placeholder => "Add Description", :type => "text"}/
+        #payvdx.tab-pane.pay-vdx
+          %h4
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          .token-value-field.well
+            = image_tag("/assets/dashboard/vodix_balance.png")
+            %h3
+              100
+            %span
+              VDX
+          .encrypt-address
+            .form-group
+              %input.form-control{:placeholder => "1gdhjgfgdf6565dsdukgsduk", :type => "text"}/
+              %span
+                ENTER YOUR PRIVATE KEY
+
+    .task-btn-field
+      .next-btn-field
+        %span.btn.btn-default
+          Next
+      .pay-vdx-btns
+        .back-btn-field
+          %span.btn.btn-default.back-btn
+            Back
+          %span.btn.btn-default.stack-btns{"data-target" => "#create-field", "data-toggle" => "modal", :href => "#"}
+            stake Token and Create Task
+
+.flex-f
+  #create-field.modal.fade.create-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %h3
+            Sucessfully Created
+          %p
+            Lorem Ipsum is simply dummy text
+            %br
+            of the printing and typesetting industry.
+          .confirm-btn.modal-btn
+            %span.btn.btn-default.orange-btn{:href => 'javascript:void(0)'}
+              Okay
+
+
+
