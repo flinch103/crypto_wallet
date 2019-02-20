@@ -2,7 +2,7 @@
   .task-analytics-area.panel-body
     .analytics-box.col-md-2.col-sm-6.col-xs-12
       .task-value.d-inline-block
-        = current_user.assigned_tasks.progress.length
+        = current_user.disputed_tasks.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_icon.png" }/
       %h5 Tasks Assigned
