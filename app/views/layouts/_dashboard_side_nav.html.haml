@@ -11,6 +11,6 @@
           Tasks
       - unless current_user.arbiter?
         %li.sidebar-item
-          %a.sidebar-link{ :href => "/wallets" }
+          %a.sidebar-link{ :href => wallet_path(current_user.wallet) }
             %span.wallet
             Wallet

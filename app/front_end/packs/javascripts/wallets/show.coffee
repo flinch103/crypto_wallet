@@ -13,7 +13,7 @@ $(document).ready ->
   tokenBalance()
   $('.wallet-address-copy').click (event) ->
     tempInput = document.createElement('INPUT')
-    $('.copy-field').append tempInput
+    $('.my-wallet').append tempInput
     tempInput.setAttribute 'value', $('.wallet-address').text()
     tempInput.select()
     document.execCommand('copy')
@@ -24,7 +24,7 @@ ethBalance = ->
   walletAddress = $('.wallet-address').text().trim()
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   balance = web4.eth.getBalance(walletAddress);
-  $('.eth-balance').text(balance)
+  $('.eth-balance').text(balance / (10**18))
 
 tokenBalance = ->
   walletAddress = $('.wallet-address').text().trim()
@@ -36,6 +36,6 @@ tokenBalance = ->
   contractInstance.balanceOf walletAddress, (error, balance) ->
     contractInstance.decimals (error, decimals) ->
       balance = balance.div(10 ** decimals)
-      $('.vodix-balance').text(balance)
+      $('.vodix-balance').text(balance + ' VDX')
       return
     return

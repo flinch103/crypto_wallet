@@ -1,30 +1,69 @@
-.container
-  .thumbnail
-    %h2.heading-setup-block
-      My Vodix Wallet
-    %p.subheading-setup-block
-      Wallet balance
-    %p.subheading-setup-block
-      vodix balance
-      %span.vodix-balance
-        = @wallet.balance
-    %p.subheading-setup-block
-      ETHER
-      %span.eth-balance
-        = @wallet.balance
-    %p.wallet-address-qrcode
-    %p.subheading-setup-block.wallet-address
-      = @wallet.address
-    .qr-code-field
-      %canvas.display-center#canvas
-  .copy-field
-    %span.btn.btn-default.wallet-address-copy
-      = image_tag("/assets/copy.png")
-      Copy
-  .pagination-list
-    - @wallet.transactions.each do |tx|
-      .top-offers-b
-        = tx.tx_hex || '' 
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+.dash-content-wrapper.wallet-wrapper-block
+  .wallet-banner{ :style => "background-image:url('../assets/dashboard/color_bg.png');" }
+  .container
+    .my-wallet
+      .wallet-header
+        My Vodix Wallet
+      .wallet-body
+        .wal-title Wallet Balance
+        .walbal-bar
+          .col-md-4.col-sm-4.col-xs-6
+            .walbar-icon
+              %img{ :src => asset_path('dashboard/vodix_balance.png') }/
+            .walbal-value
+              %span Vodix Balance
+              %span.vodix-balance  
+                = '0 VDX'
+          .col-md-4.col-sm-4.col-xs-6
+            .walbar-icon
+              %img{ :src => asset_path("dashboard/ether.png") }/
+            .walbal-value
+              %span Ether
+              %span.eth-balance
+                = 0
+          .col-md-4.col-sm-4.col-xs-12
+        .wallet-qr-box
+          .qr-icon
+            %canvas.display-center#canvas
+          .qr-info
+            .info-item
+              %small Wallet Address
+              %strong.wallet-address
+                = @wallet.address
+      .wallet-footer.wallet-address-copy
+        %button.wal-action-btn
+          %i
+            %img{ :src => asset_path("dashboard/copy.png") }/
+          Copy
+    .history-section
+      .section-title Transaction History
+      .transaction-table
+        %table.table
+          %tbody
+            - @wallet.transactions.each do |tx|
+              %tr
+                %td
+                  %i
+                    %img{ :src => asset_path("dashboard/profile pic.jpg") }/
+                  = current_user.full_name || 'username'
+                %td 
+                  = tx.created_at.strftime("%d/%m/%Y %r")
+                %td
+                  = "#{tx.amount} VDX" 
+                %td
+                  - if tx.sent
+                    .red
+                      Sent
+                      %i
+                        %img{ :src => asset_path("dashboard/sent.png") }/
+                  - else
+                    .green
+                      received
+                      %i
+                        %img{ :src => asset_path("dashboard/received.png") }/
+
 - content_for :footer do
   = javascript_pack_tag 'javascripts/wallets/show'
 
