@@ -1,0 +1,87 @@
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        Task Details
+      %a.back-btn
+        = image_tag("/assets/left-arrow.png")
+        Back
+
+      .task-detail-block
+        %h4
+          Design a Shirt to Build the Wall
+      .status-ongoing.full-bg-field
+        .well
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              COST
+            %p
+              15 VDX
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              VODIANT
+            %p
+              Alex Martin
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              VODEER
+            %p
+              Mark Brown
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              START DATE
+            %p
+              12/15/2018
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              END DATE
+            %p
+              12/15/2018
+
+        .description-field.arbitary-dec-field
+          %span
+            DESCRIPTION
+          %p
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+      .vodiant-reason-f.border-0-field
+        %h4
+          VODIANT'S COMMENT (REASON TO REJECT)
+        %p
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+      .vodiant-reason-f.border-0-field
+        %h4
+          VODEER'S COMMENT (REASON TO DISPUTE)
+        %p
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+    .display-center.btn-field-arbitary
+      %span.btn.btn-default.orange-btn.btn-orange{"data-target" => "#favour-task", "data-toggle" => "modal", :href => "#"}
+        Accept the Dispute
+      %span.btn.btn-default.orange-btn.btn-orange
+        Reject the Dispute
+
+.flex-f
+  #favour-task.modal.fade.favour-task{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .successs-field-block.text-center
+            = image_tag("/assets/Success.png")
+            %h4
+              Are you Sure?
+            %p
+              You are taking decision in Vodiant favour
+              %br
+              for this task.
+            .pay-vdx-btns.poup-btn.accept-btn
+              .back-btn-field.display-center
+                %span.btn.btn-default.back-btn
+                  Cancel
+                %span.btn.btn-default.orange-btn
+                  OK
+
+

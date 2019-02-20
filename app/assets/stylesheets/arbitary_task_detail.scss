@@ -1,0 +1,67 @@
+// Place all the styles related to the arbitary_task_detail controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.arbitary-dec-field {
+  paddind: 13px 20px;
+
+}
+
+.full-bg-field {
+  .well {
+    display: inline-block;
+    width: 100%;
+
+    .col-md-2 {
+      width: 20%;
+    }
+  }
+}
+
+
+.border-0-field {
+   border: 0 !important;
+}
+
+.btn-field-arbitary {
+  margin: 0px auto 50px !important;
+  span {
+    margin-right: 15px;
+  }
+}
+
+.successs-field-block {
+  p {
+    font-size: 16px;
+  }
+}
+
+
+.favour-task {
+  .modal-dialog {
+    width: 360px;
+
+    .modal-body {
+      padding: 32px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .full-bg-field .well .col-md-2 {
+    width: 50%;
+
+  }
+
+  .arbitary-dec-field {
+    padding: 15px 7px !important;
+  }
+
+  .btn-field-arbitary {
+    span {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+}
