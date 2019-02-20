@@ -1,0 +1,76 @@
+// Place all the styles related to the vodeer_task_detail controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.accept-field {
+  text-align: center;
+
+  .token-value-field {
+    padding: 11px 14px 9px;
+  }
+
+  h4 {
+    font-size: 15px;
+    padding: 0 80px;
+    line-height: 22px;
+  }
+
+
+  img {
+    max-width: 24%;
+    padding-top: 3px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  span {
+    line-height: inherit;
+    font-size: 13px;
+    color: #1e1e1e;
+    font-weight: 400;
+  }
+
+  .encrypt-address {
+    width: 70%;
+  }
+
+  .modal-body {
+    padding-bottom: 26px;
+  }
+}
+
+
+.accept-btn {
+  .btn {
+    font-size: 15px;
+    padding: 8px 27px;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .accept-field {
+    h4 {
+      padding: 15px;
+    }
+
+    .encrypt-address {
+      width: 100%;
+    }
+  }
+
+  .bg-wrapper-field .thumbnail {
+    margin: 20px auto 40px;
+  }
+
+  .btn-orange {
+    margin: 30px auto;
+  }
+
+  .cancel-btn {
+    display: block;
+    margin-bottom: 15px;
+  }
+}

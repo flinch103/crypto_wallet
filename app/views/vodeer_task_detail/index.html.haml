@@ -1,0 +1,72 @@
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        Task Details
+      %a.back-btn
+        = image_tag("/assets/left-arrow.png")
+        Back
+
+      .task-detail-block
+        %h4
+          Design a Shirt to Build the Wall
+      .status-ongoing
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            STATUS
+          %p
+            Ongoing
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            COST
+          %p
+            15VDX
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            VODEER
+          %p
+            Alex Martin
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            END DATE
+          %p
+            12/15/2018
+
+      .description-field
+        %span
+          DESCRIPTION
+        %p
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+    %span.btn.btn-default.orange-btn.display-center.btn-orange{"data-target" => "#accept-field", "data-toggle" => "modal", :href => "#"}
+      Accept
+
+.flex-f
+  #accept-field.modal.fade.accept-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %h4
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          .token-value-field.well
+            = image_tag("/assets/dashboard/vodix_balance.png")
+            %h3
+              02
+              %span
+                VDX
+          .encrypt-address
+            .form-group
+              %input.form-control{:placeholder => "1gdhjgfgdf6565dsdukgsduk", :type => "text"}/
+              %span
+                ENTER YOUR PRIVATE KEY
+
+          .pay-vdx-btns.poup-btn.accept-btn
+            .back-btn-field.display-center
+              %span.btn.btn-default.back-btn.cancel-btn
+                Cancel
+              %span.btn.btn-default.stack-btns
+                Stake Token and Start
+
+

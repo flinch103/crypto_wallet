@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :create_new_task
   resources :completed_task
   resources :profile
+  resources :vodeer_task_detail
 
   # Health check Endpoints
   get '/_liveness', to: 'health_checks#health'
