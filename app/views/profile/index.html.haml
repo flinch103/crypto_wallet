@@ -1,0 +1,39 @@
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        My Profile
+      .profile-wrapper
+        .col-md-2.col-sm-3.col-xs-12
+          .avatar-upload
+            .avatar-edit
+              %input#imageUpload{:accept => ".png, .jpg, .jpeg", :type => "file"}/
+            .avatar-preview
+              #imagePreview
+                %label.camera-field{:for => "imageUpload"}
+                  = image_tag("/assets/camera.png")
+        .col-md-10.col-sm-9.col-xs-12.left-input-field
+          %form
+            .form-group
+              %label
+                FULL NAME
+              %input.form-control{:placeholder => "Please enter full name", :type => "text"}/
+            .form-group
+              %label
+                USERNAME
+              %input.form-control{:placeholder => "Please entre username", :type => "text"}/
+            .form-group
+              %label
+                EMAIL ADDRESS
+              %input.form-control{:placeholder => "Please enter email address", :type => "email"}/
+        .edit-field
+          %a{:href => ''}
+            = image_tag("/assets/edit.png")
+
+
+
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/profile'
