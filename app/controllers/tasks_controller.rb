@@ -26,7 +26,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = Task.find_by_id(params[:id])
+    redirect_to tasks_path unless @task
   end
 
   def update
