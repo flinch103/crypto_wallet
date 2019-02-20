@@ -1,28 +1,42 @@
-.setup-account
+
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+.bg-wrapper-field
   .container
     .thumbnail
-      %h2
-        Task Detail
-      .tabs-block-wrapper.acc-tab-bg
-      .tab-content.clearfix
-        #create.tab-pane.fade.in.active.create-field
-          %label.col-md-2.col-sm-2.col-xs-2
-            .table-responsive
-              %thead
-                %tr
-                  %th Title
-                  %th.text-center Status
-                  %th.text-center Cost
-                  %th.text-center Vodeer
-                  %th.text-center End Date
-                  %th Description
-                  %th
-              %tbody
-                %tr
-                  %td= @task.title
-                  %td= @task.status
-                  %td= @task.wage
-                  %td= @task.vodeer || '-'
-                  %td= @task.end_date
-                  %td= @task.description
+      %h2.text-center
+        Task Details
+      %a.back-btn{ href: root_path }
+        = image_tag("/assets/left-arrow.png")
+        Back
 
+      .task-detail-block
+        %h4
+          = @task.title || '-'
+      .status-ongoing
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            STATUS
+          %p
+            = @task.status
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            COST
+          %p
+            = "#{@task.wage} VDX"
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            VODEER
+          %p
+            = @task.vodeer || '-'
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            END DATE
+          %p
+            = @task.end_date.strftime("%d/%m/%Y")
+
+      .description-field
+        %span
+          DESCRIPTION
+        %p
+          = @task.description
