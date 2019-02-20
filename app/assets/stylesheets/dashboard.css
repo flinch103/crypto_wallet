@@ -161,7 +161,7 @@ background: #fff;
   background-repeat: no-repeat;
 }
 
-.sidebar-nav .sidebar-item .sidebar-link:hover .wallet,.sidebar-nav .sidebar-item .link-active.wallet {
+.sidebar-nav .sidebar-item .sidebar-link:hover .wallet,.sidebar-nav .sidebar-item .link-active .wallet {
   background: url("/assets/dashboard/wallet_selected.png");
   background-repeat: no-repeat;
 }

@@ -1,4 +1,3 @@
-
 = render 'layouts/dashboard_header'
 = render 'layouts/dashboard_side_nav'
 
@@ -8,6 +7,8 @@
   = render 'vodiant_completed_task'
 - elsif current_user.vodeer? && @task.rejected?
   = render 'vodeer_rejected_task_detail'
+- elsif current_user.vodeer? && (@task.open? || @task.progress?)
+  = render 'vodeer_task_detail'
 
 - content_for :footer do
   = javascript_pack_tag 'javascripts/tasks/show'

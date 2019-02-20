@@ -8,7 +8,7 @@
       %h5 Tasks Working
     .analytics-box.col-md-2.col-sm-6.col-xs-12
       .task-value.d-inline-block
-        = current_user.tasks.closed.length
+        = current_user.assigned_tasks.closed.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
       %h5 Tasks Accepted
@@ -54,8 +54,8 @@
                 %th.text-center Status
                 %th
             %tbody
-              - unless Task.open.empty?
-                - Task.open.each do |task|
+              - unless @recent_published_tasks.empty?
+                - @recent_published_tasks.each do |task|
                   %tr
                     %td= task.title
                     %td= task.description
@@ -67,7 +67,7 @@
                     %td.text-center= task.wage
                     %td.text-center= task.status
                     %td.detail-btn
-                      %span.btn.btn-default
+                      %a.pan-link{ :href => task_path(task) }
                         Detail
 
       .panel-footer
@@ -92,7 +92,7 @@
             %thead
               %tr
                 %th Task Name
-                %th Desctiption
+                %th Description
                 %th.text-center Vodiant
                 %th.text-center Start Date
                 %th.text-center End Date
@@ -100,8 +100,8 @@
                 %th.text-center Status
                 %th
             %tbody
-              - unless Task.progress.empty?
-                - Task.progress.each do |task|
+              - unless @recent_working_tasks.empty?
+                - @recent_working_tasks.each do |task|
                   %tr
                     %td= task.title
                     %td= task.description
@@ -113,7 +113,7 @@
                     %td.text-center= task.wage
                     %td.text-center= task.status
                     %td.detail-btn
-                      %span.btn.btn-default
+                      %a.pan-link{ :href => task_path(task) }
                         Detail
 
       .panel-footer

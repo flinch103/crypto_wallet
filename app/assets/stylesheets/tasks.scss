@@ -229,6 +229,9 @@ background: #fff;
     background-image: url(../assets/dashboard/btn-bg.png);
     background-repeat: no-repeat;
     background-position: center right;
+    a {
+      color: #fff;
+    }
 }
 .btn.btn-create i {
     margin-right: 5px;
@@ -724,7 +727,6 @@ button.wal-action-btn {
 
 }
 
-
 .date-block-field {
   width: 100%;
 
@@ -739,4 +741,10 @@ button.wal-action-btn {
     width: 100% !important;
 
   }
+}
+
+.task-field-wrapper {
+  display: inline-block;
+  width: 100%;
+  border-top: 1px #ddd solid;
 }

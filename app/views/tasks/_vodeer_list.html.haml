@@ -1,4 +1,4 @@
-.dash-container
+.dash-container.task-field-wrapper
   .panel
     .panel-header
       %h4.d-inline-block
@@ -34,5 +34,5 @@
                   = task.end_date&.strftime("%D")
                 %td.text-center= task.wage
                 %td.detail-btn
-                  %span.btn.btn-default
+                  %a.pan-link{ :href => task_path(task) }
                     Detail
