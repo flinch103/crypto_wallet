@@ -1,42 +1,11 @@
 
 = render 'layouts/dashboard_header'
 = render 'layouts/dashboard_side_nav'
-.bg-wrapper-field
-  .container
-    .thumbnail
-      %h2.text-center
-        Task Details
-      %a.back-btn{ href: root_path }
-        = image_tag("/assets/left-arrow.png")
-        Back
 
-      .task-detail-block
-        %h4
-          = @task.title || '-'
-      .status-ongoing
-        .col-md-3.col-sm-3.col-xs-6
-          %span
-            STATUS
-          %p
-            = @task.status
-        .col-md-3.col-sm-3.col-xs-6
-          %span
-            COST
-          %p
-            = "#{@task.wage} VDX"
-        .col-md-3.col-sm-3.col-xs-6
-          %span
-            VODEER
-          %p
-            = @task.vodeer || '-'
-        .col-md-3.col-sm-3.col-xs-6
-          %span
-            END DATE
-          %p
-            = @task.end_date.strftime("%d/%m/%Y")
+- if current_user.vodiant? && @task.open?
+  = render 'vodiant_open_task_detail'
+- elsif current_user.vodeer? && @task.rejected?
+  = render 'vodeer_rejected_task_detail'
 
-      .description-field
-        %span
-          DESCRIPTION
-        %p
-          = @task.description
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/tasks/show'

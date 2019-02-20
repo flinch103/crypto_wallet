@@ -31,14 +31,25 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    flash[:error] = @task.errors.full_messages.join(' ').to_s unless @task.update(task_params)
-    redirect_to tasks_path
+    respond_to do |format|
+      format.html do
+        flash[:error] = @task.errors.full_messages.join(' ').to_s unless @task.update(task_params)
+        redirect_to tasks_path
+      end
+      format.js do
+        @task.arbiter_id = User.random_arbiter
+        return render json: { response: { message: I18n.t('task.disputed') } } if @task.update(task_params)
+
+        render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
+
+      end
+    end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :end_date, :wage)
+    params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment)
   end
 
   def get_tasks

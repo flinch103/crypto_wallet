@@ -1,0 +1,69 @@
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        Task Details
+      %a.back-btn{ href: root_path }
+        = image_tag("/assets/left-arrow.png")
+        Back
+
+      .task-detail-block
+        %h4
+          = @task.title || '-'
+      .status-ongoing
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            STATUS
+          %p
+            = @task.status
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            COST
+          %p
+            = "#{@task.wage} VDX"
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            VODEER
+          %p
+            = @task.vodeer&.full_name || '-'
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            END DATE
+          %p
+            = @task.end_date.strftime("%d/%m/%Y")
+
+      .description-field
+        %span
+          DESCRIPTION
+        %p
+          = @task.description
+      .vodiant-reason-f
+        %h4
+          VODIANT'S COMMENT (REASON TO REJECT)
+        %p
+          = @task.rejection_comment || '- '
+
+    .pay-vdx-btns.poup-btn.accept-btn
+      .back-btn-field.display-center
+        %span.btn.btn-default.orange-btn{"data-target" => "#reject-task-field", "data-toggle" => "modal", :href => '#'}
+          Raise Dispute
+
+
+
+.flex-f
+  #reject-task-field.modal.fade.reject-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          = image_tag("/assets/reject_task.png")
+          %p
+            Please enter reason to raise dispute this task
+          .form-group
+            %textarea.form-control.dispute-comment{:placeholder => "Write your text..." , task_id: @task.id}
+
+          .pay-vdx-btns.poup-btn
+            .back-btn-field.display-center
+              %span.btn.btn-default.back-btn.cancel-dispute
+                Cancel
+              %span.btn.btn-default.stack-btns.raise-dispute
+                Raise
