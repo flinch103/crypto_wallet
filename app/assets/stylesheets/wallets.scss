@@ -1,3 +1,220 @@
 // Place all the styles related to the wallets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.wallet-banner {
+  height: 150px;
+  background: #d26d5b;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wallet-container {
+  width: 1030px;
+  margin: 0 auto;
+}
+
+.my-wallet {
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  margin-top: -107px;
+  position: relative;
+  box-shadow: 1px 2px 4px #ccc;
+  overflow: hidden;
+  &:after {
+    content: "";
+    width: 100%;
+    background: #f5f6f8;
+    height: 180px;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+  }
+}
+
+.wallet-header {
+  text-align: center;
+  font-size: 24px;
+  padding: 15px;
+  border-bottom: 1px solid #dadce0;
+}
+
+.wallet-body {
+  padding: 30px 50px;
+}
+
+.wal-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.walbal-bar {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  .col-md-4 {
+    padding: 0;
+  }
+}
+
+.walbal-inner {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.walbar-icon {
+  float: left;
+
+}
+
+.walbal-value {
+  float: left;
+  margin-left: 15px;
+}
+
+.walbal-value span {
+  display: block;
+  &:first-child {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #757575;
+  }
+  &:last-child {
+    font-weight: 600;
+    color: #1e1e1e;
+    font-size: 16px;
+  }
+}
+
+.wallet-qr-box {
+  display: flex;
+  display: -webkit-flex;
+  margin-top: 50px;
+  z-index: 2;
+  position: relative;
+}
+
+.qr-icon {
+  width: 160px;
+  height: 160px;
+  margin-right: 15px;
+  box-shadow: 0px 1px 6px #ccc;
+}
+
+.qr-info .info-item:first-child {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.info-item {
+  padding: 10px 0;
+  small {
+    display: block;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  strong {
+    color: #757575;
+  }
+}
+
+.wallet-footer {
+  position: relative;
+  z-index: 2;
+  padding: 15px 50px;
+}
+
+button.wal-action-btn {
+  background: #e8e9eb;
+  border: none;
+  padding: 8px 21px;
+  border-radius: 30px;
+  margin-right: 8px;
+}
+
+.history-section {
+  margin-top: 50px;
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 0;
+  }
+}
+
+.transaction-table {
+  background: #fff;
+  .table tr td {
+    vertical-align: middle;
+    &:first-child i img {
+      border-radius: 30px;
+      margin-right: 5px;
+    }
+    &:last-child {
+      text-align: right;
+      .red {
+        color: #ff3f38;
+      }
+      .green {
+        color: #00c75d;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .walbal-bar {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .wallet-body {
+    padding: 30px 20px;
+
+    .col-md-4 {
+      padding-bottom: 20px;
+    }
+  }
+
+  .wallet-qr-box {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+
+    .qr-icon {
+      display: table;
+      margin: 0 auto;
+    }
+  }
+
+  .walbal-value {
+    margin-left: 7px;
+  }
+
+  .wallet-wrapper-block {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .wallet-wrapper-block {
+    .container {
+      width: auto;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .wallet-wrapper-block {
+    .container {
+      width: auto;
+    }
+  }
+}
