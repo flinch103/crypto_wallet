@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :completed_task
   resources :profile
   resources :vodeer_task_detail
+  resources :rejected_task_detail
 
   # Health check Endpoints
   get '/_liveness', to: 'health_checks#health'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
-  
+
   resources :user_profiles do
     collection do
       post :update_avatar

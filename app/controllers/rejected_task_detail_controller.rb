@@ -1,0 +1,2 @@
+class RejectedTaskDetailController < ApplicationController
+end
