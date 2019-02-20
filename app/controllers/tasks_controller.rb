@@ -20,12 +20,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.vodiant_id = current_user.id
-    if @task.save
-      redirect_to tasks_path
-    else
-      flash[:error] = @task.errors.full_messages.join(' ').to_s
-      render 'new'
-    end
+    return render json: { response: { message: I18n.t('task.created') } } if @task.save
+
+    render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
   end
 
   def show
@@ -41,7 +38,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :start_date, :end_date, :wage, :status, :max_vodeer, :vodiant_id, :vodeer_id)
+    params.require(:task).permit(:title, :description, :end_date, :wage)
   end
 
   def get_tasks

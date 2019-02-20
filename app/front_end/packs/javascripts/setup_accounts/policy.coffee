@@ -67,7 +67,7 @@ $(document).ready ->
         ), 5000
         return
       error: (err) ->
-        toastr.error(err.message)
+        toastr.error(err.responseText.message)
     return
 
 

@@ -1,27 +1,78 @@
-= form_with scope: :task,  url: tasks_path, local: true do |form|
-  %p
-    = form.label :title
-    %br/
-    = form.text_field :title
-  %p
-    = form.label :description
-    %br/
-    = form.text_area :description
-  %p
-    = form.label :start_date
-    %br/
-    = form.text_field :start_date, as: :string, class: "datepicker"
-  %p
-    = form.label :end_date
-    %br/
-    = form.text_field :end_date, as: :string, class: "datepicker"
-  %p
-    = form.label :cost
-    %br/
-    = form.text_area :wage
-  %p
-    = form.label :max_no_of_vodeer
-    %br/
-    = form.text_area :max_vodeer
-  %p
-    = form.submit
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+
+.bg-wrapper-field.new-task
+  .container
+    .thumbnail
+      .create-new-task
+        %h2.text-center
+          Create New Microtask
+        %span
+          Enter Task Details
+
+      #exTab1.set-up-tabs.acc-tab-bg
+        %ul.nav.nav-tabs#myTabs
+          %li.active{:role => "presentation"}
+            %a#home-tab.task-form-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"} TASK DETAIL
+          %li{:role => "presentation"}
+            %a#home-tab.task-payment-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#payvdx", :role => "tab"}  PAY VDX
+      .tab-content.clearfix
+        #task-detail.tab-pane.active
+          = form_with scope: :task,  url: tasks_path, html: {id: 'task-form'}, local: true do |f|
+            .form-field-block
+              .col-md-12
+                .form-group
+                  = f.text_field :title, class: 'form-control', placeholder: "Task Title"
+              .col-md-6
+                .form-group
+                  = f.text_field :wage, class: 'form-control', placeholder: "Cost"
+              .col-md-6
+                .form-group
+                  #datepicker.input-group.date.date-block-field{"data-date-format" => "dd-mm-yyyy"}
+                    = f.text_field :end_date, class: 'form-control', readonly: "readonly"
+                    %span.input-group-addon
+              .col-md-12
+                .form-group
+                  = f.text_field :description, class: 'form-control', placeholder: "Add Description"
+        #payvdx.tab-pane.pay-vdx
+          %h4
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          .token-value-field.well
+            = image_tag("/assets/dashboard/vodix_balance.png")
+            %h3.payment-wage
+              -
+            %span
+              VDX
+          .encrypt-address
+            .form-group
+              %input.form-control{:placeholder => "1gdhjgfgdf6565dsdukgsduk", :type => "text"}/
+              %span
+                ENTER YOUR PRIVATE KEY
+
+    .task-btn-field
+      .next-btn-field.task-tab-next
+        %span.btn.btn-default.next-button{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#payvdx", :role => "tab"}
+          Next 
+      .pay-vdx-btns.task-payment-buttons
+        .back-btn-field
+          %span.btn.btn-default.back-btn.back-button{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"}
+            Back
+          %span.btn.btn-default.stack-btns.task-stack-button
+            stake Token and Create Task
+
+.flex-f
+  #create-field.modal.fade.create-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %h3
+            Sucessfully Created
+          %p
+            Lorem Ipsum is simply dummy text
+            %br
+            of the printing and typesetting industry.
+          .confirm-btn.modal-btn
+            %a.btn.btn-default.orange-btn{:href => root_path}
+              Okay
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/tasks/create'

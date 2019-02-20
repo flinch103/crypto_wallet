@@ -723,3 +723,20 @@ button.wal-action-btn {
 
 
 }
+
+
+.date-block-field {
+  width: 100%;
+
+  .input-group-addon {
+    visibility: hidden;
+    width: auto;
+    display: none;
+  }
+
+  input {
+    background: none !important;
+    width: 100% !important;
+
+  }
+}
