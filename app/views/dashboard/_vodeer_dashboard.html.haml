@@ -1,0 +1,123 @@
+.dash-content-wrapper
+  .task-analytics-area.panel-body
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block
+        = current_user.assigned_tasks.progress.length
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_icon.png" }/
+      %h5 Tasks Working
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block
+        = current_user.tasks.closed.length
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
+      %h5 Tasks Accepted
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block
+        = current_user.assigned_tasks.completed.length
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_ongoing_icon.png" }/
+      %h5 Tasks Completed
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block
+        = current_user.assigned_tasks.disputed.length
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/task_disputed_icon.png" }/
+      %h5 Tasks Disputed
+    .analytics-box.col-md-2.col-sm-6.col-xs-12
+      .task-value.d-inline-block 170
+      .metric-icon.d-inline-block.pull-right
+        %img{ :src => "/assets/dashboard/wallet.png" }/
+      %h5 Wallet Balance
+  .dash-container
+    .panel
+      .panel-header
+        %h4.d-inline-block
+          %b
+            Recent Published Microtasks
+        .pull-right.d-inline-block.filter-box
+          %span Filter by
+          %select
+            %option All
+            %option option
+      .panel-body.plr-0
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Task Name
+                %th Description
+                %th.text-center Vodiant
+                %th.text-center Start Date
+                %th.text-center End Date
+                %th.text-center Cost
+                %th.text-center Status
+                %th
+            %tbody
+              - unless Task.open.empty?
+                - Task.open.each do |task|
+                  %tr
+                    %td= task.title
+                    %td= task.description
+                    %td.text-center= task.vodiant.full_name
+                    %td.text-center
+                      = task.start_date
+                    %td.text-center
+                      = task.end_date
+                    %td.text-center= task.wage
+                    %td.text-center= task.status
+                    %td.detail-btn
+                      %span.btn.btn-default
+                        Detail
+
+      .panel-footer
+        .text-right
+          %a.pan-link{ :href => "/tasks" }
+            %b
+              View All Task
+
+    .panel
+      .panel-header
+        %h4.d-inline-block
+          %b
+            Recent Working Microtasks
+        .pull-right.d-inline-block.filter-box
+          %span Filter by
+          %select
+            %option All
+            %option option
+      .panel-body.plr-0
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Task Name
+                %th Desctiption
+                %th.text-center Vodiant
+                %th.text-center Start Date
+                %th.text-center End Date
+                %th.text-center Cost
+                %th.text-center Status
+                %th
+            %tbody
+              - unless Task.progress.empty?
+                - Task.progress.each do |task|
+                  %tr
+                    %td= task.title
+                    %td= task.description
+                    %td.text-center= task.vodiant.full_name
+                    %td.text-center
+                      = task.start_date
+                    %td.text-center
+                      = task.end_date
+                    %td.text-center= task.wage
+                    %td.text-center= task.status
+                    %td.detail-btn
+                      %span.btn.btn-default
+                        Detail
+
+      .panel-footer
+        .text-right
+          %a.pan-link{ :href => "/tasks" }
+            %b
+              View All Task

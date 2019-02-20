@@ -1,0 +1,27 @@
+= form_with scope: :task,  url: tasks_path, local: true do |form|
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title
+  %p
+    = form.label :description
+    %br/
+    = form.text_area :description
+  %p
+    = form.label :start_date
+    %br/
+    = form.text_field :start_date, as: :string, class: "datepicker"
+  %p
+    = form.label :end_date
+    %br/
+    = form.text_field :end_date, as: :string, class: "datepicker"
+  %p
+    = form.label :cost
+    %br/
+    = form.text_area :wage
+  %p
+    = form.label :max_no_of_vodeer
+    %br/
+    = form.text_area :max_vodeer
+  %p
+    = form.submit

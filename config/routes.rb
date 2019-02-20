@@ -20,4 +20,13 @@ Rails.application.routes.draw do
   scope 'setup_accounts' do
     get '/:page_name', to: 'setup_accounts#index', as: 'setup_accounts'
   end
+
+  resources :tasks
+  
+  resources :user_profiles do
+    collection do
+      post :update_avatar
+    end
+  end
+
 end
