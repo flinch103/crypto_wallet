@@ -12,21 +12,4 @@
     #task-open.tab-pane.active
       = render 'arbiter_list'
   
-:javascript
-  $(document).on('click', '.task_filters', function() {
-    filter_task_list(this)
-  })
-
-  function filter_task_list(ths){
-    $(".task_filters").removeClass('active')
-    $(ths).addClass('active')
-    let filter_type = $(ths).data('tab')
-    $.ajax({
-      url: '/tasks',
-      method: 'get',
-      data: {filter_type: filter_type},
-      success: function(data){
-        $("#task-open").html(data)
-      }
-    })
-  }
+= javascript_pack_tag 'javascripts/tasks/index'
