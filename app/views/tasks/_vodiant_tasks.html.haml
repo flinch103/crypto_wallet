@@ -1,0 +1,40 @@
+.task-wrapper
+  .fblock.top-tabs
+    %ul.nav.nav-tabs#myTabs
+      %li.active.task_filters{:role => "presentation", 'data-tab' => 'open', style: 'cursor: pointer'}
+        %a{"aria-controls" => "home", "aria-expanded" => "false"} TASKS OPEN
+      %li.task_filters{:role => "presentation", 'data-tab' => 'ongoing', style: 'cursor: pointer'}
+        %a{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS ONGOING
+      %li.task_filters{:role => "presentation", 'data-tab' => 'completed', style: 'cursor: pointer'}
+        %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS COMPLETED
+      %li.task_filters{:role => "presentation", 'data-tab' => 'disputed', style: 'cursor: pointer'}
+        %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS DISPUTED
+    .analytics-btn-box.pull-right.task-create
+      %button.btn.btn-create
+        %i
+          %img{ :src => "assets/dashboard/create_new_task.png" }/
+        = link_to 'Create New Task', :controller => :tasks, :action => :new
+
+
+  .tab-content.clearfix.fblock
+    #task-open.tab-pane.active
+      = render 'vodiant_list'
+  
+:javascript
+  $(document).on('click', '.task_filters', function() {
+    filter_task_list(this)
+  })
+
+  function filter_task_list(ths){
+    $(".task_filters").removeClass('active')
+    $(ths).addClass('active')
+    let filter_type = $(ths).data('tab')
+    $.ajax({
+      url: '/tasks',
+      method: 'get',
+      data: {filter_type: filter_type},
+      success: function(data){
+        $("#task-open").html(data)
+      }
+    })
+  }

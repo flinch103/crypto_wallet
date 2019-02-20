@@ -5,12 +5,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, authentication_keys: [:username]
 
-  enum role: { vodiant: 0, vodeer: 1, arbiter: 2 }
+  enum role: [:vodiant, :vodeer, :arbiter]
 
   validates :username, uniqueness: true, presence: true
   validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   validate :validate_username
   has_one :wallet, dependent: :destroy
+
+  has_many :tasks, class_name: 'Task', foreign_key: 'vodiant_id'
+  has_many :assigned_tasks, class_name: 'Task', foreign_key: 'vodeer_id'
+  has_many :disputed_tasks, class_name: 'Task', foreign_key: 'arbiter_id'
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def validate_username
     errors.add(:username, :invalid) if User.where(email: username).exists?

@@ -1,2 +1,8 @@
-%h1 Tasks#index
-%p Find me in app/views/tasks/index.html.haml
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+- if current_user.vodiant?
+  = render 'vodiant_tasks'
+- if current_user.vodeer?
+  = render 'vodeer_tasks'
+- if current_user.arbiter?
+  = render 'arbiter_tasks'

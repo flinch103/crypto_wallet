@@ -2,14 +2,15 @@
   .sidebar-nav
     %ul.list-unstyled
       %li.sidebar-item
-        %a.sidebar-link.link-active{ :href => "/dashboard" }
+        %a.sidebar-link.link-active{ :href => root_path }
           %span.dashboard
           Dashboard
       %li.sidebar-item
         %a.sidebar-link{ :href => "/tasks" }
           %span.task
           Tasks
-      %li.sidebar-item
-        %a.sidebar-link{ :href => "/wallets" }
-          %span.wallet
-          Wallet
+      - unless current_user.arbiter?
+        %li.sidebar-item
+          %a.sidebar-link{ :href => "/wallets" }
+            %span.wallet
+            Wallet
