@@ -12,10 +12,10 @@
 
       #exTab1.set-up-tabs.acc-tab-bg
         %ul.nav.nav-tabs#myTabs
-          %li.active{:role => "presentation"}
+          %li.active#task-tab{:role => "presentation"}
             %a#home-tab.task-form-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"} TASK DETAIL
-          %li{:role => "presentation"}
-            %a#home-tab.task-payment-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#payvdx", :role => "tab"}  PAY VDX
+          %li#payment-tab{:role => "presentation"}
+            %a#home-tab.task-payment-tab  PAY VDX
       .tab-content.clearfix
         #task-detail.tab-pane.active
           = form_with scope: :task,  url: tasks_path, html: {id: 'task-form'}, local: true do |f|
@@ -51,7 +51,7 @@
 
     .task-btn-field
       .next-btn-field.task-tab-next
-        %span.btn.btn-default.next-button{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#payvdx", :role => "tab"}
+        %span.btn.btn-default.next-button{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :role => "tab"}
           Next 
       .pay-vdx-btns.task-payment-buttons
         .back-btn-field
@@ -66,9 +66,11 @@
       .modal-content
         .modal-body
           %h3
-            Sucessfully Created
+            Transaction Sucessfully Created
+          %p
+            Status will update accordingly
           .confirm-btn.modal-btn
-            %a.btn.btn-default.orange-btn{:href => root_path}
+            %a.btn.btn-default.orange-btn{:href => new_task_path }
               Okay
 - content_for :footer do
   = javascript_pack_tag 'javascripts/tasks/create'

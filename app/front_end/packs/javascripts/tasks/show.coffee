@@ -32,8 +32,9 @@ $(document).ready ->
         xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
         return
       success: (result) ->
-        $('#reject-field').modal('hide');
         toastr.info(result.response.message)
+        $('.complete-buttons').hide()
+        $('.status-p').text('Approved')
         return
       error: (err) ->
         toastr.error(err.responseText.message)

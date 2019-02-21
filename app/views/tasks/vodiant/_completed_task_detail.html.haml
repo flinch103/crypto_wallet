@@ -3,7 +3,7 @@
     .thumbnail
       %h2.text-center
         Completed Task Details
-      %a.back-btn{ href: "/tasks" }
+      %a.back-btn#completed-back{ href: "/tasks" }
         = image_tag("/assets/left-arrow.png")
         Back
 
@@ -11,6 +11,11 @@
         %h4
           = @task.title || '-'
       .status-ongoing
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            STATUS
+          %p.status-p
+            = @task.status.humanize
         .col-md-3.col-sm-3.col-xs-6
           %span
             COST
@@ -33,7 +38,7 @@
         %p
           = @task.description
 
-    .pay-vdx-btns
+    .pay-vdx-btns.complete-buttons
       .back-btn-field.display-center
         %span.btn.btn-default.back-btn{"data-target" => "#reject-field", "data-toggle" => "modal", :href => "#"}
           Reject
