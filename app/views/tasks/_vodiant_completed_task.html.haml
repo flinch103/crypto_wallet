@@ -3,13 +3,13 @@
     .thumbnail
       %h2.text-center
         Completed Task Details
-      %a.back-btn
+      %a.back-btn{ href: "/tasks" }
         = image_tag("/assets/left-arrow.png")
         Back
 
       .task-detail-block
         %h4
-          Design a Shirt to Build the Wall
+          = @task.title || '-'
       .status-ongoing
         .col-md-3.col-sm-3.col-xs-6
           %span

@@ -3,6 +3,8 @@
 
 - if current_user.vodiant? && @task.open?
   = render 'vodiant_open_task_detail'
+- elsif current_user.vodiant? && @task.progress?
+  = render 'vodiant_task_detail'
 - elsif current_user.vodiant? && @task.completed?
   = render 'vodiant_completed_task'
 - elsif current_user.vodeer? && @task.rejected?

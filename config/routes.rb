@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
   resources :wallets, only: %i[create show update] do
     resources :transactions, only: %i[create]
-  end'
+  end
 
   scope 'setup_accounts' do
-    get '/:page_name', to: 'setup_accounts#index', as: 'setup_accounts'
+    get '/:page_name', to: 'setup_accounts#index'
   end
 
   resources :tasks
