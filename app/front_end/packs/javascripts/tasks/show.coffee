@@ -59,7 +59,10 @@ $(document).ready ->
     task_id = $(this).data('id')
     user_id = $(this).data('user')
     status = $(this).data('status')
-    data_hash = {task:{vodeer_id: user_id, status: status}}
+    if status == "progress"
+      data_hash = {task:{vodeer_id: user_id, status: status}}
+    else
+      data_hash = {task:{status: status}}
     $.ajax
       url: '/tasks/'+ task_id,
       method: 'put',
