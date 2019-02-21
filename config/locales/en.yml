@@ -44,3 +44,6 @@ en:
   task:
     created: 'Task successfully created'
     disputed: 'Successfully raised dispute'
+    approved: 'Task approved'
+    rejected: 'Task rejected'
+    progress: 'Task marked in progress'

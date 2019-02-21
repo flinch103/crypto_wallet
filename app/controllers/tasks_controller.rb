@@ -40,7 +40,7 @@ class TasksController < ApplicationController
       format.js do
         @task.arbiter_id = User.random_arbiter if params[:task][:status].eql?('disputed')
         if @task.update(task_params)
-          return render json: { response: { message: I18n.t('task.disputed') } }
+          return render json: { response: { message: response_message } }
         end
         render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
 
@@ -52,5 +52,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment, :rejection_comment, :vodeer_id)
+  end
+
+  def response_message
+    I18n.t("task.#{params[:task][:status]}")
   end
 end

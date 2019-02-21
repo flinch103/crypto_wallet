@@ -2,11 +2,17 @@
 = render 'layouts/dashboard_side_nav'
 
 - if current_user.vodiant? && @task.open?
-  = render 'vodiant_open_task_detail'
+  = render 'tasks/vodiant/open_task_detail'
 - elsif current_user.vodiant? && @task.progress?
-  = render 'vodiant_task_detail'
+  = render 'tasks/vodiant/progress_task_detail'
 - elsif current_user.vodiant? && @task.completed?
-  = render 'vodiant_completed_task'
+  = render 'tasks/vodiant/completed_task_detail'
+- elsif current_user.vodiant? && @task.approved?
+  = render 'tasks/vodiant/approved_task_detail'
+- elsif current_user.vodiant? && @task.disputed?
+  = render 'tasks/vodiant/disputed_task_detail'
+- elsif current_user.vodiant? && @task.rejected?
+  = render 'tasks/vodiant/rejected_task_detail'
 - elsif current_user.vodeer? && @task.rejected?
   = render 'vodeer_rejected_task_detail'
 - elsif current_user.vodeer? && (@task.open? || @task.progress?)
