@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  enum status: [:open, :progress, :completed, :rejected, :disputed, :closed]
+  enum status: [:open, :progress, :completed, :rejected, :disputed, :approved]
 
   belongs_to :vodiant, class_name: 'User', foreign_key: 'vodiant_id'
   belongs_to :vodeer, class_name: 'User', foreign_key: 'vodeer_id', optional: true

@@ -37,9 +37,10 @@ class TasksController < ApplicationController
         redirect_to tasks_path
       end
       format.js do
-        @task.arbiter_id = User.random_arbiter
-        return render json: { response: { message: I18n.t('task.disputed') } } if @task.update(task_params)
-
+        @task.arbiter_id = User.random_arbiter if params[:task][:status].eql?('disputed')
+        if @task.update(task_params)
+          return render json: { response: { message: I18n.t('task.disputed') } }
+        end
         render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
 
       end
@@ -49,7 +50,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment)
+    params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment, :rejection_comment)
   end
 
   def get_tasks
