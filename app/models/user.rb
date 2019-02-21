@@ -19,6 +19,10 @@ class User < ApplicationRecord
   # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+  def validate_username
+    errors.add(:username, :invalid) if User.where(email: username).exists?
+  end
+  
   def self.random_arbiter
     User.where(role: 'vodiant').pluck(:id).sample
   end
