@@ -20,12 +20,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.vodiant_id = current_user.id
-    if @task.save
-      redirect_to tasks_path
-    else
-      flash[:error] = @task.errors.full_messages.join(' ').to_s
-      render 'new'
-    end
+    return render json: { response: { message: I18n.t('task.created') } } if @task.save
+
+    render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
   end
 
   def show
@@ -34,14 +31,26 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    flash[:error] = @task.errors.full_messages.join(' ').to_s unless @task.update(task_params)
-    redirect_to tasks_path
+    respond_to do |format|
+      format.html do
+        flash[:error] = @task.errors.full_messages.join(' ').to_s unless @task.update(task_params)
+        redirect_to tasks_path
+      end
+      format.js do
+        @task.arbiter_id = User.random_arbiter if params[:task][:status].eql?('disputed')
+        if @task.update(task_params)
+          return render json: { response: { message: I18n.t('task.disputed') } }
+        end
+        render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
+
+      end
+    end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :start_date, :end_date, :wage, :status, :max_vodeer, :vodiant_id, :vodeer_id)
+    params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment, :rejection_comment)
   end
 
   def get_tasks

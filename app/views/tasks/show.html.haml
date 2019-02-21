@@ -1,28 +1,13 @@
-.setup-account
-  .container
-    .thumbnail
-      %h2
-        Task Detail
-      .tabs-block-wrapper.acc-tab-bg
-      .tab-content.clearfix
-        #create.tab-pane.fade.in.active.create-field
-          %label.col-md-2.col-sm-2.col-xs-2
-            .table-responsive
-              %thead
-                %tr
-                  %th Title
-                  %th.text-center Status
-                  %th.text-center Cost
-                  %th.text-center Vodeer
-                  %th.text-center End Date
-                  %th Description
-                  %th
-              %tbody
-                %tr
-                  %td= @task.title
-                  %td= @task.status
-                  %td= @task.wage
-                  %td= @task.vodeer || '-'
-                  %td= @task.end_date
-                  %td= @task.description
 
+= render 'layouts/dashboard_header'
+= render 'layouts/dashboard_side_nav'
+
+- if current_user.vodiant? && @task.open?
+  = render 'vodiant_open_task_detail'
+- elsif current_user.vodiant? && @task.completed?
+  = render 'vodiant_completed_task'
+- elsif current_user.vodeer? && @task.rejected?
+  = render 'vodeer_rejected_task_detail'
+
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/tasks/show'

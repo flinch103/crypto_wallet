@@ -40,3 +40,6 @@ en:
   onboarding:
     sessions:
       try_later: Please try again later
+  task:
+    created: 'Task successfully created'
+    disputed: 'Successfully raised dispute'
