@@ -50,7 +50,7 @@
           %table.table
             %thead
               %tr
-                %th Task Name
+                %th Job Name
                 %th Description
                 %th.text-center Max No. of Vodeer
                 %th.text-center Start Date
@@ -66,8 +66,8 @@
               - unless @tasks.empty?
                 - @tasks.each do |task|
                   %tr
-                    %td= task.title
-                    %td= task.description
+                    %td= task.title.truncate(10)
+                    %td= task.description.truncate(30)
                     %td.text-center= task.max_vodeer
                     %td.text-center
                       = task.start_date&.strftime("%d/%m/%Y")
@@ -80,7 +80,7 @@
                     %td.text-center 1
                     %td.text-center 1
                     %td.detail-btn
-                      %a.pan-link{ :href => task_path(task) }
+                      %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
                     
       .panel-footer
