@@ -61,9 +61,9 @@
                     %td= task.description
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.start_date
+                      = task.start_date&.strftime("%d/%m/%Y")
                     %td.text-center
-                      = task.end_date
+                      = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.wage
                     %td.text-center= task.status.humanize
                     %td.detail-btn
@@ -107,9 +107,9 @@
                     %td= task.description
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.start_date
+                      = task.start_date&.strftime("%d/%m/%Y")
                     %td.text-center
-                      = task.end_date
+                      = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.wage
                     %td.text-center= task.status.humanize
                     %td.detail-btn

@@ -91,6 +91,9 @@ border-bottom: 1px solid #dcdcdc;
 background: #fff;
 }
 
+.dashboard-create-task {
+  line-height: 70px;
+}
 /*====================Left Sidebar===========================*/
 
 .left-sidebar {

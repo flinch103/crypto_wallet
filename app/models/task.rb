@@ -21,7 +21,7 @@ class Task < ApplicationRecord
       return user.assigned_tasks.completed if filter == 'completed'
       return user.assigned_tasks.progress if filter == 'ongoing'
       return user.assigned_tasks.disputed if filter == 'disputed'
-      return user.assigned_tasks.closed if filter == 'approved'
+      return user.assigned_tasks.approved if filter == 'approved'
       return user.assigned_tasks.rejected if filter == 'rejected'
       Task.open
     else
