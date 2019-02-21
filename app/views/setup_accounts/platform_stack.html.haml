@@ -1,0 +1,8 @@
+.container
+  .thumbnail
+    %input.form-control.private-key{:placeholder => "rest", :type => "text"}/
+    %input.form-control.wallet-address{:placeholder => "rest", :type => "hidden", value: current_user.wallet.address, wallet_id: current_user.wallet.id}/
+    %a.btn.btn-default.grey-field.platform-stack{ rel: 'policy', tab: '', href: 'javascript:void(0)' }
+      Platform Stack
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/setup_accounts/platform_stack'

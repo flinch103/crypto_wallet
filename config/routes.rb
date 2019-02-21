@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   root to: 'dashboard#index'
+
   resources :restore_wallets
   resources :task_details
   resources :create_new_task
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
   get '/_health', to: 'health_checks#health'
   get '/_healthz', to: 'health_checks#health'
 
-  resources :wallets, only: %i[create update index]
+  resources :wallets, only: %i[create show update] do
+    resources :transactions, only: %i[create]
+  end'
 
   scope 'setup_accounts' do
     get '/:page_name', to: 'setup_accounts#index', as: 'setup_accounts'

@@ -37,9 +37,9 @@ en:
     invalid: 'Invalid user'
   wallets:
     created: 'Wallet successfully created'
+    platform: 'Successfully stacked'
   onboarding:
     sessions:
-      try_later: Please try again later
-  task:
+      try_later: Please try again later  task:
     created: 'Task successfully created'
     disputed: 'Successfully raised dispute'
