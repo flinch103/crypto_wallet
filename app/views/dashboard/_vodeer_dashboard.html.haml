@@ -57,17 +57,17 @@
               - unless @recent_published_tasks.empty?
                 - @recent_published_tasks.each do |task|
                   %tr
-                    %td= task.title
-                    %td= task.description
+                    %td= task.title.truncate(10)
+                    %td= task.description.truncate(30)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.start_date
+                      = task.start_date&.strftime("%d/%m/%Y")
                     %td.text-center
-                      = task.end_date
+                      = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.wage
                     %td.text-center= task.status.humanize
                     %td.detail-btn
-                      %a.pan-link{ :href => task_path(task) }
+                      %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
 
       .panel-footer
@@ -103,17 +103,17 @@
               - unless @recent_working_tasks.empty?
                 - @recent_working_tasks.each do |task|
                   %tr
-                    %td= task.title
-                    %td= task.description
+                    %td= task.title.truncate(10)
+                    %td= task.description.truncate(30)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.start_date
+                      = task.start_date&.strftime("%d/%m/%Y")
                     %td.text-center
-                      = task.end_date
+                      = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.wage
                     %td.text-center= task.status.humanize
                     %td.detail-btn
-                      %a.pan-link{ :href => task_path(task) }
+                      %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
 
       .panel-footer

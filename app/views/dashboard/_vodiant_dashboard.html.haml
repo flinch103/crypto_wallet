@@ -30,10 +30,10 @@
         %img{ :src => "/assets/dashboard/wallet.png" }/
       %h5 Wallet Balance
     .analytics-btn-box.col-md-2.col-sm-6.col-xs-12
-      %button.btn.btn-create
+      %a.btn.btn-create.dashboard-create-task{:href=>"/tasks/new"}
         %i
           %img{ :src => "assets/dashboard/create_new_task.png" }/
-        %a.sidebar-link{ :href => "/tasks/new" } Create new task
+        Create New Task
   .dash-container
     .panel
       .panel-header
@@ -50,7 +50,7 @@
           %table.table
             %thead
               %tr
-                %th Task Name
+                %th Job Name
                 %th Description
                 %th.text-center Max No. of Vodeer
                 %th.text-center Start Date
@@ -66,13 +66,13 @@
               - unless @tasks.empty?
                 - @tasks.each do |task|
                   %tr
-                    %td= task.title
-                    %td= task.description
+                    %td= task.title.truncate(10)
+                    %td= task.description.truncate(30)
                     %td.text-center= task.max_vodeer
                     %td.text-center
-                      = task.start_date
+                      = task.start_date&.strftime("%d/%m/%Y")
                     %td.text-center
-                      = task.end_date
+                      = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.status.humanize
                     %td.text-center 20
                     %td.text-center 6
@@ -80,7 +80,7 @@
                     %td.text-center 1
                     %td.text-center 1
                     %td.detail-btn
-                      %a.pan-link{ :href => task_path(task) }
+                      %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
                     
       .panel-footer

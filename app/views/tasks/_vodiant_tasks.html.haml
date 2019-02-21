@@ -10,10 +10,10 @@
       %li.task_filters{:role => "presentation", 'data-tab' => 'disputed', style: 'cursor: pointer'}
         %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS DISPUTED
     .analytics-btn-box.pull-right.task-create
-      %button.btn.btn-create
+      %a.btn.btn-create{:href=>"/tasks/new"}
         %i
           %img{ :src => "assets/dashboard/create_new_task.png" }/
-        = link_to 'Create New Task', :controller => :tasks, :action => :new
+        Create New Task
 
 
   .tab-content.clearfix.fblock
