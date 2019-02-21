@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   scope 'setup_accounts' do
-    get '/:page_name', to: 'setup_accounts#index'
+    get '/:page_name', to: 'setup_accounts#index', as: :setup_accounts
   end
 
   resources :tasks
