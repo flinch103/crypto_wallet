@@ -65,7 +65,7 @@
                     %td.text-center
                       = task.end_date
                     %td.text-center= task.wage
-                    %td.text-center= task.status
+                    %td.text-center= task.status.humanize
                     %td.detail-btn
                       %a.pan-link{ :href => task_path(task) }
                         Detail
@@ -111,7 +111,7 @@
                     %td.text-center
                       = task.end_date
                     %td.text-center= task.wage
-                    %td.text-center= task.status
+                    %td.text-center= task.status.humanize
                     %td.detail-btn
                       %a.pan-link{ :href => task_path(task) }
                         Detail
