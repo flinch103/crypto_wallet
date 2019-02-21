@@ -1,0 +1,2 @@
+class VodeerTaskSubmissionController < ApplicationController
+end

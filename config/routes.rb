@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :vodeer_task_detail
   resources :rejected_task_detail
   resources :arbitary_task_detail
+  resources :vodeer_task_submission
 
   # Health check Endpoints
   get '/_liveness', to: 'health_checks#health'

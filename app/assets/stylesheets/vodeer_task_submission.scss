@@ -1,0 +1,27 @@
+// Place all the styles related to the vodeer_task_submission controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment-field {
+  padding: 15px 0;
+  textarea {
+    resize: none;
+    height: 150px;
+  }
+
+  span {
+    color: #fff;
+  }
+}
+
+
+.btn-section-submit {
+  margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 767px) {
+  .submit-desc {
+    padding: 15px;
+  }
+}
