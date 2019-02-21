@@ -26,8 +26,8 @@
             - unless @tasks.empty?
               - @tasks.each do |task|
                 %tr
-                %td= task.title
-                %td= task.description
+                %td= task.title.truncate(10)
+                %td= task.description.truncate(10)
                 %td.text-center= task.vodiant&.full_name
                 %td.text-center= task.vodeer&.full_name
                 %td.text-center
@@ -36,5 +36,5 @@
                   = task.end_date&.strftime("%D")
                 %td.text-center= task.wage
                 %td.detail-btn
-                  %a.pan-link{ :href => task_path(task) }
+                  %a.pan-link.btn.btn-default{ :href => task_path(task) }
                     Detail

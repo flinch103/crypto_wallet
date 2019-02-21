@@ -295,17 +295,18 @@ a.pan-link {
     color: #f37226;
     font-size: 16px;
     display: inline-block;
-    padding-top: 15px;
+    padding: 3px 15px;
+    vertical-align: top;
     text-decoration: none;
 }
 
-.detail-btn span {
+.detail-btn a {
   border-radius: 25px;
   border-width: 2px;
   color: #8c8c8c;
 }
 
-.detail-btn span:hover {
+.detail-btn a:hover {
   background: #f37226;
   border-color: #f37226;
   color: #fff;
@@ -668,6 +669,7 @@ button.wal-action-btn {
 .task-create {
   padding: 13px 0;
 }
+
 
 
 @media screen and (max-width: 767px) {
