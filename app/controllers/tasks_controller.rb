@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = get_tasks
+    @tasks = Task.get_tasks(params[:filter_type], current_user)
     @task_type = "Open Microtasks" unless current_user.arbiter?
     @task_type = "Assigned Microtasks" if current_user.arbiter?
     if params[:filter_type].present?
@@ -26,7 +26,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = Task.find_by_id(params[:id])
+    redirect_to tasks_path unless @task
   end
 
   def update
@@ -51,26 +52,5 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment, :rejection_comment)
-  end
-
-  def get_tasks
-    filter  = params[:filter_type]
-    if current_user.vodiant?
-      return current_user.tasks.completed if filter == 'completed'
-      return current_user.tasks.progress if filter == 'ongoing'
-      return current_user.tasks.disputed if filter == 'disputed'
-      current_user.tasks.open
-    elsif current_user.vodeer?
-      return current_user.assigned_tasks.completed if filter == 'completed'
-      return current_user.assigned_tasks.progress if filter == 'ongoing'
-      return current_user.assigned_tasks.disputed if filter == 'disputed'
-      return current_user.assigned_tasks.closed if filter == 'approved'
-      return current_user.assigned_tasks.rejected if filter == 'rejected'
-      Task.open
-    else
-      return current_user.tasks.completed if filter == 'completed'
-      return current_user.tasks.progress if filter == 'ongoing'
-      current_user.disputed_tasks
-    end
   end
 end

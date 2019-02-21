@@ -1,0 +1,47 @@
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        Task Details
+      %a.back-btn{ href: "/tasks" }
+        = image_tag("/assets/left-arrow.png")
+        Back
+
+      .task-detail-block
+        %h4
+          = @task.title || '-'
+      .status-ongoing
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            STATUS
+          %p
+            = @task.status.humanize
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            COST
+          %p
+            = "#{@task.wage} VDX"
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            VODEER
+          %p
+            = @task.vodeer&.full_name || '-'
+        .col-md-3.col-sm-3.col-xs-6
+          %span
+            END DATE
+          %p
+            = @task.end_date.strftime("%d/%m/%Y")
+
+      .description-field
+        %span
+          DESCRIPTION
+        %p
+          = @task.description
+    - if @task.status == "open"
+      %span.btn.btn-default.orange-btn.display-center.btn-orange.vodeer-task-accept{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-status"=> "progress", "data-toggle" => "modal"}
+        Accept
+    - if @task.status == "progress"
+      %span.btn.btn-default.orange-btn.display-center.btn-orange.vodeer-task-submit{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-status"=> "completed", "data-toggle" => "modal"}
+        Submit
+
+= javascript_pack_tag 'javascripts/tasks/show'

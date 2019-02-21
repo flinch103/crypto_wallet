@@ -2,15 +2,13 @@
   .sidebar-nav
     %ul.list-unstyled
       %li.sidebar-item
-        %a.sidebar-link.link-active{ :href => root_path }
+        %a.sidebar-link{ :href => root_path, class: "#{params[:controller] == 'dashboard' ? 'link-active' : ''}" }
           %span.dashboard
           Dashboard
       %li.sidebar-item
-        %a.sidebar-link{ :href => "/tasks" }
+        %a.sidebar-link{ :href => "/tasks", class: "#{params[:controller] == 'tasks' ? 'link-active' : ''}"  }
           %span.task
           Tasks
       - unless current_user.arbiter?
         %li.sidebar-item
-          %a.sidebar-link{ :href => wallet_path(current_user.wallet) }
-            %span.wallet
-            Wallet
+          %a.sidebar-link{ :href => wallet_path(current_user.wallet), class: "#{params[:controller] == 'wallets' ? 'link-active' : ''}" }
