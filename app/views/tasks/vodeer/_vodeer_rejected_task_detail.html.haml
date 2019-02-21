@@ -14,7 +14,7 @@
         .col-md-3.col-sm-3.col-xs-6
           %span
             STATUS
-          %p
+          %p.vodeer-dispute-status
             = @task.status.humanize
         .col-md-3.col-sm-3.col-xs-6
           %span
@@ -43,7 +43,7 @@
         %p
           = @task.rejection_comment || '- '
 
-    .pay-vdx-btns.poup-btn.accept-btn
+    .pay-vdx-btns.poup-btn.accept-btn.raise-dispute-button
       .back-btn-field.display-center
         %span.btn.btn-default.orange-btn{"data-target" => "#reject-task-field", "data-toggle" => "modal", :href => '#'}
           Raise Dispute

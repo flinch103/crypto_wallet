@@ -13,6 +13,8 @@ $(document).ready ->
         return
       success: (result) ->
         $('#reject-task-field').modal('hide');
+        $('.raise-dispute-button').hide()
+        $('.vodeer-dispute-status').text('Disputed')
         toastr.info(result.response.message)
         return
       error: (err) ->
@@ -50,6 +52,8 @@ $(document).ready ->
         return
       success: (result) ->
         $('#reject-field').modal('hide');
+        $('.complete-buttons').hide()
+        $('.status-p').text('Rejected')
         toastr.info(result.response.message)
         return
       error: (err) ->

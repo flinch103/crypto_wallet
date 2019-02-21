@@ -24,6 +24,6 @@ class User < ApplicationRecord
   end
   
   def self.random_arbiter
-    User.where(role: 'vodiant').pluck(:id).sample
+    User.where(role: 'arbiter').pluck(:id).sample
   end
 end
