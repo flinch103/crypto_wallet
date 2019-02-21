@@ -14,9 +14,11 @@
 - elsif current_user.vodiant? && @task.rejected?
   = render 'tasks/vodiant/rejected_task_detail'
 - elsif current_user.vodeer? && @task.rejected?
-  = render 'vodeer_rejected_task_detail'
-- elsif current_user.vodeer? && (@task.open? || @task.progress?)
-  = render 'vodeer_task_detail'
+  = render 'tasks/vodeer/vodeer_rejected_task_detail'
+- elsif current_user.vodeer? && @task.disputed?
+  = render 'tasks/vodeer/vodeer_disputed_task_detail'
+- elsif current_user.vodeer? && (@task.open? || @task.progress? || @task.completed? || @task.approved?)
+  = render 'tasks/vodeer/vodeer_task_detail'
 
 - content_for :footer do
   = javascript_pack_tag 'javascripts/tasks/show'
