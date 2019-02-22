@@ -103,6 +103,7 @@ $(document).ready ->
       url: '/wallets'
       method: 'POST'
       data: address: $('#wallet-address').val()
+      dataType: 'json'
       beforeSend: (xhr) ->
         xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
         return

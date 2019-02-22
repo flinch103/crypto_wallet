@@ -61,5 +61,5 @@ transfer = (privateKey, from, walletId) ->
         error: (err) ->
           toastr.error(err.message)
     else
-      console.log err
+      toastr.error('Something went wrong!')
     return
