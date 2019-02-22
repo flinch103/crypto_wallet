@@ -14,7 +14,7 @@
         .col-md-3.col-sm-3.col-xs-6
           %span
             STATUS
-          %p
+          %p.status-v
             = @task.status.humanize
         .col-md-3.col-sm-3.col-xs-6
           %span
@@ -24,7 +24,7 @@
         .col-md-3.col-sm-3.col-xs-6
           %span
             VODEER
-          %p
+          %p.full-name
             = @task.vodeer&.full_name || '-'
         .col-md-3.col-sm-3.col-xs-6
           %span
@@ -38,7 +38,7 @@
         %p
           = @task.description
     - if @task.status == "open"
-      %span.btn.btn-default.orange-btn.display-center.btn-orange.vodeer-task-accept{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-status"=> "progress", "data-toggle" => "modal"}
+      %span.btn.btn-default.orange-btn.display-center.btn-orange.vodeer-task-accept{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-name" => current_user.full_name, "data-status"=> "progress", "data-toggle" => "modal"}
         Accept
     - if @task.status == "progress"
       %span.btn.btn-default.orange-btn.display-center.btn-orange.vodeer-task-submit{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-status"=> "completed", "data-toggle" => "modal"}

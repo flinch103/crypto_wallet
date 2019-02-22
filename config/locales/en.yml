@@ -47,3 +47,4 @@ en:
     approved: 'Task approved'
     rejected: 'Task rejected'
     progress: 'Task marked in progress'
+    completed: 'Task submitted successfully'

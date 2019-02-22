@@ -1,5 +1,6 @@
 $(document).ready ->
   $('#datepicker').datepicker(
+    startDate: '-0m'
     autoclose: true
     todayHighlight: true).datepicker 'update', new Date
 
@@ -26,8 +27,11 @@ $(document).ready ->
 
   $('.next-button').click (event) ->
     check = checkInputFields()
+    integer_check = checkCostField()
     if !check
       toastr.error('Please fill complete form')
+    else if !integer_check
+      toastr.error('Cost should be numeric only')
     else
       $('#payvdx').addClass('active')
       $('#task-detail').removeClass('active')
@@ -68,4 +72,14 @@ checkInputFields = ->
       flag = false
   )
 
+  return flag
+
+checkCostField = ->
+  flag = true
+  formData = JSON.parse(JSON.stringify($('#task-form').serializeArray())).slice(2)
+  formData = formData[1]
+  reg = /^[+]?([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-][0-9]+)?$/
+  unless reg.test(formData.value)
+    flag = false
+  
   return flag

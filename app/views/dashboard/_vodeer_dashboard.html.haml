@@ -1,34 +1,37 @@
 .dash-content-wrapper
   .task-analytics-area.panel-body
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-progressv-dash
       .task-value.d-inline-block
         = current_user.assigned_tasks.progress.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_icon.png" }/
       %h5 Tasks Working
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-approvedv-dash
       .task-value.d-inline-block
         = current_user.assigned_tasks.approved.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
       %h5 Tasks Accepted
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-completedv-dash
       .task-value.d-inline-block
         = current_user.assigned_tasks.completed.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_ongoing_icon.png" }/
       %h5 Tasks Completed
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-disputedv-dash
       .task-value.d-inline-block
         = current_user.assigned_tasks.disputed.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_disputed_icon.png" }/
       %h5 Tasks Disputed
     .analytics-box.col-md-2.col-sm-6.col-xs-12
-      .task-value.d-inline-block 170
-      .metric-icon.d-inline-block.pull-right
-        %img{ :src => "/assets/dashboard/wallet.png" }/
-      %h5 Wallet Balance
+      %a.wallet-das{ :href => wallet_path(current_user.wallet) }
+        .task-value.d-inline-block
+          = @wallet.balance
+          %span.wallet-vdx VDX
+        .metric-icon.d-inline-block.pull-right
+          %img{ :src => "/assets/dashboard/wallet.png" }/
+        %h5 Wallet Balance
   .dash-container
     .panel
       .panel-header
@@ -58,10 +61,10 @@
                 - @recent_published_tasks.each do |task|
                   %tr
                     %td= task.title.truncate(10)
-                    %td= task.description.truncate(30)
+                    %td= task.description.truncate(25)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.start_date&.strftime("%d/%m/%Y")
+                      = task.created_at&.strftime("%d/%m/%Y")
                     %td.text-center
                       = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.wage
@@ -104,10 +107,10 @@
                 - @recent_working_tasks.each do |task|
                   %tr
                     %td= task.title.truncate(10)
-                    %td= task.description.truncate(30)
+                    %td= task.description.truncate(25)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.start_date&.strftime("%d/%m/%Y")
+                      = task.created_at&.strftime("%d/%m/%Y")
                     %td.text-center
                       = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.wage
@@ -121,3 +124,5 @@
           %a.pan-link{ :href => "/tasks" }
             %b
               View All Task
+
+= javascript_pack_tag 'javascripts/tasks/show'

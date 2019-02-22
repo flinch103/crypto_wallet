@@ -9,12 +9,13 @@ class TasksController < ApplicationController
     @tasks = Task.get_tasks(params[:filter_type], current_user)
     @task_type = "Open Microtasks" unless current_user.arbiter?
     @task_type = "Assigned Microtasks" if current_user.arbiter?
+    @filter_type = params[:filter_type]
     if params[:filter_type].present?
       @task_type = "#{params[:filter_type].humanize} Microtasks"
       render partial: 'vodiant_list' if request.xhr? && current_user.vodiant?
       render partial: 'vodeer_list' if request.xhr? && current_user.vodeer?
       render partial: 'arbiter_list' if request.xhr? && current_user.arbiter?
-    end   
+    end
   end
 
   def create

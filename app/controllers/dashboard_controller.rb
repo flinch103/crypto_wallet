@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
     @disputed_tasks = current_user.tasks.disputed
     @recent_published_tasks = Task.open
     @recent_working_tasks = current_user.assigned_tasks.progress
+    @wallet = current_user.wallet
   end
 
   private
