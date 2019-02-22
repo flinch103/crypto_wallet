@@ -35,12 +35,13 @@ header {
 .setup-account {
   .container {
     width: 1030px;
+    min-height: 80vh;
   }
 }
 
 
 .setup-account {
-  margin: -105px auto;
+  margin: 0 auto;
   position: relative;
   text-align: center;
   z-index: 999;
@@ -60,6 +61,7 @@ header {
   .thumbnail {
     padding: 0;
     border-radius: 14px;
+    margin-top: -150px;
 
     .acc-tab-bg {
       background: #f8f9fa;
@@ -175,21 +177,27 @@ header {
 
 @media screen and (max-width: 767px) {
 .setup-account {
-  margin: -24px auto;
+  margin: 0 auto;
+
+  .thumbnail {
+    margin-top: -30px;
+  }
 }
 
 .acc-tab-bg {
   .nav {
     li {
+      display: inline-block;
       float: none !important;
       font-size: 15px;
-      display: inline-block;
+      margin-left: 0;
     }
   }
 }
 
 .access-block  {
-  padding: 0 17px 40px;
+  padding: 0 17px 17px;
+  width: 100%;
 
   p {
     float: none;
@@ -232,6 +240,7 @@ body footer {
 .setup-account a {
   width: 100%;
   margin-bottom: 15px;
+  margin-left: 0;
 }
 
 .copy-field a {
@@ -257,10 +266,12 @@ body footer {
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .setup-account {
-    margin: -56px auto;
-
     .container {
       width: 620px;
+
+      .thumbnail {
+        margin-top: -60px;
+      }
     }
   }
   .thumbnail .set-up-tabs li {
@@ -270,15 +281,22 @@ body footer {
   .thumbnail .set-up-tabs li a {
     margin: 0;
   }
+
+  .access-block p {
+    width: 89%;
+  }
 }
 
 
 @media screen and (min-width: 1025px) and (max-width: 1500px) {
    .setup-account {
-    margin: -84px auto;
 
     .container {
       width: 800px;
+    }
+
+    .thumbnail {
+      margin-top: -90px;
     }
   }
 

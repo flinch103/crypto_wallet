@@ -517,7 +517,7 @@ button.wal-action-btn {
 
   .dash-content-wrapper {
     margin-left: 0;
-    padding-top: 40px;
+    padding-top: 90px;
   }
 
   .task-analytics-area {
@@ -542,6 +542,10 @@ button.wal-action-btn {
   header.topbar .navbar-brand {
     width: auto;
     border: 0;
+  }
+
+  header .navbar-header .navbar-right  li a {
+    padding: 10px 0;
   }
 
   header .navbar-header .dropdown {
@@ -603,7 +607,7 @@ button.wal-action-btn {
   }
 
   .analytics-btn-box .btn {
-    padding: 28px 0;
+    padding: 11px 0;
   }
 
   .dash-content-wrapper {
@@ -611,7 +615,7 @@ button.wal-action-btn {
   }
 
   .analytics-box,.analytics-btn-box{
-    margin: 0 10px 15px;
+    margin: 0 0 15px;
     width: 46%;
   }
 
@@ -677,7 +681,11 @@ button.wal-action-btn {
     padding: 70px 0 0 0;
 
     .nav {
+      display: inline-block;
+      float: none;
       padding-top: 10px;
+      text-align: center;
+      width: 100%;
 
       li {
         a {
@@ -693,6 +701,33 @@ button.wal-action-btn {
     width: 100%;
     padding: 14px 60px;
   }
+
+  .top-tabs {
+    li {
+      float: none;
+      display: inline-block;
+      a {
+        padding: 10px 4px !important;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .sidebar-nav {
+    ul {
+
+      li {
+
+        a {
+          padding:10px !important;
+        }
+      }
+    }
+  }
+
+  .wallet-wrapper-block {
+    padding-top: 110px;
+  }
 }
 
 
@@ -704,7 +739,7 @@ button.wal-action-btn {
       li {
         a {
           font-size: 13px;
-          padding: 10px 6px;
+          padding: 10px 3px;
         }
       }
     }
@@ -718,6 +753,16 @@ button.wal-action-btn {
         margin: 0;
       }
     }
+  }
+
+  .analytics-box {
+    width: 48%;
+    margin-left: 2%;
+  }
+
+  .analytics-btn-box {
+    width: 48%;
+    margin-left: 2%;
   }
 }
 
