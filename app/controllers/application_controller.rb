@@ -25,4 +25,9 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(*)
     new_user_session_path
   end
+  
+  def check_wallet_setup
+    return redirect_to setup_accounts_path(:policy) if current_user.wallet.blank?
+    return redirect_to setup_accounts_path(:platform_stack) if current_user.platform_stack_tx.blank?
+  end
 end

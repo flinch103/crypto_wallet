@@ -6,8 +6,11 @@ $(document).ready ->
   $('.platform-stack').click (event) ->
     address = $('.wallet-address').val()
     key =  $('.private-key').val()
+    if key.length == 0
+      toastr.error('Please enter your private key')
+      return 
     walletId = $('.wallet-address').attr('wallet_id')
-    transfer(key, address, walletId) 
+    transfer(key, address, walletId)
 
 transfer = (privateKey, from, walletId) ->
   to = TO_ADDRESS
@@ -40,25 +43,23 @@ transfer = (privateKey, from, walletId) ->
   serializedTx = tx.serialize()
   web4.eth.sendRawTransaction '0x' + serializedTx.toString('hex'), (err, hash) ->
     if !err
-      receipt = await web4.eth.getTransactionReceipt('0xee68486423e3e50b1f5023e3a1f6e1d31d25098592f9d7779a85b6d75154736e')
-      if receipt != null
-        url = '/wallets/' + walletId + '/transactions'
-        $.ajax
-          url: '/tasks'
-          method: 'POST'
-          data: { tx_hex: hash, status: 'success', sent: true, amount: 20, tx_type: 'platform_stack' }
-          beforeSend: (xhr) ->
-            xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
+      url = '/wallets/' + walletId + '/transactions'
+      $.ajax
+        url: url
+        method: 'POST'
+        data: { tx_hex: hash, status: 'success', sent: true, amount: 20, tx_type: 'platform_stack' }
+        beforeSend: (xhr) ->
+          xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
+          return
+        success: (result) ->
+          toastr.info(result.response.message + '. You will be redirected to your dashboard')
+          setTimeout (->
+            window.location.href = '/'
             return
-          success: (result) ->
-            toastr.info(result.response.message + '. You will be redirected to your dashboard')
-            setTimeout (->
-              window.location.href = '/'
-              return
-            ), 5000
-            return
-          error: (err) ->
-            toastr.error(err.message)
+          ), 5000
+          return
+        error: (err) ->
+          toastr.error(err.message)
     else
       console.log err
     return

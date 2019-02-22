@@ -108,9 +108,9 @@ $(document).ready ->
         return
       success: (result) ->
         $('#qr-code').modal('hide');
-        toastr.info(result.response.message + '. You will be redirected to your dashboard')
+        toastr.info(result.response.message + '. You will be redirected to your Platform Stacking Page')
         setTimeout (->
-          window.location.href = '/'
+          window.location.href = '/setup_accounts/platform_stack'
           return
         ), 5000
         return

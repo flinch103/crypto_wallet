@@ -26,4 +26,8 @@ class User < ApplicationRecord
   def self.random_arbiter
     User.where(role: 'arbiter').pluck(:id).sample
   end
+
+  def platform_stack_tx
+    wallet.transactions.find_by(tx_type: 'platform_stack')
+  end
 end

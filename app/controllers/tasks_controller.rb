@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_wallet_setup
 
   def new
     @task = Task.new
