@@ -12,7 +12,6 @@ readURL = (input) ->
 
 $('#imageUpload').change -> 
   readURL this
-  console.log("sadfdsfs",this.files[0]);
   profileData = new FormData()
   profileData.append('avatar', this.files[0])
   $.ajax
