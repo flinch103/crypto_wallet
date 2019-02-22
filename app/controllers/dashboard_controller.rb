@@ -9,14 +9,11 @@ class DashboardController < ApplicationController
     @recent_published_tasks = Task.open
     @recent_working_tasks = current_user.assigned_tasks.progress
     @wallet = current_user.wallet
+    @platform_stack_tx = current_user.platform_stack_tx
   end
 
   private
-
-  def check_wallet_setup
-    redirect_to setup_accounts_path(:policy) if current_user.wallet.blank?
-  end
-
+  
   def get_tasks
     return current_user.tasks.order('updated_at DESC') if current_user.vodiant?
     return current_user.assigned_tasks if current_user.vodeer?

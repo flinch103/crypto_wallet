@@ -1,8 +1,36 @@
-.container
-  .thumbnail
-    %input.form-control.private-key{:placeholder => "rest", :type => "text"}/
-    %input.form-control.wallet-address{:placeholder => "rest", :type => "hidden", value: current_user.wallet.address, wallet_id: current_user.wallet.id}/
-    %a.btn.btn-default.grey-field.platform-stack{ rel: 'policy', tab: '', href: 'javascript:void(0)' }
-      Platform Stack
+- content_for :header do
+  = stylesheet_pack_tag 'styles/restore_wallets', media: 'all'
+  = stylesheet_pack_tag 'styles/setup_accounts', media: 'all'
+
+= render 'layouts/header'
+
+.setup-account
+  .container
+    .thumbnail
+      %h2.heading-setup-block
+        Platform Stack
+      .tab-content.clearfix
+        #2a.tab-pane.active
+          %form.form-horizontal.setup-block-input-b
+            .col-md-12.col-sm-12.col-xs-12
+              .form-group
+                %label.col-md-2.col-sm-2.col-xs-2
+                  %span.vodix-balance 
+                    20
+                  %img{ :src => asset_path('dashboard/vodix_balance.png') }/
+                .col-md-10.col-sm-10.col-xs-10
+                  %input.form-control.private-key{:placeholder => "Enter your private key", :type => "text"}/
+                  %input.form-control.wallet-address{:placeholder => "rest", :type => "hidden", value: current_user.wallet.address, wallet_id: current_user.wallet.id}/
+    .restore-btn
+      %a.btn.btn-default.platform-stack
+        Confirm
+      / %a.btn.btn-default{"data-target" => "#qr-code", "data-toggle" => "modal", :href => "#"}
+      /   Verify
+
 - content_for :footer do
   = javascript_pack_tag 'javascripts/setup_accounts/platform_stack'
+
+
+
+= render 'layouts/footer'
+

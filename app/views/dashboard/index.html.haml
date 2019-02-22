@@ -6,3 +6,17 @@
   = render 'vodeer_dashboard'
 - if current_user.arbiter?
   = render 'arbiter_dashboard'
+
+.flex-f
+  %input.form-control.platform-stack-tx{:type => "hidden", status: @platform_stack_tx.status, hash: @platform_stack_tx.tx_hex}/
+  #dashboard-disable.modal.fade.reject-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %p
+            %img{ :src => asset_path('dashboard/vodix_balance.png') }/
+          %p
+            Your platform stack transaction in pending. Please wait till than.
+
+- content_for :footer do
+  = javascript_pack_tag 'javascripts/dashboard/index'
