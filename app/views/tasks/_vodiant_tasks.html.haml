@@ -21,3 +21,10 @@
       = render 'vodiant_list'
 
 = javascript_pack_tag 'javascripts/tasks/index'
+
+:javascript
+  var filter_type = "#{@filter_type}";
+  if (filter_type) {
+    $("#myTabs > li.task_filters").removeClass('active');
+    $("#myTabs > li.task_filters[data-tab='" + filter_type +"']").addClass('active');
+  }

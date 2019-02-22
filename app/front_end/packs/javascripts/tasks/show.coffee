@@ -56,18 +56,68 @@ $(document).ready ->
         toastr.error(err.responseText.message)
     return
 
-  $('.vodeer-task-accept, .vodeer-task-submit').click (event) ->
+  $('.vodeer-task-accept').click (event) ->
     task_id = $(this).data('id')
     user_id = $(this).data('user')
     status = $(this).data('status')
-    if status == "progress"
-      data_hash = {task:{vodeer_id: user_id, status: status}}
-    else
-      data_hash = {task:{status: status}}
+    name = $(this).data('name')
+    msg = "Task accepted succesfully"
+    data_hash = {task:{vodeer_id: user_id, status: status}}
     $.ajax
       url: '/tasks/'+ task_id,
       method: 'put',
       data: data_hash,
+      dataType: 'json'
       success: (result) ->
+        toastr.info(msg)
+        $('.vodeer-task-accept').hide()
+        $('.status-v').text('Progress')
+        $('.full-name').text(name)
         return
     return
+
+  $('.vodeer-task-submit').click (event) ->
+    task_id = $(this).data('id')
+    user_id = $(this).data('user')
+    status = $(this).data('status')
+    msg = "Task submitted succesfully"
+    data_hash = {task:{status: status}}
+    $.ajax
+      url: '/tasks/'+ task_id,
+      method: 'put',
+      data: data_hash,
+      dataType: 'json'
+      success: (result) ->
+        toastr.info(msg)
+        $('.vodeer-task-submit').hide()
+        $('.status-v').text('Completed')
+        return
+    return
+
+
+  $(".task-progress-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=ongoing"
+
+  $(".task-open-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=open"
+
+  $(".task-completed-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=completed"
+
+  $(".task-disputed-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=disputed"
+
+  $(".task-progressv-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=ongoing"
+
+  $(".task-approvedv-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=approved"
+
+  $(".task-completedv-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=completed"
+
+  $(".task-disputedv-dash").on "click", ->
+    window.location.href = "/tasks?filter_type=disputed"
+
+  $(".wallet").on "click", ->
+    window.location.href = "/wallets/"

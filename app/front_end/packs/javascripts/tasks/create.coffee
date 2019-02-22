@@ -1,5 +1,6 @@
 $(document).ready ->
   $('#datepicker').datepicker(
+    startDate: '-0m'
     autoclose: true
     todayHighlight: true).datepicker 'update', new Date
 

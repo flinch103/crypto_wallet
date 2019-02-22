@@ -1,34 +1,37 @@
 .dash-content-wrapper
   .task-analytics-area.panel-body
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-open-dash
       .task-value.d-inline-block
         = current_user.tasks.open.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_icon.png" }/
       %h5 Task open
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-progress-dash
       .task-value.d-inline-block
         = current_user.tasks.progress.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_ongoing_icon.png" }/
       %h5 Task Ongoing
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-completed-dash
       .task-value.d-inline-block
         = current_user.tasks.completed.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_completed_icon.png" }/
       %h5 Task Completed
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.task-disputed-dash
       .task-value.d-inline-block
         = current_user.tasks.disputed.length
       .metric-icon.d-inline-block.pull-right
         %img{ :src => "/assets/dashboard/task_disputed_icon.png" }/
       %h5 Task Disputed
-    .analytics-box.col-md-2.col-sm-6.col-xs-12
-      .task-value.d-inline-block 170
-      .metric-icon.d-inline-block.pull-right
-        %img{ :src => "/assets/dashboard/wallet.png" }/
-      %h5 Wallet Balance
+    .analytics-box.col-md-2.col-sm-6.col-xs-12.wallet-dash
+      %a.wallet-das{ :href => wallet_path(current_user.wallet) }
+        .task-value.d-inline-block
+          = @wallet.balance
+          %span.wallet-vdx VDX
+        .metric-icon.d-inline-block.pull-right
+          %img{ :src => "/assets/dashboard/wallet.png" }/
+        %h5 Wallet Balance
     .analytics-btn-box.col-md-2.col-sm-6.col-xs-12
       %a.btn.btn-create.dashboard-create-task{:href=>"/tasks/new"}
         %i
@@ -67,15 +70,15 @@
                 - @tasks.each do |task|
                   %tr
                     %td= task.title.truncate(10)
-                    %td= task.description.truncate(30)
-                    %td.text-center= task.max_vodeer
+                    %td= task.description.truncate(20)
+                    %td.text-center= 1
                     %td.text-center
-                      = task.start_date&.strftime("%d/%m/%Y")
+                      = task.created_at&.strftime("%d/%m/%Y")
                     %td.text-center
                       = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.status.humanize
-                    %td.text-center 20
-                    %td.text-center 6
+                    %td.text-center 1
+                    %td.text-center 1
                     %td.text-center 1
                     %td.text-center 1
                     %td.text-center 1
@@ -88,3 +91,5 @@
           %a.pan-link{ :href => "/tasks" }
             %b
               View All Task
+
+= javascript_pack_tag 'javascripts/tasks/show'
