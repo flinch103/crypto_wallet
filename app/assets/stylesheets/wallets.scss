@@ -197,8 +197,9 @@ button.wal-action-btn {
     margin-left: 7px;
   }
 
-  .wallet-wrapper-block {
-    padding-top: 70px;
+
+  .walbar-icon {
+    margin-right: 0;
   }
 }
 
@@ -206,6 +207,15 @@ button.wal-action-btn {
   .wallet-wrapper-block {
     .container {
       width: auto;
+    }
+  }
+
+  .walbal-bar {
+    display: inline-block;
+    width: 100%;
+
+    .col-md-4 {
+      width: 50%;
     }
   }
 }
