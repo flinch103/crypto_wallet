@@ -10,6 +10,36 @@ readURL = (input) ->
     reader.readAsDataURL input.files[0]
   return
 
-$('#imageUpload').change ->
+$('#imageUpload').change -> 
   readURL this
+  console.log("sadfdsfs",this.files[0]);
+  profileData = new FormData()
+  profileData.append('avatar', this.files[0])
+  $.ajax
+      url: '/profile/upload_image'
+      type: 'POST'
+      processData: false
+      contentType: false
+      cache: false
+      data: profileData
+      success: (result) ->
+        return 
+      error: (err) ->
+        toastr.error(err.responseText.message)
+    return
   return
+
+$('#user-name').change -> 
+  val = $("#user-name").val()
+  if val.length !=0
+    $.ajax
+        url: '/profile/update_name'
+        type: 'POST'
+        data: { profile : { full_name: val } }
+        dataType: 'json'
+        success: (result) ->
+          return 
+        error: (err) ->
+          toastr.error(err.responseText.message)
+      return
+    return

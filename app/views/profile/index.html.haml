@@ -20,15 +20,15 @@
             .form-group
               %label
                 FULL NAME
-              %input.form-control{:placeholder => "Please enter full name", :type => "text"}/
+              %input.form-control{:placeholder => current_user.full_name, :type => "text"}/
             .form-group
               %label
                 USERNAME
-              %input.form-control{:placeholder => "Please entre username", :type => "text"}/
+              %input.form-control{:placeholder => current_user.username, :type => "text", :readonly => "true" }/
             .form-group
               %label
                 EMAIL ADDRESS
-              %input.form-control{:placeholder => "Please enter email address", :type => "email"}/
+              %input.form-control{:placeholder => current_user.email, :type => "email", :readonly => "true" }/
         .edit-field
           %a{:href => ''}
             = image_tag("/assets/edit.png")

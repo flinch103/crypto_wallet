@@ -36,4 +36,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/profile/upload_image', to: 'profile#update_avatar'
+  post '/profile/update_name', to: 'profile#update_name'
+
+
 end
