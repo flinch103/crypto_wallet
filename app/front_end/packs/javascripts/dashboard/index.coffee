@@ -43,6 +43,6 @@ tokenBalance = ->
   contractInstance.balanceOf walletAddress, (error, balance) ->
     contractInstance.decimals (error, decimals) ->
       balance = balance.div(10 ** decimals)
-      $('.wallet-vdx-bal').text(balance)
+      $('.wallet-vdx-bal').text(balance.toFixed(2))
       return
     return
