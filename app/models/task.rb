@@ -11,6 +11,8 @@ class Task < ApplicationRecord
   # returns all recently updated tasks with status either open, inprogress or completed
   scope :get_recent_updated_tasks, -> { where('status IN(?)', [0, 1, 2]).order('updated_at DESC') }
 
+  has_many :transactions
+
   def self.get_tasks(filter, user)
     if user.vodiant?
       return user.tasks.completed&.order('created_at DESC') if filter == 'completed'

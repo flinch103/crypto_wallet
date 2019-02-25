@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.vodiant_id = current_user.id
-    return render json: { response: { message: I18n.t('task.created') } } if @task.save
+    return render json: { response: { message: I18n.t('task.created') }, id: @task.id } if @task.save
 
     render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
   end

@@ -19,7 +19,7 @@ class TransactionsController < ApplicationController
   private
   
   def transaction_params
-    params.permit(:tx_hex, :status, :sent, :amount, :tx_type)
+    params.permit(:tx_hex, :status, :sent, :amount, :tx_type, :task_id)
   end
 
   def wallet

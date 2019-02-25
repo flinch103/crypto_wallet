@@ -16,6 +16,7 @@
             %a#home-tab.task-form-tab{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"} TASK DETAIL
           %li#payment-tab{:role => "presentation"}
             %a#home-tab.task-payment-tab  PAY VDX
+            %input#task-wallet{name: 'name', :type => "hidden", value: current_user.wallet.id }/
       .tab-content.clearfix
         #task-detail.tab-pane.active
           = form_with scope: :task,  url: tasks_path, html: {id: 'task-form'}, local: true do |f|
@@ -45,7 +46,7 @@
               VDX
           .encrypt-address
             .form-group
-              %input.form-control{:placeholder => "1gdhjgfgdf6565dsdukgsduk", :type => "text"}/
+              %input.form-control.private-key{:placeholder => "1gdhjgfgdf6565dsdukgsduk", :type => "text"}/
               %span
                 ENTER YOUR PRIVATE KEY
 
