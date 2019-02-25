@@ -8,7 +8,7 @@
   = render 'arbiter_dashboard'
 
 .flex-f
-  %input.form-control.platform-stack-tx{:type => "hidden", status: @platform_stack_tx.status, hash: @platform_stack_tx.tx_hex}/
+  %input.form-control.platform-stack-tx{:type => "hidden", status: @platform_stack_tx.status, id: @platform_stack_tx.id}/
   #dashboard-disable.modal.fade.reject-field{:role => "dialog"}
     .modal-dialog
       .modal-content

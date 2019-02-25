@@ -14,9 +14,22 @@ $(document).ready ->
 checkForTxStatus = () ->
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   interval = setInterval((->
-    receipt = await web4.eth.getTransactionReceipt($('.platform-stack-tx').attr('hash'))
-    if receipt != null
+    resp = await getTxStatus($('.platform-stack-tx').attr('id'))
+    if resp.status == 'success'
       $('#dashboard-disable').modal('hide')
       clearInterval interval
-    return
   ), 2000)
+
+getTxStatus = (id) ->
+  status
+  $.ajax
+    url: '/transactions/' + id + '/status'
+    method: 'get'
+    beforeSend: (xhr) ->
+      xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
+      return
+    success: (result) ->
+      status = result.status
+      return status
+    error: (err) ->
+      toastr.error(err.message)

@@ -47,7 +47,7 @@ transfer = (privateKey, from, walletId) ->
       $.ajax
         url: url
         method: 'POST'
-        data: { tx_hex: hash, status: 'success', sent: true, amount: 20, tx_type: 'platform_stack' }
+        data: { tx_hex: hash, status: 'pending', sent: true, amount: 20, tx_type: 'platform_stack' }
         beforeSend: (xhr) ->
           xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
           return
