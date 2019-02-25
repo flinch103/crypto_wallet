@@ -61,5 +61,5 @@ transfer = (privateKey, from, walletId) ->
         error: (err) ->
           toastr.error(err.message)
     else
-      toastr.error('Something went wrong!')
+      toastr.error('Transfer required VDX token!')
     return

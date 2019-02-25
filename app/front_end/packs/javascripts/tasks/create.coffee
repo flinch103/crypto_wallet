@@ -71,6 +71,7 @@ $(document).ready ->
         id  = result.id
         amount = parseInt($('#task_wage').val()) * (10 ** 18)
         approve($('#task-wallet').val(), amount, $('.private-key').val(), id)
+        $('#create-field').modal({backdrop: 'static',keyboard: false,show: true})
         return
       error: (err) ->
         toastr.error($.parseJSON(err.responseText).message)

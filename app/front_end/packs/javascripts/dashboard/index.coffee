@@ -2,6 +2,7 @@ import { WEB3_URl, TOKEN_ABI, TOKEN_CONTRACT, TO_ADDRESS } from '../lib/constant
 Web4 =  require('web3')
 
 $(document).ready ->
+  tokenBalance()
   if $('.platform-stack-tx').attr('status') == 'success'
     return
   else
@@ -33,3 +34,15 @@ getTxStatus = (id) ->
       return status
     error: (err) ->
       toastr.error(err.message)
+
+tokenBalance = ->
+  web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
+  Contract = web4.eth.contract(TOKEN_ABI)
+  contractInstance = Contract.at(TOKEN_CONTRACT)
+  decimal = contractInstance.decimals()
+  contractInstance.balanceOf walletAddress, (error, balance) ->
+    contractInstance.decimals (error, decimals) ->
+      balance = balance.div(10 ** decimals)
+      $('.wallet-vdx-bal').text(balance)
+      return
+    return
