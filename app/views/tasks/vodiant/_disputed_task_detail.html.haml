@@ -42,3 +42,13 @@
           DESCRIPTION
         %p
           = @task.description
+      .vodiant-reason-f
+        %h4
+          VODIANT'S COMMENT (REASON TO REJECT)
+        %p
+          = @task.rejection_comment || '- '
+      .vodiant-reason-f
+        %h4
+          VODEER'S COMMENT (REASON TO DISPUTE)
+        %p
+          = @task.dispute_comment || '- '
