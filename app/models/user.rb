@@ -31,4 +31,9 @@ class User < ApplicationRecord
   def platform_stack_tx
     wallet.transactions.find_by(tx_type: 'platform_stack')
   end
+
+  def self.find_for_authentication(conditions)
+    conditions[:username].downcase! 
+    super(conditions) 
+  end 
 end
