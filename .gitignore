@@ -31,7 +31,6 @@ public/system/
 yarn-debug.log*
 yarn-error.log*
 .yarn-integrity
-.babelrc
 .overcommit.yml
 .postcssrc.yml
 /deployment/*key.json
