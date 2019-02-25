@@ -13,17 +13,17 @@ class Task < ApplicationRecord
 
   def self.get_tasks(filter, user)
     if user.vodiant?
-      return user.tasks.completed if filter == 'completed'
-      return user.tasks.progress if filter == 'ongoing'
-      return user.tasks.disputed if filter == 'disputed'
-      user.tasks.open
+      return user.tasks.completed&.order('created_at DESC') if filter == 'completed'
+      return user.tasks.progress&.order('created_at DESC') if filter == 'ongoing'
+      return user.tasks.disputed&.order('created_at DESC') if filter == 'disputed'
+      user.tasks.open&.order('created_at DESC')
     elsif user.vodeer?
-      return user.assigned_tasks.completed if filter == 'completed'
-      return user.assigned_tasks.progress if filter == 'ongoing'
-      return user.assigned_tasks.disputed if filter == 'disputed'
-      return user.assigned_tasks.approved if filter == 'approved'
-      return user.assigned_tasks.rejected if filter == 'rejected'
-      Task.open
+      return user.assigned_tasks.completed&.order('created_at DESC') if filter == 'completed'
+      return user.assigned_tasks.progress&.order('created_at DESC') if filter == 'ongoing'
+      return user.assigned_tasks.disputed&.order('created_at DESC') if filter == 'disputed'
+      return user.assigned_tasks.approved&.order('created_at DESC') if filter == 'approved'
+      return user.assigned_tasks.rejected&.order('created_at DESC') if filter == 'rejected'
+      Task.open&.order('created_at DESC')
     else
       return user.disputed_tasks.completed if filter == 'completed'
       return user.disputed_tasks.progress if filter == 'ongoing'
