@@ -44,6 +44,5 @@ Rails.application.routes.draw do
 
   post '/profile/upload_image', to: 'profile#update_avatar'
   post '/profile/update_name', to: 'profile#update_name'
-
-
+  match '*path' => redirect('/'), via: :get
 end
