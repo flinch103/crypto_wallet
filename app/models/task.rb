@@ -8,6 +8,8 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: 30 }
   validates :description, :end_date, :wage, presence: true
 
+  validates :wage, numericality: { greater_than: 0, less_than: 999999 }
+
   # returns all recently updated tasks with status either open, inprogress or completed
   scope :get_recent_updated_tasks, -> { where('status IN(?)', [0, 1, 2]).order('updated_at DESC') }
 

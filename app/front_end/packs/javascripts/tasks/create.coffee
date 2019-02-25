@@ -37,7 +37,9 @@ $(document).ready ->
     if !check
       toastr.error('Please fill complete form')
     else if !integer_check
-      toastr.error('Cost should be numeric only')
+      toastr.error(numericalErrMsg())
+    else if $('#task_wage').val().length > 6
+      toastr.error('Cost should be less than equal to 6 digits')
     else
       $('#payvdx').addClass('active')
       $('#task-detail').removeClass('active')
@@ -140,3 +142,9 @@ toHex = (str) ->
     hex += '' + str.charCodeAt(i).toString(16)
     i++
   return hex
+
+numericalErrMsg = ->
+  if parseInt($('#task_wage').val()) < 1
+    return 'Cost should be greater than equal to 1'
+  else
+    return 'Cost should be numerical'
