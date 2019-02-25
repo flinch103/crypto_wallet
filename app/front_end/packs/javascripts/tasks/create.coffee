@@ -122,6 +122,7 @@ approve = (walletId, amount, privateKey, task_id) ->
     return
 
 addTransaction = (walletId, hash, amount, type, task_id) ->
+  amount = parseInt($('#task_wage').val())
   url = '/wallets/' + walletId + '/transactions'
   $.ajax
     url: url
