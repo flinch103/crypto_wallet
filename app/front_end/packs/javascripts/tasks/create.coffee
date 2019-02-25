@@ -14,8 +14,17 @@ $(document).ready ->
   
   $('.task-payment-tab').click (event) ->
     check = checkInputFields()
+    integer_check = checkCostField()
     if !check
       toastr.error('Please fill complete form')
+      $('#task-tab').addClass('active')
+      $('#payment-tab').removeClass('active')
+    else if !integer_check
+      toastr.error(numericalErrMsg())
+      $('#task-tab').addClass('active')
+      $('#payment-tab').removeClass('active')
+    else if $('#task_wage').val().length > 6
+      toastr.error('Cost should be less than equal to 6 digits')
       $('#task-tab').addClass('active')
       $('#payment-tab').removeClass('active')
     else
