@@ -26,9 +26,9 @@
       %h5 Tasks Disputed
     .analytics-box.col-md-2.col-sm-6.col-xs-12
       %a.wallet-das{ :href => wallet_path(current_user.wallet) }
-        .task-value.d-inline-block
-          = @wallet.balance
-          %span.wallet-vdx VDX
+        .task-value.d-inline-block.wallet-vdx-bal
+          
+        %span.wallet-vdx VDX
         .metric-icon.d-inline-block.pull-right
           %img{ :src => "/assets/dashboard/wallet.png" }/
         %h5 Wallet Balance
@@ -126,3 +126,5 @@
               View All Task
 
 = javascript_pack_tag 'javascripts/tasks/show'
+:javascript
+  var walletAddress = "#{@wallet.address}";
