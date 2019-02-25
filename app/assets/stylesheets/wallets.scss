@@ -120,6 +120,7 @@
   }
   strong {
     color: #757575;
+
   }
 }
 
@@ -200,6 +201,12 @@ button.wal-action-btn {
 
   .walbar-icon {
     margin-right: 0;
+  }
+
+  .info-item {
+    strong {
+      font-size: 12px;
+    }
   }
 }
 

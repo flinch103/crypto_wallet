@@ -601,6 +601,7 @@ button.wal-action-btn {
 
   .task-analytics-area {
     display: inline-block;
+    width: 100%;
   }
 
   .analytics-btn-box {
@@ -802,3 +803,28 @@ button.wal-action-btn {
     width: 20%;
   }
 }
+
+
+.filter-box {
+  position: relative;
+  &:after {
+    background: url('/assets/arrow-down.png');
+    content: '';
+    float: right;
+    height: 8px;
+    width: 13px;
+    position: absolute;
+    pointer-events: none;
+    right: 4px;
+    bottom: 7px;
+  }
+
+  select {
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: 0;
+  }
+}
+

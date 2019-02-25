@@ -41,8 +41,10 @@ body .right-field-block {
 
 .tabs-block-wrapper ul.nav li.active a,.tabs-block-wrapper ul.nav li.active:hover a {
   background: none;
-  border: 0;
-  border-bottom: 2px #f37226 solid;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 2px #f37226 solid !important;
 }
 
 .tabs-block-wrapper ul.nav li.active a {
