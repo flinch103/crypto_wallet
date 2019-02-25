@@ -23,5 +23,6 @@ module Vodix
       Devise::ConfirmationsController.layout 'devise'
       Devise::PasswordsController.layout 'devise'
     end
+    config.active_job.queue_adapter = :sidekiq
   end
 end

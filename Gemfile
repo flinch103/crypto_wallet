@@ -48,6 +48,12 @@ gem 'haml'
 gem 'haml-rails'
 gem 'paperclip'
 
+# Sidke for Background processing
+gem 'sidekiq'
+
+# A simple HTTP and REST client for Ruby
+gem 'rest-client'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
