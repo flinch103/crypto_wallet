@@ -12,7 +12,7 @@
       .token-value-field.well
         = image_tag("/assets/dashboard/vodix_balance.png")
         %h3
-          02
+          20
           %span
             VDX
       .encrypt-address
@@ -21,7 +21,7 @@
           %input.form-control.wallet-address{:placeholder => "rest", :type => "hidden", value: current_user.wallet.address, wallet_id: current_user.wallet.id}/
 
     .restore-btn
-      %a.btn.btn-default.platform-stack
+      %a.btn.btn-default.platform-stack-confirm
         Confirm
       / %a.btn.btn-default{"data-target" => "#qr-code", "data-toggle" => "modal", :href => "#"}
       /   Verify

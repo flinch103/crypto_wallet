@@ -3,7 +3,7 @@ Web4 =  require('web3')
 Tx = require('ethereumjs-tx');
 
 $(document).ready ->
-  $('.platform-stack').click (event) ->
+  $('.platform-stack-confirm').click (event) ->
     address = $('.wallet-address').val()
     key =  $('.private-key').val()
     if key.length == 0
