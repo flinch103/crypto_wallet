@@ -10,7 +10,9 @@ $(document).ready ->
   $('.forward-mnemonic').unbind('click').click (event) ->
     event.preventDefault()
     tab = $(this).attr('rel');
-    if tab == 'verify' 
+    if tab == 'verify'
+      $('.forward-mnemonic').addClass('orange-btn');
+      $('.forward-mnemonic').removeClass('grey-field');
       changeHeading('Verify Backup Phrase', 'Please write the correct words')
       removeActiveClassFromTab()
       updateBackButton('#1a', 'setup')
@@ -18,6 +20,11 @@ $(document).ready ->
       $('.verify-nav').addClass('active')
       $('#2a').addClass('active')
     else if tab == 'review'
+      $('.forward-mnemonic').removeClass('orange-btn');
+      $('.forward-mnemonic').addClass('grey-field');
+      $('.create-mnemonic-checkbox1').prop('checked', false)
+      $('.create-mnemonic-checkbox2').prop('checked', false)
+      
       if verifyMnemonic()
         $('#verify-mnemonic').val('true') 
         changeHeading('Review', 'By using the VodiX Wallet I unserstand that:')
@@ -62,6 +69,7 @@ $(document).ready ->
         updateForwordButton('#2a', 'verify', "I've copied it somewhere safe")
         $('#1a').addClass('active')
       else if tab == 'verify'
+        $('.forward-mnemonic').addClass('orange-btn');
         changeHeading('Verify Backup Phrase', 'Please write the correct words')
         removeActiveClassFromTab()
         updateBackButton('#1a', 'setup')
@@ -121,6 +129,7 @@ $(document).ready ->
 
   $('.tab-setup').unbind('click').click (event) ->
     $('.forward-mnemonic').attr("disabled", false);
+    $('.forward-mnemonic').addClass('orange-btn');
     changeHeading('Setup Account', 'Write down your 12 word backup phrase in correct order')
     removeActiveClassFromTab()
     updateBackButton('/setup_accounts/policy', 'policy')
@@ -130,6 +139,7 @@ $(document).ready ->
 
   $('.tab-verify').unbind('click').click (event) ->
     $('.forward-mnemonic').attr("disabled", false);
+    $('.forward-mnemonic').addClass('orange-btn');
     
     changeHeading('Verify Backup Phrase', 'Please write the correct words')
     removeActiveClassFromTab()
@@ -139,6 +149,10 @@ $(document).ready ->
     $('#2a').addClass('active')
 
   $('.tab-review').unbind('click').click (event) ->
+    $('.create-mnemonic-checkbox1').prop('checked', false)
+    $('.create-mnemonic-checkbox2').prop('checked', false)
+    $('.forward-mnemonic').removeClass('orange-btn');
+    $('.forward-mnemonic').addClass('grey-field');
     if $('#verify-mnemonic').val() == 'false'
       toastr.error('First verify your mnemonics')
       return
@@ -153,19 +167,27 @@ $(document).ready ->
     $('#3a').addClass('active')
 
   $('.create-mnemonic-checkbox1').change ->
-    if $(this).is(':checked') && $('.create-mnemonic-checkbox2').is(':checked') 
+    if $(this).is(':checked') && $('.create-mnemonic-checkbox2').is(':checked')
+      $('.forward-mnemonic').addClass('orange-btn');
+      $('.forward-mnemonic').removeClass('grey-field');
       $('.forward-mnemonic').attr("disabled", false);
       updateForwordButton('#4a', 'confirm', 'Confirm');
     else
+      $('.forward-mnemonic').removeClass('orange-btn');
+      $('.forward-mnemonic').addClass('grey-field');
       $('.forward-mnemonic').attr("disabled", true);
       $('.forward-mnemonic').removeAttr('href');
     return
 
   $('.create-mnemonic-checkbox2').change ->
     if $(this).is(':checked') && $('.create-mnemonic-checkbox1').is(':checked') 
+      $('.forward-mnemonic').addClass('orange-btn');
+      $('.forward-mnemonic').removeClass('grey-field');
       $('.forward-mnemonic').attr("disabled", false);
       updateForwordButton('#4a', 'confirm', 'Confirm');
     else
+      $('.forward-mnemonic').removeClass('orange-btn');
+      $('.forward-mnemonic').addClass('grey-field');
       $('.forward-mnemonic').attr("disabled", true);
       $('.forward-mnemonic').removeAttr('href');
     return

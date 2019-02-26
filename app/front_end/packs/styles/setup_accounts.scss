@@ -446,6 +446,11 @@ body footer {
   color: #030e27;
 }
 
+.setup-account .orange-btn {
+  background: #f37226;
+  color: #fff;
+}
+
 .qr-field {
   .modal-body {
     text-align: center;
@@ -530,3 +535,8 @@ body footer {
   }
 }
 
+#qr-code {
+  .modal-dialog {
+    width: 650px;
+  }
+}
