@@ -53,7 +53,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment, :rejection_comment, :vodeer_id)
+    params.require(:task).permit(:title, :description, :end_date, :wage, :status, :dispute_comment, :rejection_comment, :vodeer_id, :resolved_id)
   end
 
   def response_message

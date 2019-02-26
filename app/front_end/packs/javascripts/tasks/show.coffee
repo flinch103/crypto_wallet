@@ -2,6 +2,48 @@ $(document).ready ->
   $('.cancel-dispute').click (e) ->
     $('#reject-task-field').modal('hide')
 
+  $('.cancel-dispute-arbiter').click (e) ->
+    $('#favour-vodiant-task').modal('hide')
+    $('#favour-vodeer-task').modal('hide')
+
+  $('.accept-dispute-vodiant-arbiter').click (e) ->
+    task_id = $('.vodiant-favour').data('id')
+    resolved_id = $('.vodiant-favour').data('user')
+    data_hash = {task:{resolved_id: resolved_id, status: 'resolved'}}
+    $.ajax
+      url: '/tasks/'+ task_id,
+      method: 'put',
+      data: data_hash,
+      dataType: 'json'
+      success: (result) ->
+        $('#favour-vodiant-task').modal('hide');
+        $('.vodiant-favour').hide()
+        $('.vodeer-favour').hide()
+        toastr.info(result.response.message)
+        return
+      error: (err) ->
+        toastr.error(err.responseText.message)
+    return
+
+  $('.accept-dispute-vodeer-arbiter').click (e) ->
+    task_id = $('.vodeer-favour').data('id')
+    resolved_id = $('.vodeer-favour').data('user')
+    data_hash = {task:{resolved_id: resolved_id, status: 'resolved'}}
+    $.ajax
+      url: '/tasks/'+ task_id,
+      method: 'put',
+      data: data_hash,
+      dataType: 'json'
+      success: (result) ->
+        $('#favour-vodeer-task').modal('hide');
+        $('.vodiant-favour').hide()
+        $('.vodeer-favour').hide()
+        toastr.info(result.response.message)
+        return
+      error: (err) ->
+        toastr.error(err.responseText.message)
+    return
+
   $('.raise-dispute').click (e) ->
     $.ajax
       url: '/tasks/' + $('.dispute-comment').attr('task_id')
@@ -122,6 +164,12 @@ $(document).ready ->
 
   $(".task-disputedv-dash").on "click", ->
     window.location.href = "/tasks?filter_type=disputed"
+
+  $(".task-assigned-arbiter").on "click", ->
+    window.location.href = "/tasks?filter_type=assigned"
+
+  $(".task-resolved-arbiter").on "click", ->
+    window.location.href = "/tasks?filter_type=resolved"
 
   $(".wallet").on "click", ->
     window.location.href = "/wallets/"

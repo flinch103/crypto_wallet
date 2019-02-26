@@ -730,6 +730,25 @@ button.wal-action-btn {
   .wallet-wrapper-block {
     padding-top: 110px;
   }
+
+  .vodiant-favour, .vodeer-favour {
+    float: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 13px 2px;
+    margin: 10px auto;
+  }
+
+  .vodiant-reason-f {
+    padding: 15px 20px;
+  }
+
+  .favour-task .modal-dialog {
+    width: 100%;
+    margin: 0px;
+    padding: 15px;
+  }
 }
 
 
@@ -765,6 +784,10 @@ button.wal-action-btn {
   .analytics-btn-box {
     width: 48%;
     margin-left: 2%;
+  }
+
+  .arbiter-dispute-solve span {
+    padding: 11px 18px;
   }
 }
 
@@ -828,3 +851,19 @@ button.wal-action-btn {
   }
 }
 
+.arbiter-dispute-solve {
+  display: inline-block;
+  width: 100%;
+}
+
+.arbiter-dispute-comment-h {
+  float: left;
+}
+
+.vodiant-favour, .vodeer-favour {
+  float: right;
+}
+
+.arbiter-dispute-solve span {
+  padding: 11px 25px;
+}

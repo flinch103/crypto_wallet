@@ -3,13 +3,18 @@
     %ul.nav.nav-tabs#myTabs
       %li.active.task_filters{:role => "presentation", 'data-tab' => 'assigned', style: 'cursor: pointer'}
         %a{"aria-controls" => "home", "aria-expanded" => "false"} TASKS ASSIGNED
-      %li.task_filters{:role => "presentation", 'data-tab' => 'ongoing', style: 'cursor: pointer'}
-        %a{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS ONGOING
-      %li.task_filters{:role => "presentation", 'data-tab' => 'completed', style: 'cursor: pointer'}
-        %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS COMPLETED
+      %li.task_filters{:role => "presentation", 'data-tab' => 'resolved', style: 'cursor: pointer'}
+        %a{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS RESOLVED
 
   .tab-content.clearfix.fblock
     #task-open.tab-pane.active
       = render 'arbiter_list'
   
 = javascript_pack_tag 'javascripts/tasks/index'
+
+:javascript
+  var filter_type = "#{@filter_type}";
+  if (filter_type) {
+    $("#myTabs > li.task_filters").removeClass('active');
+    $("#myTabs > li.task_filters[data-tab='" + filter_type +"']").addClass('active');
+  }

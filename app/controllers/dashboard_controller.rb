@@ -18,6 +18,6 @@ class DashboardController < ApplicationController
     return current_user.tasks.order('updated_at DESC') if current_user.vodiant?
     return current_user.assigned_tasks&.order('created_at DESC') if current_user.vodeer?
 
-    current_user.disputed_tasks
+    current_user.disputed_tasks&.order('created_at DESC')
   end
 end
