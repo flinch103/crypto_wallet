@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  enum status: [:open, :progress, :completed, :rejected, :disputed, :approved]
+  enum status: [:open, :progress, :completed, :rejected, :disputed, :approved, :resolved]
 
   belongs_to :vodiant, class_name: 'User', foreign_key: 'vodiant_id'
   belongs_to :vodeer, class_name: 'User', foreign_key: 'vodeer_id', optional: true
@@ -29,9 +29,8 @@ class Task < ApplicationRecord
       return user.assigned_tasks.rejected&.order('created_at DESC') if filter == 'rejected'
       Task.open&.order('created_at DESC')
     else
-      return user.disputed_tasks.completed if filter == 'completed'
-      return user.disputed_tasks.progress if filter == 'ongoing'
-      user.disputed_tasks.disputed
+      return user.disputed_tasks.resolved&.order('created_at DESC') if filter == 'resolved'
+      user.disputed_tasks.disputed&.order('created_at DESC')
     end
   end
 end

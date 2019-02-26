@@ -1,0 +1,97 @@
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        Task Details
+      %a.back-btn{ href: "/tasks" }
+        = image_tag("/assets/left-arrow.png")
+        Back
+
+      .task-detail-block
+        %h4
+          = @task.title || '-'
+      .status-ongoing.full-bg-field
+        .well
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              COST
+            %p
+              = "#{@task.wage} VDX"
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              VODIANT
+            %p
+              = @task.vodiant&.full_name || '-'
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              VODEER
+            %p
+              = @task.vodeer&.full_name || '-'
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              END DATE
+            %p
+              = @task.end_date.strftime("%d/%m/%Y")
+
+        .description-field.arbitary-dec-field
+          %span
+            DESCRIPTION
+          %p
+            = @task.description
+
+      .vodiant-reason-f.border-0-field
+        %div.arbiter-dispute-solve
+          %h4.arbiter-dispute-comment-h
+            VODIANT'S COMMENT (REASON TO REJECT)
+          %span.btn.btn-default.orange-btn.btn-orange.vodiant-favour{"data-target" => "#favour-vodiant-task", "data-toggle" => "modal", "data-id"=>@task.id, "data-user" =>@task.vodiant&.id, :href => "#"}
+            Accept Dispute in Vodiant Favour
+        %p
+          = @task.rejection_comment || '- '
+      .vodiant-reason-f.border-0-field
+        %div.arbiter-dispute-solve
+          %h4.arbiter-dispute-comment-h
+            VODEER'S COMMENT (REASON TO DISPUTE)
+          %span.btn.btn-default.orange-btn.btn-orange.vodeer-favour{"data-target" => "#favour-vodeer-task", "data-toggle" => "modal", "data-id"=>@task.id, "data-user" =>@task.vodeer&.id, :href => "#"}
+            Accept Dispute in Vodeer Favour
+        %p
+          = @task.dispute_comment || '- '
+
+.flex-f
+  #favour-vodiant-task.modal.fade.favour-task{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .successs-field-block.text-center
+            = image_tag("/assets/Success.png")
+            %h4
+              Are you Sure?
+            %p.favour-text
+              You are taking decision in Vodiant favour
+              %br
+              for this task.
+            .pay-vdx-btns.poup-btn.accept-btn
+              .back-btn-field.display-center
+                %span.btn.btn-default.back-btn.cancel-dispute-arbiter
+                  Cancel
+                %span.btn.btn-default.orange-btn.accept-dispute-vodiant-arbiter
+                  OK
+
+.flex-f
+  #favour-vodeer-task.modal.fade.favour-task{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .successs-field-block.text-center
+            = image_tag("/assets/Success.png")
+            %h4
+              Are you Sure?
+            %p.favour-text
+              You are taking decision in Vodeer favour
+              %br
+              for this task.
+            .pay-vdx-btns.poup-btn.accept-btn
+              .back-btn-field.display-center
+                %span.btn.btn-default.back-btn.cancel-dispute-arbiter
+                  Cancel
+                %span.btn.btn-default.orange-btn.accept-dispute-vodeer-arbiter
+                  OK

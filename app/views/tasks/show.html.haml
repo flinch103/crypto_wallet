@@ -19,6 +19,10 @@
   = render 'tasks/vodeer/vodeer_disputed_task_detail'
 - elsif current_user.vodeer? && (@task.open? || @task.progress? || @task.completed? || @task.approved?)
   = render 'tasks/vodeer/vodeer_task_detail'
+- elsif current_user.arbiter? && @task.disputed?
+  = render 'tasks/arbiter/arbiter_disputed_task_detail'
+- elsif current_user.arbiter? && @task.resolved?
+  = render 'tasks/arbiter/arbiter_resolved_task_detail'
 
 - content_for :footer do
   = javascript_pack_tag 'javascripts/tasks/show'

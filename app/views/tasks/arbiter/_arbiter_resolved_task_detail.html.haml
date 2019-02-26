@@ -1,0 +1,51 @@
+.bg-wrapper-field
+  .container
+    .thumbnail
+      %h2.text-center
+        Task Details
+      %a.back-btn{ href: "/tasks" }
+        = image_tag("/assets/left-arrow.png")
+        Back
+
+      .task-detail-block
+        %h4
+          = @task.title || '-'
+      .status-ongoing.full-bg-field
+        .well
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              COST
+            %p
+              = "#{@task.wage} VDX"
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              VODIANT
+            %p
+              = @task.vodiant&.full_name || '-'
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              VODEER
+            %p
+              = @task.vodeer&.full_name || '-'
+          .col-md-2.col-sm-2.col-xs-6
+            %span
+              END DATE
+            %p
+              = @task.end_date.strftime("%d/%m/%Y")
+
+        .description-field.arbitary-dec-field
+          %span
+            DESCRIPTION
+          %p
+            = @task.description
+
+      .vodiant-reason-f.border-0-field
+        %h4
+          VODIANT'S COMMENT (REASON TO REJECT)
+        %p
+          = @task.rejection_comment || '- '
+      .vodiant-reason-f.border-0-field
+        %h4
+          VODEER'S COMMENT (REASON TO DISPUTE)
+        %p
+          = @task.dispute_comment || '- '

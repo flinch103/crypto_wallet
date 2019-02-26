@@ -48,3 +48,4 @@ en:
     rejected: 'Task rejected'
     progress: 'Task marked in progress'
     completed: 'Task submitted successfully'
+    resolved: 'Task resolved successfully'
