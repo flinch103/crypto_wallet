@@ -5,9 +5,13 @@ $(document).ready ->
   
   $('.mnemonic-backup-checkbox').change ->
     if $(this).is(':checked')
+      $('.policy-continue').removeClass('grey-field');
+      $('.policy-continue').addClass('orange-btn');
       $('.policy-continue').attr("disabled", false);
       $('.policy-continue').attr('href', '/setup_accounts/create_mnemonic');
     else
+      $('.policy-continue').addClass('grey-field');
+      $('.policy-continue').removeClass('orange-btn');
       $('.policy-continue').attr("disabled", true);
       $('.policy-continue').removeAttr('href');
     return
