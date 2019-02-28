@@ -18,6 +18,8 @@ checkForTxStatus = () ->
     resp = await getTxStatus($('.platform-stack-tx').attr('id'))
     if resp.status == 'success'
       $('#dashboard-disable').modal('hide')
+    else if resp.status == 'failed'
+      $('#transaction_status').html("Your platform stack transaction failed. <a href='/setup_accounts/platform_stack'>Please try again.</a>")
       clearInterval interval
   ), 2000)
 
