@@ -7,7 +7,7 @@ class CreateTransaction < ActiveRecord::Migration[5.2]
       t.float :amount
       t.integer :tx_type
       t.references :wallet, foreign_key: true, index: true
-      t.references :task, foreign_key: true, index: true
+      t.uuid :task_id, foreign_key: true, index: true
 
       t.timestamps null: false
     end

@@ -2,15 +2,17 @@ import { WEB3_URl, TOKEN_ABI, TOKEN_CONTRACT, TO_ADDRESS } from '../lib/constant
 Web4 =  require('web3')
 
 $(document).ready ->
-  tokenBalance()
-  if $('.platform-stack-tx').attr('status') == 'success'
-    return
-  else
-    $('#dashboard-disable').modal({
-      backdrop: 'static',
-      keyboard: false
-    })
-    checkForTxStatus()
+  if (isUserArbiter == "false")
+    tokenBalance()
+    if $('.platform-stack-tx').attr('status') == 'success'
+      return
+    else
+      return
+      $('#dashboard-disable').modal({
+        backdrop: 'static',
+        keyboard: false
+      })
+      checkForTxStatus()
 
 checkForTxStatus = () ->
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));

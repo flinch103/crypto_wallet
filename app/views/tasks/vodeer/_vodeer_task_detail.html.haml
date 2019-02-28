@@ -43,5 +43,8 @@
     - if @task.status == "progress"
       %span.btn.btn-default.orange-btn.display-center.btn-orange.vodeer-task-submit{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-status"=> "completed", "data-toggle" => "modal"}
         Submit
-
+= render 'task_stake_token'
 = javascript_pack_tag 'javascripts/tasks/show'
+
+:javascript
+  var walletId = "#{current_user.wallet.id}"

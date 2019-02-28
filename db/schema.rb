@@ -13,9 +13,11 @@
 ActiveRecord::Schema.define(version: 2019_02_26_075325) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "start_date"
@@ -41,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_02_26_075325) do
     t.float "amount"
     t.integer "tx_type"
     t.bigint "wallet_id"
-    t.bigint "task_id"
+    t.uuid "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_transactions_on_task_id"
@@ -80,7 +82,6 @@ ActiveRecord::Schema.define(version: 2019_02_26_075325) do
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
-  add_foreign_key "transactions", "tasks"
   add_foreign_key "transactions", "wallets"
   add_foreign_key "wallets", "users"
 end

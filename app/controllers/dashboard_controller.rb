@@ -9,7 +9,7 @@ class DashboardController < ApplicationController
     @recent_published_tasks = Task.open&.order('created_at DESC')
     @recent_working_tasks = current_user.assigned_tasks.progress&.order('created_at DESC')
     @wallet = current_user.wallet
-    @platform_stack_tx = current_user.platform_stack_tx
+    @platform_stack_tx = current_user.platform_stack_tx unless current_user.arbiter?
   end
 
   private

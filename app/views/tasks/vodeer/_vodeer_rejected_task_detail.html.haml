@@ -67,3 +67,7 @@
                 Cancel
               %span.btn.btn-default.stack-btns.raise-dispute
                 Raise
+
+= render 'task_stake_vodeer_dispute'
+:javascript
+  var walletId = "#{current_user.wallet.id}"
