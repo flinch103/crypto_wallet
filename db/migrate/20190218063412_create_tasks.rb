@@ -1,6 +1,8 @@
 class CreateTasks < ActiveRecord::Migration[5.2]
+  enable_extension 'pgcrypto' unless extensions.include?('pgcrypto')
+  enable_extension "uuid-ossp" unless extensions.include?('uuid-ossp')
   def change
-    create_table :tasks do |t|
+    create_table :tasks, id: :uuid do |t|
       t.string :title
       t.text :description
       t.datetime :start_date

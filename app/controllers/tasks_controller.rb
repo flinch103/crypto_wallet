@@ -42,6 +42,7 @@ class TasksController < ApplicationController
       format.js do
         @task.arbiter_id = User.random_arbiter if params[:task][:status].eql?('disputed')
         if @task.update(task_params)
+          return render json: { response: { message: response_message }, arbiter: @task.arbiter.wallet.address } if params[:task][:status].eql?('disputed')
           return render json: { response: { message: response_message } }
         end
         render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request

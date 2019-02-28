@@ -9,7 +9,8 @@
         %a.sidebar-link{ :href => "/tasks", class: "#{params[:controller] == 'tasks' ? 'link-active' : ''}"  }
           %span.task
           Tasks
-      %li.sidebar-item
-        %a.sidebar-link{ :href => wallet_path(current_user.wallet), class: "#{params[:controller] == 'wallets' ? 'link-active' : ''}" }
-          %span.wallet
-          Wallets
+      - unless current_user.arbiter?
+        %li.sidebar-item
+          %a.sidebar-link{ :href => wallet_path(current_user.wallet), class: "#{params[:controller] == 'wallets' ? 'link-active' : ''}" }
+            %span.wallet
+            Wallets

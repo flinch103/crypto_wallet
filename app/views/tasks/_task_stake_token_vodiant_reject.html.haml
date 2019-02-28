@@ -1,0 +1,17 @@
+.flex-f
+  #task-stake-reject.modal.fade.create-field{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .pay-vdx-btns.task-payment-buttons
+            #payvdx.tab-pane.pay-vdx
+              .encrypt-address
+                .form-group
+                  %input.form-control.private-key{:placeholder => "1gdhjgfgdf6565dsdukgsduk", :type => "text"}/
+                  %span
+                    ENTER YOUR PRIVATE KEY
+            .back-btn-field
+              %span.btn.btn-default.back-btn.cancel-task-reject-button{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"}
+                Cancel
+              %span.btn.btn-default.stack-btns.start-task-reject-button{"data-target" => "#accept-field", "data-id"=> @task.id, "data-user" => current_user.id, "data-name" => current_user.full_name, "data-status"=> @task.status, "data-toggle" => "modal"}
+                Submit
