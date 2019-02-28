@@ -6,18 +6,10 @@ Tx = require('ethereumjs-tx');
 $(document).on 'click', '#refresh_balance', ->
   $(".balance-loader").show();
   $("#refresh_balance").hide()
-  tokenBalance();
 
 $(document).ready ->
-  tokenBalance();
   $('.platform-stack-confirm').click (event) ->
-    address = $('.wallet-address').val()
-    key =  $('.private-key').val()
-    if key.length == 0
-      toastr.error('Please enter your private key')
-      return 
-    walletId = $('.wallet-address').attr('wallet_id')
-    transfer(key, address, walletId)
+    tokenBalance();
 
 transfer = (privateKey, from, walletId) ->
   to = TO_ADDRESS
@@ -73,11 +65,16 @@ transfer = (privateKey, from, walletId) ->
 
 
 tokenBalance = ->
+  key =  $('.private-key').val()
+  if key.length == 0
+    toastr.error('Please enter your private key')
+    return
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   Contract = web4.eth.contract(TOKEN_ABI)
   contractInstance = Contract.at(TOKEN_CONTRACT)
   decimal = contractInstance.decimals()
   walletAddress = $('.wallet-address').val()
+  walletId = $('.wallet-address').attr('wallet_id')
   contractInstance.balanceOf walletAddress, (error, balance) ->
     contractInstance.decimals (error, decimals) ->
       balance = balance.div(10 ** decimals)
@@ -85,5 +82,6 @@ tokenBalance = ->
         $("#wallet_balance_container").addClass('error').html("Your wallet balance is low <img src='/assets/loading.png' class='balance-loader'/> <a id= 'refresh_balance' class='cursor-pointer'>Refresh</a>")
       else
         $("#wallet_balance_container").html("")
+        transfer(key, walletAddress, walletId)
       return
     return
