@@ -19,7 +19,7 @@
         .form-group
           %input.form-control.private-key{:placeholder => "Enter your private key", :type => "text"}/
           %input.form-control.wallet-address{:placeholder => "rest", :type => "hidden", value: current_user.wallet.address, wallet_id: current_user.wallet.id}/
-
+          #wallet_balance_container
     .restore-btn
       %a.btn.btn-default.platform-stack-confirm
         Confirm
