@@ -42,7 +42,7 @@
       .transaction-table
         %table.table
           %tbody
-            - @wallet.transactions.each do |tx|
+            - @transactions.each do |tx|
               %tr
                 %td
                   %i
@@ -64,6 +64,7 @@
                       %i
                         %img{ :src => asset_path("dashboard/received.png") }/
 
+        = will_paginate @transactions
 - content_for :footer do
   = javascript_pack_tag 'javascripts/wallets/show'
 

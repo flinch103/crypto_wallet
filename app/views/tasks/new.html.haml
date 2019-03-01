@@ -75,3 +75,5 @@
               Okay
 - content_for :footer do
   = javascript_pack_tag 'javascripts/tasks/create'
+:javascript
+  var walletAddress = "#{current_user.wallet.address}"
