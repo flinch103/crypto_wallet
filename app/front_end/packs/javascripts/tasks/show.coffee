@@ -35,8 +35,7 @@ $(document).ready ->
         # $('#task-dispute-vodiant-arbiter').modal('hide')
         $('.vodiant-favour').hide()
         $('.vodeer-favour').hide()
-        amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, arbiterPrivateKey, task_id, "vodiant_favour")
+        addJob(walletId, arbiterPrivateKey, task_id, "vodiant_favour")
         toastr.info(result.response.message)
         return
       error: (err) ->
@@ -82,8 +81,7 @@ $(document).ready ->
         $('#favour-vodeer-task').modal('hide');
         $('.vodiant-favour').hide()
         $('.vodeer-favour').hide()
-        amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, arbiterPrivateKey, task_id, "vodeer_favour")
+        addJob(walletId, arbiterPrivateKey, task_id, "vodeer_favour")
         toastr.info(result.response.message)
         return
       error: (err) ->
@@ -117,7 +115,6 @@ $(document).ready ->
       success: (result) ->
         $('#reject-task-field').modal('hide');
         $('#task-stake-vodeer-dispute').modal('hide')
-        # amount = parseInt(2.0) * (10 ** 18)
         addJobArbiter(walletId, result.arbiter, privateKey, task_id, "disputed")
         $('.raise-dispute-button').hide()
         $('.vodeer-dispute-status').text('Disputed')
@@ -169,8 +166,7 @@ $(document).ready ->
         return
       success: (result) ->
         $('#task-stake-vodiant-accept').modal('hide')
-        amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, privateKey, task_id, "accepted")
+        addJob(walletId, privateKey, task_id, "accepted")
         $('.complete-buttons').hide()
         $('.status-p').text('Approved')
         toastr.info(result.response.message)
@@ -204,8 +200,7 @@ $(document).ready ->
       success: (result) ->
         $('#task-stake-reject').modal('hide')
         $('#reject-field').modal('hide');
-        amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, privateKey, task_id, "rejected")
+        addJob(walletId, privateKey, task_id, "rejected")
         $('.complete-buttons').hide()
         $('.status-p').text('Rejected')
         toastr.info(result.response.message)
@@ -244,8 +239,7 @@ $(document).ready ->
       dataType: 'json'
       success: (result) ->
         $('#task-stake-accept').modal('hide')
-        amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, privateKey, task_id, status)
+        addJob(walletId, privateKey, task_id, status)
         toastr.info(msg)
         $('.vodeer-task-accept').hide()
         $('.vodeer-task-submit').hide()
@@ -298,7 +292,7 @@ $(document).ready ->
     window.location.href = "/wallets/"
 
 
-addJob = (walletId, amount, privateKey, task_id, status) ->
+addJob = (walletId, privateKey, task_id, status) ->
   if status == "open"
     txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'applyForJob', [task_id], ESCROW_ABI, privateKey, false)
   else if status == "progress"
@@ -316,17 +310,17 @@ addJob = (walletId, amount, privateKey, task_id, status) ->
   web4.eth.sendRawTransaction txData, (err, hash) ->
     if !err
       if status == "open"
-        addTransaction(walletId, hash, amount, 'apply_job', task_id)
+        addTransaction(walletId, hash, 'apply_job', task_id)
       else if status == "progress"
-        addTransaction(walletId, hash, amount, 'job_submit', task_id)
+        addTransaction(walletId, hash, 'job_submit', task_id)
       else if status == "rejected"
-        addTransaction(walletId, hash, amount, 'job_reject', task_id)
+        addTransaction(walletId, hash, 'job_reject', task_id)
       else if status == "accepted"
-        addTransaction(walletId, hash, amount, 'job_accept', task_id)
+        addTransaction(walletId, hash, 'job_accept', task_id)
       else if status == "vodiant_favour"
-        addTransaction(walletId, hash, amount, 'job_vodiant_favor', task_id)
+        addTransaction(walletId, hash, 'job_vodiant_favor', task_id)
       else if status == "vodeer_favour"
-        addTransaction(walletId, hash, amount, 'job_vodeer_favor', task_id)
+        addTransaction(walletId, hash, 'job_vodeer_favor', task_id)
       # $('#create-field').modal('show')
     else
       console.log err
@@ -334,23 +328,21 @@ addJob = (walletId, amount, privateKey, task_id, status) ->
 
 addJobArbiter = (walletId, arbiterAddress, privateKey, task_id, status) ->
   txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'raiseDispute', [task_id, arbiterAddress], ESCROW_ABI, privateKey, false)
-  amount = parseInt(2.0) * (10 ** 18)
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   web4.eth.sendRawTransaction txData, (err, hash) ->
     if !err
-        addTransaction(walletId, hash, amount, 'job_dispute', task_id)
+        addTransaction(walletId, hash, 'job_dispute', task_id)
       # $('#create-field').modal('show')
     else
       console.log err
     return
 
-addTransaction = (walletId, hash, amount, type, task_id) ->
-  amount = parseInt(2)
+addTransaction = (walletId, hash, type, task_id) ->
   url = '/wallets/' + walletId + '/transactions'
   $.ajax
     url: url
     method: 'POST'
-    data: { tx_hex: hash, status: 'pending', sent: true, amount: amount, tx_type: type, task_id: task_id }
+    data: { tx_hex: hash, status: 'pending', sent: true, tx_type: type, task_id: task_id }
     beforeSend: (xhr) ->
       xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
       return

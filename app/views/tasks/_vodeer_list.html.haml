@@ -19,6 +19,7 @@
           %tbody
             - unless @tasks.empty?
               - @tasks.each do |task|
+                - next unless task.is_valid?
                 %tr
                 %td= task.title.truncate(10)
                 %td= task.description.truncate(10)

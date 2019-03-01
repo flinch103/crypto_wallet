@@ -27,10 +27,24 @@ class Task < ApplicationRecord
       return user.assigned_tasks.disputed&.order('created_at DESC') if filter == 'disputed'
       return user.assigned_tasks.approved&.order('created_at DESC') if filter == 'approved'
       return user.assigned_tasks.rejected&.order('created_at DESC') if filter == 'rejected'
-      Task.open&.order('created_at DESC')
+      Task.open&.includes(:transactions)
     else
       return user.disputed_tasks.resolved&.order('created_at DESC') if filter == 'resolved'
       user.disputed_tasks.disputed&.order('created_at DESC')
     end
+  end
+
+  def is_valid?
+    transactions.success.count == transactions.count 
+  end  
+
+  def self.get_open_task_transaction_status(task)
+    return "Failed" if task.transactions.blank?
+    approve_trans = task.transactions.where(tx_type: "approve").first.status
+    add_trans = task.transactions.where(tx_type: "add_job").first.status
+    return "Success" if (approve_trans == "success" && add_trans == "success")
+    return "Failed" if (approve_trans == "failed" || add_trans == "failed")
+    return "Pending" if (approve_trans == "pending" && add_trans == "pending")
+    "Rejected" if (approve_trans == "rejected" || add_trans == "rejected")
   end
 end

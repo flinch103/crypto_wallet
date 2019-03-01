@@ -54,6 +54,7 @@
             %tbody
               - unless @recent_published_tasks.empty?
                 - @recent_published_tasks.each do |task|
+                  - next unless task.is_valid?
                   %tr
                     %td= task.title.truncate(10)
                     %td= task.description.truncate(25)
