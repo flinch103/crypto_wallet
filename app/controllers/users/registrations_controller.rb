@@ -16,6 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.save
+    if params[:user][:role] == "arbiter"
+      Wallet.create(address: "0x2aea62ba9a46037ee7f3cfd6a11f077795c39bc6", user_id: resource.id)
+    end
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?

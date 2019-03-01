@@ -7,16 +7,20 @@
 - if current_user.arbiter?
   = render 'arbiter_dashboard'
 
-.flex-f
-  %input.form-control.platform-stack-tx{:type => "hidden", status: @platform_stack_tx.status, id: @platform_stack_tx.id}/
-  #dashboard-disable.modal.fade.reject-field{:role => "dialog"}
-    .modal-dialog
-      .modal-content
-        .modal-body
-          %p
-            %img{ :src => asset_path('dashboard/vodix_balance.png') }/
-          %p#transaction_status
-            Your platform stack transaction in pending. Please wait till than.
+- unless current_user.arbiter?
+  .flex-f
+    %input.form-control.platform-stack-tx{:type => "hidden", status: @platform_stack_tx.status, id: @platform_stack_tx.id}/
+    #dashboard-disable.modal.fade.reject-field{:role => "dialog"}
+      .modal-dialog
+        .modal-content
+          .modal-body
+            %p
+              %img{ :src => asset_path('dashboard/vodix_balance.png') }/
+            %p#transaction_status
+              Your platform stack transaction in pending. Please wait till than.
 
 - content_for :footer do
   = javascript_pack_tag 'javascripts/dashboard/index'
+
+:javascript
+  var isUserArbiter = "#{@current_user.arbiter?}";

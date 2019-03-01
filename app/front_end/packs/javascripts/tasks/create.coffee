@@ -109,7 +109,7 @@ checkCostField = ->
 
 addJob = (walletId, amount, privateKey, task_id) ->
   description = '0x' + toHex('Test Job')
-  txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'addJob', [description, amount], ESCROW_ABI, privateKey, true)
+  txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'addJob', [task_id, amount], ESCROW_ABI, privateKey, true)
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   web4.eth.sendRawTransaction txData, (err, hash) ->
     if !err

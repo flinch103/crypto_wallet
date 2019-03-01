@@ -1,577 +1,573 @@
 module.exports = {
 ESCROW_ABI: [
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_admin",
-        "type": "address"
-      }
-    ],
-    "name": "addAdmin",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_description",
-        "type": "bytes"
-      },
-      {
-        "name": "_tokens",
-        "type": "uint256"
-      }
-    ],
-    "name": "addJob",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "applyForJob",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "claimPayout",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "dissatisfactoryWorkSubmitted",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "negativeVerdict",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "positiveVerdict",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "name": "_arbiter",
-        "type": "address"
-      }
-    ],
-    "name": "raiseDispute",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_admin",
-        "type": "address"
-      }
-    ],
-    "name": "removeAdmin",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_payoutPeriod",
-        "type": "uint256"
-      }
-    ],
-    "name": "setPayoutPeriod",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
-      }
-    ],
-    "name": "setToken",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "submitWork",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "name": "_payoutPeriod",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_token",
-        "type": "address"
-      }
-    ],
-    "name": "TokenSet",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_payoutPeriod",
-        "type": "uint256"
-      }
-    ],
-    "name": "PayoutPeriodSet",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodiant",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "_tokensStaked",
-        "type": "uint256"
-      }
-    ],
-    "name": "JobAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodiant",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "_vodeer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "_vodiantTokens",
-        "type": "uint256"
-      }
-    ],
-    "name": "JobAssigned",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodeer",
-        "type": "address"
-      }
-    ],
-    "name": "WorkSubmitted",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodiant",
-        "type": "address"
-      }
-    ],
-    "name": "VodiantDissatisfied",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodeer",
-        "type": "address"
-      }
-    ],
-    "name": "DisputeRaised",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_arbiter",
-        "type": "address"
-      }
-    ],
-    "name": "ArbiterAssigned",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodeer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "_tokens",
-        "type": "uint256"
-      }
-    ],
-    "name": "VodeerPaid",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "beneficiary",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "tokens",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "isVodiant",
-        "type": "bool"
-      }
-    ],
-    "name": "PayoutClaimed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "_nonce",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "_vodiant",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "_vodeer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "_vodiantTokens",
-        "type": "uint256"
-      }
-    ],
-    "name": "TokensRefunded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newAdmin",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "compositor",
-        "type": "address"
-      }
-    ],
-    "name": "AdminAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "admin",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "eliminator",
-        "type": "address"
-      }
-    ],
-    "name": "AdminRemoved",
-    "type": "event"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "admins",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_addr",
-        "type": "address"
-      }
-    ],
-    "name": "isAdmin",
-    "outputs": [
-      {
-        "name": "isAdmin",
-        "type": "bool"
-      },
-      {
-        "name": "pos",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "jobDetails",
-    "outputs": [
-      {
-        "name": "description",
-        "type": "bytes"
-      },
-      {
-        "name": "vodiant",
-        "type": "address"
-      },
-      {
-        "name": "vodeer",
-        "type": "address"
-      },
-      {
-        "name": "vodiantTokensStaked",
-        "type": "uint256"
-      },
-      {
-        "name": "payoutStartTime",
-        "type": "uint256"
-      },
-      {
-        "name": "arbitrationTime",
-        "type": "uint256"
-      },
-      {
-        "name": "arbiter",
-        "type": "address"
-      },
-      {
-        "name": "vodiantDissatisfied",
-        "type": "bool"
-      },
-      {
-        "name": "status",
-        "type": "uint8"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "nonce",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "payoutPeriod",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "token",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			},
+			{
+				"name": "_tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "addJob",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "applyForJob",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "approveWork",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "claimPayout",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "dissatisfactoryWorkSubmitted",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "negativeVerdict",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "positiveVerdict",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			},
+			{
+				"name": "_arbiter",
+				"type": "address"
+			}
+		],
+		"name": "raiseDispute",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_admin",
+				"type": "address"
+			}
+		],
+		"name": "removeAdmin",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_payoutPeriod",
+				"type": "uint256"
+			}
+		],
+		"name": "setPayoutPeriod",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "setToken",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "submitWork",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "_token",
+				"type": "address"
+			},
+			{
+				"name": "_payoutPeriod",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "TokenSet",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_payoutPeriod",
+				"type": "uint256"
+			}
+		],
+		"name": "PayoutPeriodSet",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodiant",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_tokensStaked",
+				"type": "uint256"
+			}
+		],
+		"name": "JobAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodiant",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_vodeer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_vodiantTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "JobAssigned",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodeer",
+				"type": "address"
+			}
+		],
+		"name": "WorkSubmitted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodiant",
+				"type": "address"
+			}
+		],
+		"name": "VodiantDissatisfied",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodeer",
+				"type": "address"
+			}
+		],
+		"name": "DisputeRaised",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_arbiter",
+				"type": "address"
+			}
+		],
+		"name": "ArbiterAssigned",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodeer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "VodeerPaid",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "beneficiary",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "tokens",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "isVodiant",
+				"type": "bool"
+			}
+		],
+		"name": "PayoutClaimed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_uuId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "_vodiant",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_vodeer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_vodiantTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "TokensRefunded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newAdmin",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "compositor",
+				"type": "address"
+			}
+		],
+		"name": "AdminAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "admin",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "eliminator",
+				"type": "address"
+			}
+		],
+		"name": "AdminRemoved",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "admins",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_uuId",
+				"type": "string"
+			}
+		],
+		"name": "getJobDetails",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "isAdmin",
+		"outputs": [
+			{
+				"name": "isAdmin",
+				"type": "bool"
+			},
+			{
+				"name": "pos",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "payoutPeriod",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "token",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
 ],
 ABI_TOKEN: [
   {
@@ -1029,5 +1025,5 @@ ABI_TOKEN: [
     "type": "function"
   }
 ],
-CONTRACT_ADDRESS: '0x0780887ad54f9242ed70db44a1ed734b806552a1'
+CONTRACT_ADDRESS: '0xe6Ee7496c35C8cD81f6A825CDA5c763CA5d04eFb'
 }

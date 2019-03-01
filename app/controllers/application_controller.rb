@@ -27,7 +27,9 @@ class ApplicationController < ActionController::Base
   end
   
   def check_wallet_setup
-    return redirect_to setup_accounts_path(:policy) if current_user.wallet.blank?
-    return redirect_to setup_accounts_path(:platform_stack) if current_user.platform_stack_tx.blank?
+    unless current_user.arbiter?
+      return redirect_to setup_accounts_path(:policy) if current_user.wallet.blank?
+      return redirect_to setup_accounts_path(:platform_stack) if current_user.platform_stack_tx.blank?
+    end
   end
 end
