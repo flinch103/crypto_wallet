@@ -84,8 +84,7 @@ confirmPrivateKey = ->
     contractInstance.decimals (error, decimals) ->
       balance = balance.div(10 ** decimals)
       if(balance.toFixed(2) < 20)
-        $("#wallet_balance_container").addClass('error').html("Your wallet balance is low <img src='/assets/loading.png' class='balance-loader'/> <a id= 'refresh_balance' class='cursor-pointer'>Refresh</a>")
-        transfer(key, walletAddress, walletId)
+        $("#wallet_balance_container").addClass('error').html("Your wallet balance is low <img src='/assets/loading.png' class='balance-loader'/> <a id= 'refresh_balance' class='cursor-pointer'>Refresh</a>"
       else
         $("#wallet_balance_container").html("")
         transfer(key, walletAddress, walletId)
