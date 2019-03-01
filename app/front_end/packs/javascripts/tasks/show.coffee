@@ -300,17 +300,17 @@ $(document).ready ->
 
 addJob = (walletId, amount, privateKey, task_id, status) ->
   if status == "open"
-    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'applyForJob', [task_id], ESCROW_ABI, privateKey, true)
+    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'applyForJob', [task_id], ESCROW_ABI, privateKey, false)
   else if status == "progress"
-    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'submitWork', [task_id], ESCROW_ABI, privateKey, true)
+    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'submitWork', [task_id], ESCROW_ABI, privateKey, false)
   else if status == "rejected"
-    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'dissatisfactoryWorkSubmitted', [task_id], ESCROW_ABI, privateKey, true)
+    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'dissatisfactoryWorkSubmitted', [task_id], ESCROW_ABI, privateKey, false)
   else if status == "accepted"
-    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'approveWork', [task_id], ESCROW_ABI, privateKey, true)
+    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'approveWork', [task_id], ESCROW_ABI, privateKey, false)
   else if status == "vodiant_favour"
-    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'negativeVerdict', [task_id], ESCROW_ABI, privateKey, true)
+    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'negativeVerdict', [task_id], ESCROW_ABI, privateKey, false)
   else if status == "vodeer_favour"
-    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'positiveVerdict', [task_id], ESCROW_ABI, privateKey, true)
+    txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'positiveVerdict', [task_id], ESCROW_ABI, privateKey, false)
 
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   web4.eth.sendRawTransaction txData, (err, hash) ->
@@ -333,7 +333,7 @@ addJob = (walletId, amount, privateKey, task_id, status) ->
     return
 
 addJobArbiter = (walletId, arbiterAddress, privateKey, task_id, status) ->
-  txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'raiseDispute', [task_id, arbiterAddress], ESCROW_ABI, privateKey, true)
+  txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'raiseDispute', [task_id, arbiterAddress], ESCROW_ABI, privateKey, false)
   amount = parseInt(2.0) * (10 ** 18)
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   web4.eth.sendRawTransaction txData, (err, hash) ->
