@@ -6,10 +6,11 @@ Tx = require('ethereumjs-tx');
 $(document).on 'click', '#refresh_balance', ->
   $(".balance-loader").show();
   $("#refresh_balance").hide()
+  confirmPrivateKey();
 
 $(document).ready ->
   $('.platform-stack-confirm').click (event) ->
-    tokenBalance();
+    confirmPrivateKey();
 
 transfer = (privateKey, from, walletId) ->
   to = TO_ADDRESS
@@ -64,7 +65,7 @@ transfer = (privateKey, from, walletId) ->
     return
 
 
-tokenBalance = ->
+confirmPrivateKey = ->
   key =  $('.private-key').val()
   walletAddress = $('.wallet-address').val()
   walletId = $('.wallet-address').attr('wallet_id')
