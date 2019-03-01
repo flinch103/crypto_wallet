@@ -7,6 +7,8 @@ arbiterPrivateKey = "0x5fc9b242d9b50ef201a381cc10d31c901193fa5a46d47bb5fbc67a9d0
 arbiterWalletAddress = "0x2aea62ba9a46037ee7f3cfd6a11f077795c39bc6";
 
 $(document).ready ->
+  validPrivateKey = (walletAddress, privateKey)->
+    return wallet.isValidPrivateKey(walletAddress, privateKey)
 
   $('.cancel-dispute').click (e) ->
     $('#reject-task-field').modal('hide')
@@ -92,9 +94,14 @@ $(document).ready ->
     $('#task-stake-vodeer-dispute').modal({backdrop: 'static',keyboard: false,show: true})
 
   $('.start-dispute-button').unbind('click').click (event) ->
-    if $('.private-key-accept').val().length == 0
+    privateKey = $('.private-key-accept').val()
+    if privateKey.length == 0
       toastr.error('Enter your private key')
       return
+    isValidPrivateKey = validPrivateKey(walletId, privateKey)
+    if !isValidPrivateKey
+      toastr.error('Invalid private key')
+      return false
     task_id = $(this).data('id')
     user_id = $(this).data('user')
     status = $(this).data('status')
@@ -111,7 +118,7 @@ $(document).ready ->
         $('#reject-task-field').modal('hide');
         $('#task-stake-vodeer-dispute').modal('hide')
         # amount = parseInt(2.0) * (10 ** 18)
-        addJobArbiter(walletId, result.arbiter, $('.private-key-accept').val(), task_id, "disputed")
+        addJobArbiter(walletId, result.arbiter, privateKey, task_id, "disputed")
         $('.raise-dispute-button').hide()
         $('.vodeer-dispute-status').text('Disputed')
         toastr.info(result.response.message)
@@ -139,9 +146,14 @@ $(document).ready ->
     $('#task-stake-reject').modal({backdrop: 'static',keyboard: false,show: true})
 
   $('.start-task-accept-button').unbind('click').click (event) ->
-    if $('.private-key-accept').val().length == 0
+    privateKey = $('.private-key-accept').val()
+    if privateKey.length == 0
       toastr.error('Enter your private key')
       return
+    isValidPrivateKey = validPrivateKey(walletId, privateKey)
+    if !isValidPrivateKey
+      toastr.error('Invalid private key')
+      return false
     task_id = $(this).data('id')
     user_id = $(this).data('user')
     status = $(this).data('status')
@@ -158,7 +170,7 @@ $(document).ready ->
       success: (result) ->
         $('#task-stake-vodiant-accept').modal('hide')
         amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, $('.private-key-accept').val(), task_id, "accepted")
+        addJob(walletId, amount, privateKey, task_id, "accepted")
         $('.complete-buttons').hide()
         $('.status-p').text('Approved')
         toastr.info(result.response.message)
@@ -168,9 +180,14 @@ $(document).ready ->
 
 
   $('.start-task-reject-button').unbind('click').click (event) ->
-    if $('.private-key').val().length == 0
+    privateKey = $('.private-key').val()
+    if privateKey.length == 0
       toastr.error('Enter your private key')
       return
+    isValidPrivateKey = validPrivateKey(walletId, privateKey)
+    if !isValidPrivateKey
+      toastr.error('Invalid private key')
+      return false
     task_id = $(this).data('id')
     user_id = $(this).data('user')
     status = $(this).data('status')
@@ -188,7 +205,7 @@ $(document).ready ->
         $('#task-stake-reject').modal('hide')
         $('#reject-field').modal('hide');
         amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, $('.private-key').val(), task_id, "rejected")
+        addJob(walletId, amount, privateKey, task_id, "rejected")
         $('.complete-buttons').hide()
         $('.status-p').text('Rejected')
         toastr.info(result.response.message)
@@ -200,9 +217,14 @@ $(document).ready ->
 
 
   $('.start-task-stack-button').unbind('click').click (event) ->
-    if $('.private-key').val().length == 0
+    privateKey = $('.private-key').val()
+    if privateKey.length == 0
       toastr.error('Enter your private key')
       return
+    isValidPrivateKey = validPrivateKey(walletId, privateKey)
+    if !isValidPrivateKey
+      toastr.error('Invalid private key')
+      return false
     task_id = $(this).data('id')
     user_id = $(this).data('user')
     status = $(this).data('status')
@@ -223,7 +245,7 @@ $(document).ready ->
       success: (result) ->
         $('#task-stake-accept').modal('hide')
         amount = parseInt(2.0) * (10 ** 18)
-        addJob(walletId, amount, $('.private-key').val(), task_id, status)
+        addJob(walletId, amount, privateKey, task_id, status)
         toastr.info(msg)
         $('.vodeer-task-accept').hide()
         $('.vodeer-task-submit').hide()
