@@ -66,15 +66,19 @@ transfer = (privateKey, from, walletId) ->
 
 tokenBalance = ->
   key =  $('.private-key').val()
+  walletAddress = $('.wallet-address').val()
+  walletId = $('.wallet-address').attr('wallet_id')
   if key.length == 0
     toastr.error('Please enter your private key')
     return
+  isValidPrivateKey = wallet.isValidPrivateKey(walletAddress, key)
+  if !isValidPrivateKey
+    toastr.error('Invalid private key')
+    return false
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   Contract = web4.eth.contract(TOKEN_ABI)
   contractInstance = Contract.at(TOKEN_CONTRACT)
   decimal = contractInstance.decimals()
-  walletAddress = $('.wallet-address').val()
-  walletId = $('.wallet-address').attr('wallet_id')
   contractInstance.balanceOf walletAddress, (error, balance) ->
     contractInstance.decimals (error, decimals) ->
       balance = balance.div(10 ** decimals)
