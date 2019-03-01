@@ -23,6 +23,11 @@
             = "#{@task.wage} VDX"
         .col-md-3.col-sm-3.col-xs-6
           %span
+            Tx Status
+          %p
+            = @tx_status
+        .col-md-3.col-sm-3.col-xs-6
+          %span
             VODEER
           %p
             = @task.vodeer&.full_name || '-'

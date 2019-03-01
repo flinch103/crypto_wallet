@@ -11,6 +11,7 @@ class WalletsController < ApplicationController
 
   def show
     @wallet = current_user.wallet
+    @transactions = @wallet.transactions.where(tx_type: [0, 4]).paginate(page: params[:page], per_page: 5)
   end
   private
 

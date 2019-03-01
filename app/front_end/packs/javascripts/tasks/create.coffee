@@ -10,6 +10,9 @@ $(document).ready ->
     autoclose: true
     todayHighlight: true).datepicker 'update', new Date
 
+  validPrivateKey = (walletAddress, privateKey)->
+    return wallet.isValidPrivateKey(walletAddress, privateKey)
+
   $('.task-payment-buttons').hide()
   
   $('.task-payment-tab').click (event) ->
@@ -65,9 +68,14 @@ $(document).ready ->
     $('.task-form-tab').parent().addClass('active')
 
   $('.task-stack-button').click (event) ->
-    if $('.private-key').val().length == 0
+    privateKey = $('.private-key').val()
+    if privateKey.length == 0
       toastr.error('Enter your private key')
       return
+    isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    if !isValidPrivateKey
+      toastr.error('Invalid private key')
+      return false
     console.log('key', $('.private-key').val())
     $.ajax
       url: '/tasks'
@@ -81,7 +89,7 @@ $(document).ready ->
         $('.task-payment-buttons').hide()
         id  = result.id
         amount = parseInt($('#task_wage').val()) * (10 ** 18)
-        approve($('#task-wallet').val(), amount, $('.private-key').val(), id)
+        approve($('#task-wallet').val(), amount, privateKey, id)
         $('#create-field').modal({backdrop: 'static',keyboard: false,show: true})
         return
       error: (err) ->
