@@ -11,6 +11,22 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def render_error_response(message)
+    render_response(message, 400)
+  end
+
+  def render_success_response(message, data = {})
+    render_response(message, 200, data)
+  end
+
+  def render_not_found_response(message)
+    render_response(message, 404)
+  end
+
+  def render_response(message, code, data = {})
+    render json: { response: { message: message, data: data } }, status: code
+  end
+
   # :reek:NilCheck
   def after_sign_in_path_for(resource)
     unless resource.role.eql?(params.dig(:user)&.dig(:role))

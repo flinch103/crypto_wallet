@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :user_profiles do
     collection do
       post :update_avatar
+      post :check_email_uniqueness
     end
   end
 
