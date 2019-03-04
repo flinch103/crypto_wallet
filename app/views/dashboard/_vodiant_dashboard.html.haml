@@ -27,7 +27,7 @@
     .analytics-box.col-md-2.col-sm-6.col-xs-12.wallet-dash
       %a.wallet-das{ :href => wallet_path(current_user.wallet) }
         .task-value.d-inline-block.wallet-vdx-bal
-          
+
         %span.wallet-vdx VDX
         .metric-icon.d-inline-block.pull-right
           %img{ :src => "/assets/dashboard/wallet.png" }/
@@ -80,7 +80,7 @@
                     %td.detail-btn
                       %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
-                    
+
       .panel-footer
         .text-right
           %a.pan-link{ :href => "/tasks" }
@@ -90,4 +90,3 @@
 = javascript_pack_tag 'javascripts/tasks/show'
 :javascript
   var walletAddress = "#{@wallet.address}";
-  
