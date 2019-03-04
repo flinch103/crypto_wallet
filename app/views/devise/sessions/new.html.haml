@@ -19,7 +19,7 @@
           %a{ href: 'javascript:void(0)' } ARBITER
 
     .auth-form-block
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'user_login_form'}) do |f|
         = f.hidden_field :role, class: 'user-role', value: 'vodiant'
         .field
           = f.text_field :username, autofocus: true, autocomplete: 'username',
@@ -56,3 +56,4 @@
           %a{ href: '#' } Privacy Policy
   - content_for :footer do
     = javascript_pack_tag 'javascripts/users/session'
+    = javascript_pack_tag 'javascripts/validations/user_login'

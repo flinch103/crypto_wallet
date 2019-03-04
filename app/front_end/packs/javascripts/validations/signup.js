@@ -57,7 +57,7 @@ function signupValidation(){
         "user[username]":{
           required: I18x.T(localeMsg.errRequired, {displayLabel: 'username'}),
           minlength: I18x.T(localeMsg.minLength, {displayLabel: 'Username', minChar: '2'}),
-          maxlength: I18x.T(localeMsg.maxLength, {displayLabel: 'Username', maxChar: '30'}),
+          maxlength: I18x.T(localeMsg.maxLength, {displayLabel: 'Username', maxChar: '30'})
         },
         "user[full_name]":{
           required: I18x.T(localeMsg.errRequired, {displayLabel: 'full name'}),

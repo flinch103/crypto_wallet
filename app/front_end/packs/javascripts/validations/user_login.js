@@ -5,20 +5,25 @@ loginValidation();
 function loginValidation(){
   $("#user_login_form").validate({
   	rules: {
-      "user[email]": {
-        required: true
+      "user[username]": {
+        required: true,
+        minlength: 2,
+        maxlength: 30
       },
       "user[password]": {
-      	required: true
+      	required: true,
+        minlength: 6
       }
     },
     messages: {
-      "user[email]": {
-        required: I18x.T(localeMsg.errRequired, {displayLabel: 'email'}),
-        noSpace: I18x.T(localeMsg.noSpace, {displayLabel: 'email'})
+      "user[username]": {
+        required: I18x.T(localeMsg.errRequired, {displayLabel: 'username'}),
+        minlength: I18x.T(localeMsg.minLength, {displayLabel: 'Username', minChar: '2'}),
+        maxlength: I18x.T(localeMsg.maxLength, {displayLabel: 'Username', maxChar: '30'})
       },
       "user[password]": {
-      	required: I18x.T(localeMsg.errRequired, {displayLabel: 'password'})
+      	required: I18x.T(localeMsg.errRequired, {displayLabel: 'password'}),
+        minlength: I18x.T(localeMsg.minLength, {displayLabel: 'Password', minChar: '6'})
       }
 
     },
