@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.find_by_id(params[:id])
     @tx_status = @task.txn_status if @task.status == "open"
-    redirect_to tasks_path if @task.blank? #|| (current_user.vodeer? || @tx_status == 'Failed')
+    redirect_to tasks_path if @task.blank?
   end
 
   def update

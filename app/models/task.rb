@@ -41,15 +41,16 @@ class Task < ApplicationRecord
 
   # Task status
   def txn_status
-    transactions = transactions
-    return "Failed" if transactions.blank?
-    approve_trans = transactions.find_by(tx_type: "approve")&.status
-    add_trans = transactions.find_by(tx_type: "add_job")&.status
+    tran = transactions
+    return "Success" if is_valid?
+    return "Failed" if tran.blank?
+    approve_trans = tran.find_by(tx_type: "approve")&.status
+    add_trans = tran.find_by(tx_type: "add_job")&.status
     return "Success" if (approve_trans == "success" && add_trans == "success")
     return "Failed" if (approve_trans == "failed" || add_trans == "failed")
     return "Pending" if (approve_trans == "pending" && add_trans == "pending")
     return "Rejected" if (approve_trans == "rejected" || add_trans == "rejected")
-    "Failed"
+    'Failed'
   end
 
 end
