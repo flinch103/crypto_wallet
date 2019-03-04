@@ -77,10 +77,11 @@ $(document).ready ->
       toastr.error('Invalid private key')
       return false
     console.log('key', $('.private-key').val())
+    data = $('#task-form').serialize()
     $.ajax
       url: '/tasks'
       method: 'POST'
-      data: $('#task-form').serialize()
+      data: data
       dataType: 'json'
       beforeSend: (xhr) ->
         xhr.setRequestHeader 'X-CSRF-Token', $("meta[name='csrf-token']").attr('content')
@@ -88,7 +89,7 @@ $(document).ready ->
       success: (result) ->
         $('.task-payment-buttons').hide()
         id  = result.id
-        amount = parseInt($('#task_wage').val()) * (10 ** 18)
+        amount = parseFloat($('#task_wage').val()) * (10 ** 18)
         approve($('#task-wallet').val(), amount, privateKey, id)
         $('#create-field').modal({backdrop: 'static',keyboard: false,show: true})
         return
@@ -140,7 +141,7 @@ approve = (walletId, amount, privateKey, task_id) ->
     return
 
 addTransaction = (walletId, hash, amount, type, task_id) ->
-  amount = parseInt($('#task_wage').val())
+  amount = parseFloat($('#task_wage').val())
   url = '/wallets/' + walletId + '/transactions'
   $.ajax
     url: url
@@ -163,7 +164,7 @@ toHex = (str) ->
   return hex
 
 numericalErrMsg = ->
-  if parseInt($('#task_wage').val()) < 1
+  if parseFloat($('#task_wage').val()) < 1
     return 'Cost should be greater than equal to 1'
   else
     return 'Cost should be numerical'
