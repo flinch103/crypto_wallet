@@ -12,8 +12,13 @@ class ProfileController < ApplicationController
     redirect_to profile_path(current_user)
   end
 
-  def update_name
-    current_user.update(full_name: params[:profile][:full_name])
+  def update
+    if params[:user][:full_name].blank?
+      flash[:error] = "Full name can't be blank"
+      return redirect_to profile_path(current_user)
+    end
+    current_user.update(full_name: params[:user][:full_name])
+    flash[:notice] = "Profile updated successfully"
     redirect_to profile_path(current_user)
   end
 end

@@ -1,3 +1,4 @@
+= render 'shared/flash'
 = render 'layouts/dashboard_header'
 = render 'layouts/dashboard_side_nav'
 
@@ -17,11 +18,11 @@
                 %label.camera-field{:for => "imageUpload"}
                   = image_tag("/assets/camera.png")
         .col-md-10.col-sm-9.col-xs-12.left-input-field
-          %form
+          = form_for current_user, url: profile_update_name_path, html: {id: 'new_user'} do |form|
             .form-group
               %label
                 FULL NAME
-              %input.form-control{:placeholder => current_user.full_name, :type => "text", :id => "user-name"}/
+              = form.text_field :full_name, class: 'form-control', placeholder: 'Full Name', id: "user-name"
             .form-group
               %label
                 USERNAME
@@ -30,6 +31,8 @@
               %label
                 EMAIL ADDRESS
               %input.form-control{:placeholder => current_user.email, :type => "email", :readonly => "true" }/
+            .form-group.actions.clearfix
+              = form.submit 'Update', class: 'btn btn-default pull-left'
         .edit-field
           %a{:href => ''}
             = image_tag("/assets/edit.png")

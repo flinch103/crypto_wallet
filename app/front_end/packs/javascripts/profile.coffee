@@ -27,18 +27,3 @@ $('#imageUpload').change ->
         toastr.error(err.responseText.message)
     return
   return
-
-$('#user-name').change -> 
-  val = $("#user-name").val()
-  if val.length !=0
-    $.ajax
-        url: '/profile/update_name'
-        type: 'POST'
-        data: { profile : { full_name: val } }
-        dataType: 'json'
-        success: (result) ->
-          return 
-        error: (err) ->
-          toastr.error(err.responseText.message)
-      return
-    return
