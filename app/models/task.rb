@@ -39,12 +39,14 @@ class Task < ApplicationRecord
   end  
 
   def self.get_open_task_transaction_status(task)
-    return "Failed" if task.transactions.blank?
-    approve_trans = task.transactions.where(tx_type: "approve").first.status
-    add_trans = task.transactions.where(tx_type: "add_job").first.status
+    transactions = task.transactions
+    return "Failed" if transactions.blank?
+    approve_trans = transactions.find_by(tx_type: "approve")&.status
+    add_trans = transactions.find_by(tx_type: "add_job")&.status
     return "Success" if (approve_trans == "success" && add_trans == "success")
     return "Failed" if (approve_trans == "failed" || add_trans == "failed")
     return "Pending" if (approve_trans == "pending" && add_trans == "pending")
-    "Rejected" if (approve_trans == "rejected" || add_trans == "rejected")
+    return "Rejected" if (approve_trans == "rejected" || add_trans == "rejected")
+    "Failed"
   end
 end

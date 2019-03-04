@@ -1,0 +1,19 @@
+.login-page-wrapper
+  = render 'devise/shared/devise_sidenav'
+  .col-md-6.col-xs-12.col-sm-12.right-field-block
+    .main-auth-field-section
+      %h2
+        Forgot your password?
+    .auth-form-block
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'forgot_password_form' }) do |f|
+        = f.hidden_field :role, class: 'user-role', value: 'vodiant'
+        .field
+          = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
+        .actions.clearfix
+          = f.submit 'Submit', class: 'btn btn-default pull-left'
+          .pull-right.f-password
+            = link_to "Login", new_user_session_path, class: 'bt-f-password'
+    = render 'devise/shared/footer'
+  - content_for :footer do
+    = javascript_pack_tag 'javascripts/users/session'
+    = javascript_pack_tag 'javascripts/validations/forgot_password'

@@ -41,13 +41,7 @@
             Already have an acount?
             = link_to 'Login', new_user_session_path,class: 'login-link'
 
-    .terms-condition.text-left
-      %p
-        By Signup, you agree to accept the
-        %span
-          %a{ href: '#' } Terms of services
-          \&amp;
-          %a{ href: '#' } Privacy Policy
+    = render 'devise/shared/footer'
 - content_for :footer do
   = javascript_pack_tag 'javascripts/users/registration'
   = javascript_pack_tag 'javascripts/validations/signup'
