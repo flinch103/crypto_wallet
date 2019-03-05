@@ -86,7 +86,6 @@ $(document).ready ->
         if(balance.toFixed(2) < parseFloat($("#task_wage").val()))
           toastr.error("You don't have sufficient balance")
         else
-          return false
           submitTask(privateKey)
         return
       return

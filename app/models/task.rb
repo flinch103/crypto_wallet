@@ -52,7 +52,9 @@ class Task < ApplicationRecord
     return "Failed" if (approve_trans == "failed" || add_trans == "failed")
     return "Pending" if (approve_trans == "pending" && add_trans == "pending")
     return "Rejected" if (approve_trans == "rejected" || add_trans == "rejected")
-    add_trans&.capitalize || approve_trans&.capitalize
+    # TODO Need to discuss
+    # add_trans&.capitalize || approve_trans&.capitalize
+    'Pending'
   end
 
 end
