@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def platform_stack_tx
-    wallet.transactions.find_by(tx_type: 'platform_stack')
+    wallet&.transactions&.find_by(tx_type: 'platform_stack')
   end
 
   def self.find_for_authentication(conditions)
