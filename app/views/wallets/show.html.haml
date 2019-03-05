@@ -53,16 +53,17 @@
                 %td
                   = "#{tx.amount} VDX"
                 %td
-                  - if tx.sent
+                  -#- if tx.sent
+                  - if tx.task&.vodeer_id == current_user.id
+                    .green
+                      Received
+                      %i
+                        %img{ :src => asset_path("dashboard/received.png") }/
+                  - else
                     .red
                       Sent
                       %i
                         %img{ :src => asset_path("dashboard/sent.png") }/
-                  - else
-                    .green
-                      received
-                      %i
-                        %img{ :src => asset_path("dashboard/received.png") }/
 
         = will_paginate @transactions
 - content_for :footer do
