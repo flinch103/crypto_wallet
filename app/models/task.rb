@@ -41,6 +41,7 @@ class Task < ApplicationRecord
 
   # Task status
   def txn_status
+    # NEED TO FIX IF SUCCESS AND PENDIGN
     tran = transactions
     return "Success" if is_valid?
     return "Failed" if tran.blank?
@@ -50,7 +51,7 @@ class Task < ApplicationRecord
     return "Failed" if (approve_trans == "failed" || add_trans == "failed")
     return "Pending" if (approve_trans == "pending" && add_trans == "pending")
     return "Rejected" if (approve_trans == "rejected" || add_trans == "rejected")
-    'Failed'
+    approve_trans&.capitalize || add_trans&.capitalize
   end
 
 end
