@@ -68,15 +68,29 @@ $(document).ready ->
     $('.task-form-tab').parent().addClass('active')
 
   $('.task-stack-button').click (event) ->
-    privateKey = $('.private-key').val()
+    privateKey =  $('.private-key').val()
     if privateKey.length == 0
-      toastr.error('Enter your private key')
+      toastr.error('Please enter your private key')
       return
-    isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    isValidPrivateKey = wallet.isValidPrivateKey(walletAddress, privateKey)
     if !isValidPrivateKey
       toastr.error('Invalid private key')
       return false
-    console.log('key', $('.private-key').val())
+    web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
+    Contract = web4.eth.contract(TOKEN_ABI)
+    contractInstance = Contract.at(TOKEN_CONTRACT)
+    decimal = contractInstance.decimals()
+    contractInstance.balanceOf walletAddress, (error, balance) ->
+      contractInstance.decimals (error, decimals) ->
+        balance = balance.div(10 ** decimals)
+        if(balance.toFixed(2) < parseFloat($("#task_wage").val()))
+          toastr.error("You don't have sufficient balance")
+        else
+          return false
+          submitTask(privateKey)
+        return
+      return
+  submitTask = (privateKey) ->
     data = $('#task-form').serialize()
     $.ajax
       url: '/tasks'
