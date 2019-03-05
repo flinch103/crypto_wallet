@@ -49,3 +49,14 @@
           VODEER'S COMMENT (REASON TO DISPUTE)
         %p
           = @task.dispute_comment || '- '
+
+      - favoured_user = User.find_by(id: @task.resolved_id)
+      - if favoured_user.present?
+        .vodiant-reason-f.border-0-field
+          %h4
+            IN FAVOUR OF
+          %p
+            - if favoured_user.id == @task.vodiant_id
+              = "#{@task.vodiant&.full_name}(Vodiant)"
+            - else
+              = "#{@task.vodeer&.full_name}(Vodeer)"

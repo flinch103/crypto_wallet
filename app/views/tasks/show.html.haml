@@ -13,7 +13,7 @@
   = render 'tasks/vodiant/disputed_task_detail'
 - elsif current_user.vodiant? && @task.rejected?
   = render 'tasks/vodiant/rejected_task_detail'
-- elsif current_user.vodiant? && @task.resolved?
+- elsif (current_user.vodiant? || current_user.vodeer?) && @task.resolved?
   = render 'tasks/arbiter/arbiter_resolved_task_detail'
 - elsif current_user.vodeer? && @task.rejected?
   = render 'tasks/vodeer/vodeer_rejected_task_detail'
