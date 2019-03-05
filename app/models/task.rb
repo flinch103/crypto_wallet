@@ -20,15 +20,19 @@ class Task < ApplicationRecord
       return user.tasks.completed&.order('created_at DESC') if filter == 'completed'
       return user.tasks.progress&.order('created_at DESC') if filter == 'ongoing'
       return user.tasks.disputed&.order('created_at DESC') if filter == 'disputed'
-      return user.tasks.where("status = 5 OR (status = 6 AND resolved_id= #{user.id})") if filter == 'approved'
-      return user.tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})") if filter == 'rejected'
+      return user.tasks.where("status = 5 OR (status = 6 AND resolved_id= #{user.id})")
+                 .order('created_at DESC') if filter == 'approved'
+      return user.tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})")
+                 .order('created_at DESC') if filter == 'rejected'
       user.tasks.open&.order('created_at DESC')
     elsif user.vodeer?
       return user.assigned_tasks.completed&.order('created_at DESC') if filter == 'completed'
       return user.assigned_tasks.progress&.order('created_at DESC') if filter == 'ongoing'
       return user.assigned_tasks.disputed&.order('created_at DESC') if filter == 'disputed'
-      return user.assigned_tasks.where("status = 5 OR (status = 6 AND resolved_id = #{user.id})") if filter == 'approved'
-      return user.assigned_tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})") if filter == 'rejected'
+      return user.assigned_tasks.where("status = 5 OR (status = 6 AND resolved_id = #{user.id})")
+                                .order('created_at DESC')if filter == 'approved'
+      return user.assigned_tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})")
+                                .order('created_at DESC') if filter == 'rejected'
       Task.open&.includes(:transactions)
     else
       return user.disputed_tasks.resolved&.order('created_at DESC') if filter == 'resolved'
