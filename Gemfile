@@ -46,7 +46,9 @@ gem 'webpacker', '~> 3.5'
 gem 'devise'
 gem 'haml'
 gem 'haml-rails'
-gem 'paperclip'
+gem 'mini_magick'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem "fog-google", '~> 1.7.1'
 
 # Sidke for Background processing
 gem 'sidekiq'
