@@ -9,10 +9,13 @@
         %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS COMPLETED
       %li.task_filters{:role => "presentation", 'data-tab' => 'disputed', style: 'cursor: pointer'}
         %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS DISPUTED
-      %li.task_filters{:role => "presentation", 'data-tab' => 'approved', style: 'cursor: pointer'}
-        %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS APPROVED
-      %li.task_filters{:role => "presentation", 'data-tab' => 'rejected', style: 'cursor: pointer'}
-        %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS REJECTED
+      %li.task_filters{:role => "presentation", 'data-tab' => 'closed', style: 'cursor: pointer'}
+        %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS CLOSED
+      -#TODO need to discuss
+      -#%li.task_filters{:role => "presentation", 'data-tab' => 'approved', style: 'cursor: pointer'}
+      -#  %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS APPROVED
+      -#%li.task_filters{:role => "presentation", 'data-tab' => 'rejected', style: 'cursor: pointer'}
+      -#  %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS REJECTED
     .analytics-btn-box.pull-right.task-create
       %a.btn.btn-create{:href=>"/tasks/new"}
         %i

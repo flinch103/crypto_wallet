@@ -24,6 +24,8 @@ class Task < ApplicationRecord
                  .order('created_at DESC') if filter == 'approved'
       return user.tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})")
                  .order('created_at DESC') if filter == 'rejected'
+      return user.tasks.where("status IN(3, 5, 6)")
+                 .order('created_at DESC') if filter == 'closed'
       user.tasks.open&.order('created_at DESC')
     elsif user.vodeer?
       return user.assigned_tasks.completed&.order('created_at DESC') if filter == 'completed'
@@ -33,6 +35,8 @@ class Task < ApplicationRecord
                                 .order('created_at DESC')if filter == 'approved'
       return user.assigned_tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})")
                                 .order('created_at DESC') if filter == 'rejected'
+      return user.assigned_tasks.where("status IN(3, 5, 6)")
+                 .order('created_at DESC') if filter == 'closed'
       Task.open&.includes(:transactions)
     else
       return user.disputed_tasks.resolved&.order('created_at DESC') if filter == 'resolved'
