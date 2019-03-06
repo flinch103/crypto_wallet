@@ -72,7 +72,11 @@ $(document).ready ->
     if privateKey.length == 0
       toastr.error('Please enter your private key')
       return
-    isValidPrivateKey = wallet.isValidPrivateKey(walletAddress, privateKey)
+    try
+      isValidPrivateKey = wallet.isValidPrivateKey(walletAddress, privateKey)
+    catch err
+      toastr.error(err)
+      return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
       return false

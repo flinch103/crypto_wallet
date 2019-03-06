@@ -29,6 +29,11 @@
               = @task.vodeer&.full_name || '-'
           .col-md-2.col-sm-2.col-xs-6
             %span
+              ARBITER
+            %p
+              = @task.arbiter&.full_name || '-'
+          .col-md-2.col-sm-2.col-xs-6
+            %span
               END DATE
             %p
               = @task.end_date.strftime("%d/%m/%Y")
