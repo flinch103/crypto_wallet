@@ -11,6 +11,19 @@ development:
   SECRET_KEY_BASE: 62a8d689db64f229aa2d46fea8f58c95bef2a1c4c8163a31d4b84f9653d7fa48d6f687b876235402004df2fb6b097e6b565e0391f426a05edbbdd4b7102575a2
   REDIS_URL: redis://localhost:6379
   NODE_APP_URL: localhost:5000/transactions
+  # FOG Configurations
+  STORAGE: file
+  UPLOADER_STORAGE_PATH: ''
+  FOG_PROVIDER: ''
+  PROVIDER: ''
+  ACCESS_KEY: ''
+  SECRET_KEY: ''
+  AWS_REGION: ''
+  FOG_HOST: ''
+  FOG_ENDPOINT: ''
+  FOG_DIR: ''
+  FOG_PUBLIC: ''
+  FOG_MAX_AGE: ''
 staging:
   DB_NAME: <%= ENV['DB_NAME'] %>
   DB_USERNAME: <%= ENV['DB_USERNAME'] %>

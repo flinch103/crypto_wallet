@@ -12,10 +12,7 @@ class WalletsController < ApplicationController
 
   def show
     @wallet = current_user.wallet
-    @transactions = Transaction.where("(wallet_id = #{@wallet.id} OR task_id in(select id from tasks WHERE
-                                       (vodeer_id = #{current_user.id} AND tasks.status = 5) OR
-                                       (resolved_id = #{current_user.id} AND tasks.status = 6))) AND
-                                       tx_type in(0,4)")
+    @transactions = Transaction.filter_list(current_user, @wallet.id)
                                .order(created_at: :desc)
                                .paginate(page: params[:page], per_page: 5)
   end
