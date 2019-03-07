@@ -10,17 +10,18 @@
       %li.task_filters{:role => "presentation", 'data-tab' => 'completed', style: 'cursor: pointer'}
         %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}
           = t('task.types.tasks_completed')
-      %li.task_filters{:role => "presentation", 'data-tab' => 'approved', style: 'cursor: pointer'}
+      %li.task_filters{:role => "presentation", 'data-tab' => 'disputed', style: 'cursor: pointer'}
         %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}
-          = t('task.types.tasks_approved')
+          = t('task.types.tasks_disputed')
       %li.task_filters{:role => "presentation", 'data-tab' => 'closed', style: 'cursor: pointer'}
         %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}
           = t('task.types.tasks_closed')
       -#TODO need to discuss
       -#%li.task_filters{:role => "presentation", 'data-tab' => 'rejected', style: 'cursor: pointer'}
       -#  %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS REJECTED
-      -#%li.task_filters{:role => "presentation", 'data-tab' => 'disputed', style: 'cursor: pointer'}
-      -#  %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}  TASKS DISPUTED
+      -#%li.task_filters{:role => "presentation", 'data-tab' => 'approved', style: 'cursor: pointer'}
+      -#  %a#home-tab{"aria-controls" => "home", "aria-expanded" => "false"}
+      -#    = t('task.types.tasks_approved')
 
 
   .tab-content.clearfix.fblock
