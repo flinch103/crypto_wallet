@@ -54,7 +54,7 @@
                   = "#{tx.amount} VDX"
                 %td
                   -#- if tx.sent
-                  - if tx.task&.vodeer_id == current_user.id
+                  - if tx.task&.resolved_id == current_user.id || tx.task&.vodeer_id == current_user.id
                     .green
                       Received
                       %i
