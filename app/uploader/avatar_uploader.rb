@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage ENV['STORAGE'].try(:to_sym)
+  storage Figaro.env.STORAGE.try(:to_sym)
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
