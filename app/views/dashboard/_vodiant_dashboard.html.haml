@@ -64,8 +64,8 @@
               - unless @tasks.empty?
                 - @tasks.each do |task|
                   %tr
-                    %td= task.title.truncate(10)
-                    %td= task.description.truncate(20)
+                    %td= task.title.truncate(20)
+                    %td.vodeer-list= task.description.truncate(20)
                     %td.text-center= 1
                     %td.text-center
                       = task.created_at&.strftime("%d/%m/%Y")
