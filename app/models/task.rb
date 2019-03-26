@@ -64,25 +64,4 @@ class Task < ApplicationRecord
     # add_trans&.capitalize || approve_trans&.capitalize
     'Pending'
   end
-
-  def is_task_accepted?
-    self.progress?
-  end
-
-  def is_task_waiting_for_approval?
-    self.completed?
-  end
-
-  def is_task_approved?
-    self.approved? || self.resolved?
-  end
-
-  def is_task_rejected?
-    self.rejected?
-  end
-
-  def is_task_disputed?
-    self.disputed?
-  end
-
 end

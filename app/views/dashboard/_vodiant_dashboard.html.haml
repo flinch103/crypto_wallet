@@ -72,11 +72,11 @@
                     %td.text-center
                       = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.status.humanize
-                    %td.text-center= task.is_task_accepted? ? 1:0
-                    %td.text-center= task.is_task_waiting_for_approval? ? 1:0
-                    %td.text-center= task.is_task_approved? ? 1:0
-                    %td.text-center= task.is_task_rejected? ? 1:0
-                    %td.text-center= task.is_task_disputed? ? 1:0
+                    %td.text-center= task.progress? ? 1 : 0
+                    %td.text-center= task.completed? ? 1 : 0
+                    %td.text-center= (task.approved? || task.resolved?) ? 1 : 0
+                    %td.text-center= task.rejected? ? 1 : 0
+                    %td.text-center= task.disputed? ? 1 : 0
                     %td.detail-btn
                       %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
