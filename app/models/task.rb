@@ -66,23 +66,23 @@ class Task < ApplicationRecord
   end
 
   def is_task_accepted?
-    status == "progress"? 1 : 0
+    self.progress?
   end
 
   def is_task_waiting_for_approval?
-    status == "completed"? 1 : 0
+    self.completed?
   end
 
   def is_task_approved?
-    (status == "approved" || status == "resolved")? 1 : 0
+    self.approved? || self.resolved?
   end
 
   def is_task_rejected?
-    status == "rejected"? 1 : 0
+    self.rejected?
   end
 
   def is_task_disputed?
-    status == "disputed"? 1 : 0
+    self.disputed?
   end
 
 end
