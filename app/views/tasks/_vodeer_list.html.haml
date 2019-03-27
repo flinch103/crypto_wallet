@@ -21,14 +21,14 @@
               - @tasks.each do |task|
                 - next unless task.is_valid?
                 %tr
-                %td= task.title.truncate(10)
-                %td= task.description.truncate(10)
+                %td= task.title.truncate(20)
+                %td.vodeer-list= task.description.truncate(80)
                 %td.text-center= task.vodiant&.full_name
                 %td.text-center
                   = task.created_at&.strftime("%D")
                 %td.text-center
                   = task.end_date&.strftime("%D")
-                %td.text-center= task.wage
+                %td.text-center= "#{task.wage} VDX"
                 %td.detail-btn
                   %a.pan-link.btn.btn-default{ :href => task_path(task) }
                     Detail

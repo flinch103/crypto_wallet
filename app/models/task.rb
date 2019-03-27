@@ -64,5 +64,4 @@ class Task < ApplicationRecord
     # add_trans&.capitalize || approve_trans&.capitalize
     'Pending'
   end
-
 end

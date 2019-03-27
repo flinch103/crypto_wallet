@@ -89,6 +89,7 @@ $(document).ready ->
     return
 
   $('.raise-dispute').click (e) ->
+    $('#reject-task-field').modal('hide');
     $('#task-stake-vodeer-dispute').modal({backdrop: 'static',keyboard: false,show: true})
 
   $('.start-dispute-button').unbind('click').click (event) ->
@@ -96,7 +97,11 @@ $(document).ready ->
     if privateKey.length == 0
       toastr.error('Enter your private key')
       return
-    isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    try
+      isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    catch err
+      toastr.error('Invalid private key')
+      return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
       return false

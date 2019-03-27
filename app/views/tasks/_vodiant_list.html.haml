@@ -24,18 +24,18 @@
             - unless @tasks.empty?
               - @tasks.each do |task|
                 %tr
-                %td= task.title.truncate(10)
-                %td= task.description.truncate(10)
+                %td= task.title.truncate(20)
+                %td.vodeer-list= task.description.truncate(80)
                 %td.text-center= 1
                 %td.text-center
                   = task.created_at&.strftime("%D")
                 %td.text-center
                   = task.end_date&.strftime("%D")
-                %td.text-center 1
-                %td.text-center 1
-                %td.text-center 1
-                %td.text-center 1
-                %td.text-center 1
+                %td.text-center= task.progress? ? 1 : 0
+                %td.text-center= task.completed? ? 1 : 0
+                %td.text-center= (task.approved? || task.resolved?) ? 1 : 0
+                %td.text-center= task.rejected? ? 1 : 0
+                %td.text-center= task.disputed? ? 1 : 0
                 %td.detail-btn
                   %a.pan-link.btn.btn-default{ :href => task_path(task) }
                     Detail
