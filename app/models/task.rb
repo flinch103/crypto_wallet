@@ -31,12 +31,9 @@ class Task < ApplicationRecord
       return user.assigned_tasks.completed&.order('created_at DESC') if filter == 'completed'
       return user.assigned_tasks.progress&.order('created_at DESC') if filter == 'ongoing'
       return user.assigned_tasks.disputed&.order('created_at DESC') if filter == 'disputed'
-      return user.assigned_tasks.where("status = 5 OR (status = 6 AND resolved_id = #{user.id})")
-                                .order('created_at DESC')if filter == 'approved'
-      return user.assigned_tasks.where("status = 3 OR (status = 6 AND resolved_id != #{user.id})")
-                                .order('created_at DESC') if filter == 'rejected'
-      return user.assigned_tasks.where("status IN(3, 5, 6)")
-                 .order('created_at DESC') if filter == 'closed'
+      return user.assigned_tasks.approved&.order('created_at DESC') if filter == 'approved'
+      return user.assigned_tasks.rejected&.order('created_at DESC') if filter == 'rejected'
+      return user.assigned_tasks.resolved&.order('created_at DESC') if filter == 'resolved'
       Task.open&.includes(:transactions)
     else
       return user.disputed_tasks.resolved&.order('created_at DESC') if filter == 'resolved'

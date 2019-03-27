@@ -24,13 +24,21 @@
               .col-md-12
                 .form-group
                   = f.text_field :title, class: 'form-control', placeholder: "Task Title"
-              .col-md-6
+              .col-md-3
                 .form-group
                   = f.text_field :wage, class: 'form-control', placeholder: "Cost"
-              .col-md-6
+              .col-md-3
+                .form-group
+                  = f.text_field :max_vodeer, title: "Max No. of Vodeer", value: "1", class: 'form-control', readonly: "readonly"
+              .col-md-3
                 .form-group
                   #datepicker.input-group.date.date-block-field{"data-date-format" => "dd-mm-yyyy"}
-                    = f.text_field :end_date, class: 'form-control', readonly: "readonly"
+                    = f.text_field :start_date, title: "Start Date", class: 'form-control', readonly: "readonly"
+                    %span.input-group-addon
+              .col-md-3
+                .form-group
+                  #datepicker1.input-group.date.date-block-field{"data-date-format" => "dd-mm-yyyy"}
+                    = f.text_field :end_date, title: "End Date", class: 'form-control', readonly: "readonly"
                     %span.input-group-addon
               .col-md-12
                 .form-group

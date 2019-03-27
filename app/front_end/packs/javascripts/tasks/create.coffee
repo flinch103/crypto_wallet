@@ -10,6 +10,11 @@ $(document).ready ->
     autoclose: true
     todayHighlight: true).datepicker 'update', new Date
 
+  $('#datepicker1').datepicker(
+    startDate: '-0m'
+    autoclose: true
+    todayHighlight: true).datepicker 'update', new Date
+
   validPrivateKey = (walletAddress, privateKey)->
     return wallet.isValidPrivateKey(walletAddress, privateKey)
 
@@ -18,12 +23,17 @@ $(document).ready ->
   $('.task-payment-tab').click (event) ->
     check = checkInputFields()
     integer_check = checkCostField()
+    date_check = checkDateField()
     if !check
       toastr.error('Please fill complete form')
       $('#task-tab').addClass('active')
       $('#payment-tab').removeClass('active')
     else if !integer_check
       toastr.error(numericalErrMsg())
+      $('#task-tab').addClass('active')
+      $('#payment-tab').removeClass('active')
+    else if !date_check
+      toastr.error('Invalid Date')
       $('#task-tab').addClass('active')
       $('#payment-tab').removeClass('active')
     else if $('#task_wage').val().length > 6
@@ -46,10 +56,13 @@ $(document).ready ->
   $('.next-button').click (event) ->
     check = checkInputFields()
     integer_check = checkCostField()
+    date_check = checkDateField()
     if !check
       toastr.error('Please fill complete form')
     else if !integer_check
       toastr.error(numericalErrMsg())
+    else if !date_check
+      toastr.error('Invalid Date')
     else if $('#task_wage').val().length > 6
       toastr.error('Cost should be less than equal to 6 digits')
     else
@@ -113,6 +126,14 @@ $(document).ready ->
       error: (err) ->
         toastr.error($.parseJSON(err.responseText).message)
     return
+
+checkDateField = ->
+  flag = true
+  start = $("#task_start_date").val();
+  end = $("#task_end_date").val();
+  if start > end
+    flag = false
+  return flag
 
 checkInputFields = ->
   flag = true

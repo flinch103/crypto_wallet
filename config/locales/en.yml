@@ -19,9 +19,11 @@ en:
     completed: 'Task submitted successfully'
     resolved: 'Task resolved successfully'
     types:
-      tasks_open: TASKS OPEN
-      tasks_ongoing: TASKS ONGOING
-      tasks_completed: TASKS COMPLETED
-      tasks_disputed: TASKS DISPUTED
-      tasks_closed: TASKS CLOSED
-      tasks_approved: TASKS APPROVED
+      tasks_open: OPEN TASKS
+      tasks_ongoing: ONGOING TASKS
+      tasks_completed: COMPLETED TASKS
+      tasks_disputed: DISPUTED TASKS
+      tasks_closed: CLOSED TASKS
+      tasks_approved: APPROVED TASKS
+      tasks_rejected: REJECTED TASKS
+      tasks_resolved: RESOLVED TASKS
