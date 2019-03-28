@@ -145,6 +145,7 @@ $(document).ready ->
     $('#task-stake-reject').modal('hide')
 
   $('.submit-reject-task').click (e) ->
+    $('#reject-field').modal('hide');
     $('#task-stake-reject').modal({backdrop: 'static',keyboard: false,show: true})
 
   $('.start-task-accept-button').unbind('click').click (event) ->
