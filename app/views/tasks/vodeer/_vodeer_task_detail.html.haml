@@ -3,10 +3,10 @@
     .thumbnail
       %h2.text-center
         Task Details
-      %a.back-btn{ href: "/tasks" }
+      - href_link = @task.status =='progress' ? "/tasks?filter_type=ongoing" : "/tasks?filter_type=#{@task.status}"
+      %a.back-btn{ href: href_link }
         = image_tag("/assets/left-arrow.png")
         Back
-
       .task-detail-block
         %h4
           = @task.title || '-'

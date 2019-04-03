@@ -3,7 +3,7 @@
     .thumbnail
       %h2.text-center
         Completed Task Details
-      %a.back-btn#completed-back{ href: "/tasks" }
+      %a.back-btn#completed-back{ href: "/tasks?filter_type=#{@task.status}" }
         = image_tag("/assets/left-arrow.png")
         Back
 

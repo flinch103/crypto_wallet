@@ -43,8 +43,8 @@ class TasksController < ApplicationController
       format.js do
         @task.arbiter_id = User.random_arbiter if params[:task][:status].eql?('disputed')
         if @task.update(task_params)
-          return render json: { response: { message: response_message }, arbiter: @task.arbiter.wallet.address } if params[:task][:status].eql?('disputed')
-          return render json: { response: { message: response_message } }
+          return render json: { response: { message: response_message, url: request.base_url + tasks_path(filter_type: :disputed) }, arbiter: @task.arbiter.wallet.address } if params[:task][:status].eql?('disputed')
+          return render json: { response: { message: response_message, url: request.base_url + redirect_path_url(@task.status)} }
         end
         render json: { message: @task.errors.full_messages.to_sentence }, status: :bad_request
 
@@ -60,5 +60,15 @@ class TasksController < ApplicationController
 
   def response_message
     I18n.t("task.#{params[:task][:status]}")
+  end
+
+  def redirect_path_url(status)
+    if ["approved", "rejected"].include?(status)
+      tasks_path(filter_type: :closed)
+    elsif status == "completed"
+      tasks_path(filter_type: :completed)
+    else
+      tasks_path(filter_type: :ongoing)
+    end
   end
 end
