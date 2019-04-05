@@ -3,7 +3,8 @@
     .thumbnail
       %h2.text-center
         Task Details
-      %a.back-btn{ href: "/tasks" }
+      - href_link = @href_link.present? ? @href_link : (current_user.vodiant? ? "/tasks?filter_type=closed" : "/tasks?filter_type=#{@task.status}")
+      %a.back-btn{ href: href_link }
         = image_tag("/assets/left-arrow.png")
         Back
 

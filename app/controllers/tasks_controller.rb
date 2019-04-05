@@ -30,6 +30,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.find_by_id(params[:id])
     @tx_status = @task.txn_status if @task.status == "open"
+    @href_link = request.base_url if (request.base_url + "/") == request.referer
     redirect_to tasks_path if @task.blank?
   end
 
