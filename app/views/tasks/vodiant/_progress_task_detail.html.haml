@@ -3,7 +3,8 @@
     .thumbnail
       %h2.text-center
         Task Details
-      %a.back-btn{ href: "/tasks?filter_type=ongoing" }
+      - href_link = @href_link.present? ? @href_link : "/tasks?filter_type=ongoing"
+      %a.back-btn{ href: href_link}
         = image_tag("/assets/left-arrow.png")
         Back
 
