@@ -153,7 +153,11 @@ $(document).ready ->
     if privateKey.length == 0
       toastr.error('Enter your private key')
       return
-    isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    try
+      isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    catch err
+      toastr.error('Invalid private key')
+      return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
       return false
@@ -186,7 +190,11 @@ $(document).ready ->
     if privateKey.length == 0
       toastr.error('Enter your private key')
       return
-    isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    try
+      isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    catch err
+      toastr.error('Invalid private key')
+      return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
       return false
@@ -222,7 +230,11 @@ $(document).ready ->
     if privateKey.length == 0
       toastr.error('Enter your private key')
       return
-    isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    try
+      isValidPrivateKey = validPrivateKey(walletAddress, privateKey)
+    catch err
+      toastr.error('Invalid private key')
+      return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
       return false

@@ -68,9 +68,9 @@
                     %td.vodeer-list= task.description.truncate(20)
                     %td.text-center= 1
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y")
+                      = task.created_at&.strftime("%d/%m/%Y<br/> %T").html_safe
                     %td.text-center
-                      = task.end_date&.strftime("%d/%m/%Y")
+                      = task.end_date&.strftime("%d/%m/%Y<br/> %T").html_safe
                     %td.text-center= task.status.humanize
                     %td.text-center= task.progress? ? 1 : 0
                     %td.text-center= task.completed? ? 1 : 0

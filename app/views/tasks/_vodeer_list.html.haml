@@ -25,9 +25,9 @@
                 %td.vodeer-list= task.description.truncate(80)
                 %td.text-center= task.vodiant&.full_name
                 %td.text-center
-                  = task.created_at&.strftime("%D")
+                  = task.created_at&.strftime("%D<br/> %T").html_safe
                 %td.text-center
-                  = task.end_date&.strftime("%D")
+                  = task.end_date&.strftime("%D<br/> %T").html_safe
                 %td.text-center= "#{task.wage} VDX"
                 %td.detail-btn
                   %a.pan-link.btn.btn-default{ :href => task_path(task) }
