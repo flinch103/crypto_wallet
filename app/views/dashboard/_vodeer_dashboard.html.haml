@@ -59,9 +59,9 @@
                     %td.vodeer-list= task.description.truncate(80)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y")
+                      = task.created_at&.strftime("%d/%m/%Y<br/> %T").html_safe
                     %td.text-center
-                      = task.end_date&.strftime("%d/%m/%Y")
+                      = task.end_date&.strftime("%d/%m/%Y<br/> %T").html_safe
                     %td.text-center= "#{task.wage} VDX"
                     %td.text-center= task.status.humanize
                     %td.detail-btn
@@ -101,9 +101,9 @@
                     %td.vodeer-list= task.description.truncate(80)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y")
+                      = task.created_at&.strftime("%d/%m/%Y<br/> %T").html_safe     
                     %td.text-center
-                      = task.end_date&.strftime("%d/%m/%Y")
+                      = task.end_date&.strftime("%d/%m/%Y<br/> %T").html_safe
                     %td.text-center= "#{task.wage} VDX"
                     %td.text-center= task.status.humanize
                     %td.detail-btn

@@ -5,6 +5,15 @@ import { WEB3_URl, TOKEN_ABI, TOKEN_CONTRACT, TO_ADDRESS } from '../lib/constant
 Web4 =  require('web3')
 
 $(document).ready ->
+  $('#task_start_date, #task_end_date').on 'change', ->
+    start = $("#task_start_date").val();
+    end = $("#task_end_date").val();
+    if start > end
+      $("#task_start_date").addClass('red');
+    else
+      $("#task_start_date").removeClass('red');
+    return
+  
   $('#datepicker').datepicker(
     startDate: '-0m'
     autoclose: true
