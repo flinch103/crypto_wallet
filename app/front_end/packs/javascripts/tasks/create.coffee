@@ -6,9 +6,8 @@ Web4 =  require('web3')
 
 $(document).ready ->
   $('#task_start_date, #task_end_date').on 'change', ->
-    start = $("#task_start_date").val();
-    end = $("#task_end_date").val();
-    if start > end
+    date_check = checkDateField()
+    if !date_check
       $("#task_start_date").addClass('red');
     else
       $("#task_start_date").removeClass('red');
@@ -89,7 +88,8 @@ $(document).ready ->
     $('.task-payment-tab').parent().removeClass('active')
     $('.task-form-tab').parent().addClass('active')
 
-  $('.task-stack-button').click (event) ->
+  $('.task-stack-button').unbind().click (event) ->
+    $(".task-stack-button").off('click');
     privateKey =  $('.private-key').val()
     if privateKey.length == 0
       toastr.error('Please enter your private key')
@@ -138,9 +138,11 @@ $(document).ready ->
 
 checkDateField = ->
   flag = true
-  start = $("#task_start_date").val();
-  end = $("#task_end_date").val();
-  if start > end
+  start = $("#task_start_date").val().split('-');
+  end = $("#task_end_date").val().split('-');
+  formatedStartDate = start[1] + '-' + start[0] + '-' + start[2];
+  formatedEndDate = end[1] + '-' + end[0] + '-' + end[2];
+  if (Date.parse(formatedStartDate) > Date.parse(formatedEndDate))
     flag = false
   return flag
 
