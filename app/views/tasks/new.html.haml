@@ -17,6 +17,7 @@
           %li#payment-tab{:role => "presentation"}
             %a#home-tab.task-payment-tab  PAY VDX
             %input#task-wallet{name: 'name', :type => "hidden", value: current_user.wallet.id }/
+      #cover-spin
       .tab-content.clearfix
         #task-detail.tab-pane.active
           = form_with scope: :task,  url: tasks_path, html: {id: 'task-form'}, local: true do |f|
@@ -66,7 +67,7 @@
         .back-btn-field
           %span.btn.btn-default.back-btn.back-button{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#task-detail", :role => "tab"}
             Back
-          %span.btn.btn-default.stack-btns.task-stack-button
+          %button.btn.btn-default.stack-btns.task-stack-button
             stake Token and Create Task
 
 .flex-f

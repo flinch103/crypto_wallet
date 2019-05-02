@@ -81,27 +81,35 @@ $(document).ready ->
       $('.payment-wage').text($('#task_wage').val())
       $('.task-payment-tab').parent().addClass('active')
       $('.task-form-tab').parent().removeClass('active')
+      enableClick()
 
   $('.back-button').click (event) ->
     $('.task-payment-buttons').hide()
     $('.task-tab-next').show()
     $('.task-payment-tab').parent().removeClass('active')
     $('.task-form-tab').parent().addClass('active')
+    enableClick()
 
   $('.task-stack-button').unbind().click (event) ->
-    $(".task-stack-button").off('click');
+    event.preventDefault();
+    $(".task-stack-button").prop('disabled', true);
+   
     privateKey =  $('.private-key').val()
     if privateKey.length == 0
       toastr.error('Please enter your private key')
+      enableClick()
       return
     try
       isValidPrivateKey = wallet.isValidPrivateKey(walletAddress, privateKey)
     catch err
       toastr.error(err)
+      enableClick()
       return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
+      enableClick()
       return false
+    $("#cover-spin").show()
     web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
     Contract = web4.eth.contract(TOKEN_ABI)
     contractInstance = Contract.at(TOKEN_CONTRACT)
@@ -110,8 +118,11 @@ $(document).ready ->
       contractInstance.decimals (error, decimals) ->
         balance = balance.div(10 ** decimals)
         if(balance.toFixed(2) < parseFloat($("#task_wage").val()))
+          $("#cover-spin").hide()
           toastr.error("You don't have sufficient balance")
+          enableClick()
         else
+          $("#cover-spin").show()
           submitTask(privateKey)
         return
       return
@@ -128,11 +139,14 @@ $(document).ready ->
       success: (result) ->
         $('.task-payment-buttons').hide()
         id  = result.id
-        amount = parseFloat($('#task_wage').val()) * (10 ** 18)
-        approve($('#task-wallet').val(), amount, privateKey, id)
+        amountForDb = parseFloat($('#task_wage').val())
+        amount = amountForDb * (10 ** 18)
+        approve($('#task-wallet').val(), amount, amountForDb, privateKey, id)
+        $("#cover-spin").hide()
         $('#create-field').modal({backdrop: 'static',keyboard: false,show: true})
         return
       error: (err) ->
+        $("#cover-spin").hide()
         toastr.error($.parseJSON(err.responseText).message)
     return
 
@@ -140,8 +154,10 @@ checkDateField = ->
   flag = true
   start = $("#task_start_date").val().split('-');
   end = $("#task_end_date").val().split('-');
-  formatedStartDate = start[1] + '-' + start[0] + '-' + start[2];
-  formatedEndDate = end[1] + '-' + end[0] + '-' + end[2];
+
+  formatedStartDate = start[1] + '/' + start[0] + '/' + start[2];
+  formatedEndDate = end[1] + '/' + end[0] + '/' + end[2];
+  
   if (Date.parse(formatedStartDate) > Date.parse(formatedEndDate))
     flag = false
   return flag
@@ -159,38 +175,40 @@ checkCostField = ->
   flag = true
   formData = JSON.parse(JSON.stringify($('#task-form').serializeArray())).slice(2)
   formData = formData[1]
-  reg = /^[+]?([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-][0-9]+)?$/
-  unless reg.test(formData.value)
+  # reg = /^[+]?([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-][0-9]+)?$/
+  unless (formData.value >= 1)
     flag = false
   
   return flag
 
-addJob = (walletId, amount, privateKey, task_id) ->
+enableClick = ->
+  $(".task-stack-button").prop('disabled', false)
+
+addJob = (walletId, amount, amountForDb, privateKey, task_id) ->
   description = '0x' + toHex('Test Job')
   txData = await rawSignedTx.default(CONTRACT_ADDRESS, 'addJob', [task_id, amount], ESCROW_ABI, privateKey, true)
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   web4.eth.sendRawTransaction txData, (err, hash) ->
     if !err
-      addTransaction(walletId, hash, amount, 'add_job', task_id)
+      addTransaction(walletId, hash, amountForDb, 'add_job', task_id)
       $('#create-field').modal('show')
     else
       console.log err
     return
 
 
-approve = (walletId, amount, privateKey, task_id) ->
+approve = (walletId, amount, amountForDb, privateKey, task_id) ->
   txData = await rawSignedTx.default(TOKEN_CONTRACT, 'approve', [CONTRACT_ADDRESS, amount], ABI_TOKEN, privateKey, false)
-  addJob(walletId, amount, privateKey, task_id)
+  addJob(walletId, amount, amountForDb, privateKey, task_id)
   web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
   web4.eth.sendRawTransaction txData, (err, hash) ->
     if !err
-      addTransaction(walletId, hash, amount, 'approve', task_id)
+      addTransaction(walletId, hash, amountForDb, 'approve', task_id)
     else
       console.log err
     return
 
 addTransaction = (walletId, hash, amount, type, task_id) ->
-  amount = parseFloat($('#task_wage').val())
   url = '/wallets/' + walletId + '/transactions'
   $.ajax
     url: url
