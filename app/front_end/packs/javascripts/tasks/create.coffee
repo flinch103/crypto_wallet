@@ -147,6 +147,7 @@ $(document).ready ->
         return
       error: (err) ->
         $("#cover-spin").hide()
+        enableClick()
         toastr.error($.parseJSON(err.responseText).message)
     return
 
