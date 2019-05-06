@@ -13,6 +13,14 @@ $(document).ready ->
       $("#task_start_date").removeClass('red');
     return
   
+  $('.private-key').on 'keyup', ->
+    privateKey =  $('.private-key').val()
+    if privateKey.length == 0
+      $(".private-key").addClass('red');
+    else
+      $(".private-key").removeClass('red');
+    return
+
   $('#datepicker').datepicker(
     startDate: '-0m'
     autoclose: true
@@ -104,11 +112,14 @@ $(document).ready ->
     catch err
       toastr.error(err)
       enableClick()
+      $(".private-key").addClass('red');
       return false
     if !isValidPrivateKey
       toastr.error('Invalid private key')
+      $(".private-key").addClass('red');
       enableClick()
       return false
+    $(".private-key").removeClass('red');
     $("#cover-spin").show()
     web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
     Contract = web4.eth.contract(TOKEN_ABI)
