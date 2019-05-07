@@ -5,6 +5,12 @@ import { WEB3_URl, TOKEN_ABI, TOKEN_CONTRACT, TO_ADDRESS } from '../lib/constant
 Web4 =  require('web3')
 
 $(document).ready ->
+  $('.transaction-success').click (event) ->
+    window.location.href = "/tasks"
+    $('#create-field').modal('hide')
+    $('#payvdx').hide()
+    $('.task-btn-field').hide()
+    
   $('#task_start_date, #task_end_date').on 'change', ->
     date_check = checkDateField()
     if !date_check
@@ -19,6 +25,14 @@ $(document).ready ->
       $(".private-key").addClass('red');
     else
       $(".private-key").removeClass('red');
+    return
+
+  $("#task_wage").on 'keyup', ->
+    taskWage =  $('#task_wage').val()
+    if taskWage.length == 0
+      $("#task_wage").addClass('red');
+    else
+      $("#task_wage").removeClass('red');
     return
 
   $('#datepicker').datepicker(
@@ -57,13 +71,21 @@ $(document).ready ->
       $('#task-tab').addClass('active')
       $('#payment-tab').removeClass('active')
     else
-      $('#task-tab').removeClass('active')
-      $('#payment-tab').addClass('active')
-      $('#payvdx').addClass('active')
-      $('#task-detail').removeClass('active')
-      $('.task-payment-buttons').show()
-      $('.task-tab-next').hide()
-      $('.payment-wage').text($('#task_wage').val())
+      checkBalance().then((val) ->
+        if !val
+          $("#task_wage").addClass('red');
+          toastr.error("You don't have sufficient balance")
+          $('#task-tab').addClass('active')
+          $('#payment-tab').removeClass('active')
+        else
+          $('#task-tab').removeClass('active')
+          $('#payment-tab').addClass('active')
+          $('#payvdx').addClass('active')
+          $('#task-detail').removeClass('active')
+          $('.task-payment-buttons').show()
+          $('.task-tab-next').hide()
+          $('.payment-wage').text($('#task_wage').val())
+      )
 
   $('.task-form-tab').click (event) ->
     $('.task-payment-buttons').hide()
@@ -82,15 +104,21 @@ $(document).ready ->
     else if $('#task_wage').val().length > 6
       toastr.error('Cost should be less than equal to 6 digits')
     else
-      $('#payvdx').addClass('active')
-      $('#task-detail').removeClass('active')
-      $('.task-payment-buttons').show()
-      $('.task-tab-next').hide()
-      $('.payment-wage').text($('#task_wage').val())
-      $('.task-payment-tab').parent().addClass('active')
-      $('.task-form-tab').parent().removeClass('active')
-      enableClick()
-
+      checkBalance().then((val) ->
+        if !val
+          $("#task_wage").addClass('red');
+          toastr.error("You don't have sufficient balance")
+        else
+          $('#payvdx').addClass('active')
+          $('#task-detail').removeClass('active')
+          $('.task-payment-buttons').show()
+          $('.task-tab-next').hide()
+          $('.payment-wage').text($('#task_wage').val())
+          $('.task-payment-tab').parent().addClass('active')
+          $('.task-form-tab').parent().removeClass('active')
+          enableClick()
+      )
+   
   $('.back-button').click (event) ->
     $('.task-payment-buttons').hide()
     $('.task-tab-next').show()
@@ -121,22 +149,8 @@ $(document).ready ->
       return false
     $(".private-key").removeClass('red');
     $("#cover-spin").show()
-    web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
-    Contract = web4.eth.contract(TOKEN_ABI)
-    contractInstance = Contract.at(TOKEN_CONTRACT)
-    decimal = contractInstance.decimals()
-    contractInstance.balanceOf walletAddress, (error, balance) ->
-      contractInstance.decimals (error, decimals) ->
-        balance = balance.div(10 ** decimals)
-        if(balance.toFixed(2) < parseFloat($("#task_wage").val()))
-          $("#cover-spin").hide()
-          toastr.error("You don't have sufficient balance")
-          enableClick()
-        else
-          $("#cover-spin").show()
-          submitTask(privateKey)
-        return
-      return
+    submitTask(privateKey)
+
   submitTask = (privateKey) ->
     data = $('#task-form').serialize()
     $.ajax
@@ -161,6 +175,22 @@ $(document).ready ->
         enableClick()
         toastr.error($.parseJSON(err.responseText).message)
     return
+
+checkBalance = ->
+  return new Promise (resolve) ->
+    flag = true
+    web4 = new Web4(new Web4.providers.HttpProvider(WEB3_URl));
+    Contract = web4.eth.contract(TOKEN_ABI)
+    contractInstance = Contract.at(TOKEN_CONTRACT)
+    decimal = contractInstance.decimals()
+    contractInstance.balanceOf walletAddress, (error, balance) ->
+      contractInstance.decimals (error, decimals) ->
+        balance = balance.div(10 ** decimals)
+        if(balance.toFixed(2) < parseFloat($("#task_wage").val()))
+          flag = false
+          return resolve(flag)
+        else
+          return resolve(flag)
 
 checkDateField = ->
   flag = true
