@@ -28,9 +28,9 @@
                 %td.vodeer-list= task.description.truncate(80)
                 %td.text-center= 1
                 %td.text-center
-                  = task.created_at&.strftime("%D<br/> %T").html_safe
+                  = task.start_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe
                 %td.text-center
-                  = task.end_date&.strftime("%D<br/> %T").html_safe
+                  = task.end_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe
                 %td.text-center= task.progress? ? 1 : 0
                 %td.text-center= task.completed? ? 1 : 0
                 %td.text-center= (task.approved? || task.resolved?) ? 1 : 0
@@ -39,3 +39,4 @@
                 %td.detail-btn
                   %a.pan-link.btn.btn-default{ :href => task_path(task) }
                     Detail
+        = will_paginate @tasks

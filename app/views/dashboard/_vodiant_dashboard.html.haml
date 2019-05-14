@@ -68,9 +68,9 @@
                     %td.vodeer-list= task.description.truncate(20)
                     %td.text-center= 1
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y<br/> %T").html_safe
+                      = task.start_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe
                     %td.text-center
-                      = task.end_date&.strftime("%d/%m/%Y<br/> %T").html_safe
+                      = task.end_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe
                     %td.text-center= task.status.humanize
                     %td.text-center= task.progress? ? 1 : 0
                     %td.text-center= task.completed? ? 1 : 0
@@ -80,9 +80,10 @@
                     %td.detail-btn
                       %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
-
+          
       .panel-footer
-        .text-right
+        = will_paginate @tasks
+        .text-right{class: @tasks.total_pages > 1 ? 'text-right-vodeer' : ''}
           %a.pan-link{ :href => "/tasks" }
             %b
               View All Task

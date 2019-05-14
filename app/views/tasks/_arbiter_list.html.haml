@@ -26,10 +26,11 @@
                 %td.text-center= task.vodiant&.full_name
                 %td.text-center= task.vodeer&.full_name
                 %td.text-center
-                  = task.created_at&.strftime("%D")
+                  = task.start_date&.strftime("%d/%m/%Y")
                 %td.text-center
-                  = task.end_date&.strftime("%D")
+                  = task.end_date&.strftime("%d/%m/%Y")
                 %td.text-center= task.wage
                 %td.detail-btn
                   %a.pan-link.btn.btn-default{ :href => task_path(task) }
                     Detail
+        = will_paginate @tasks
