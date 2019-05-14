@@ -53,13 +53,12 @@
             %tbody
               - unless @recent_published_tasks.empty?
                 - @recent_published_tasks.each do |task|
-                  - next unless task.is_valid?
                   %tr
                     %td= task.title.truncate(20)
                     %td.vodeer-list= task.description.truncate(80)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y<br/> %T").html_safe
+                      = task.start_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe
                     %td.text-center
                       = task.end_date&.strftime("%d/%m/%Y<br/> %T").html_safe
                     %td.text-center= "#{task.wage} VDX"
@@ -69,7 +68,8 @@
                         Detail
 
       .panel-footer
-        .text-right
+        = will_paginate @recent_published_tasks
+        .text-right{class: @recent_published_tasks.total_pages > 1 ? 'text-right-vodeer' : ''}
           %a.pan-link{ :href => "/tasks" }
             %b
               View All Task
@@ -95,15 +95,14 @@
             %tbody
               - unless @recent_working_tasks.empty?
                 - @recent_working_tasks.each do |task|
-                  - next unless task.is_valid?
                   %tr
                     %td= task.title.truncate(20)
                     %td.vodeer-list= task.description.truncate(80)
                     %td.text-center= task.vodiant.full_name
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y<br/> %T").html_safe     
+                      = task.start_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe     
                     %td.text-center
-                      = task.end_date&.strftime("%d/%m/%Y<br/> %T").html_safe
+                      = task.end_date&.strftime("%d/%m/%Y<br/> %T")&.html_safe
                     %td.text-center= "#{task.wage} VDX"
                     %td.text-center= task.status.humanize
                     %td.detail-btn
@@ -111,7 +110,8 @@
                         Detail
 
       .panel-footer
-        .text-right
+        = will_paginate @recent_working_tasks
+        .text-right{class: @recent_working_tasks.total_pages > 1 ? 'text-right-vodeer' : ''}
           %a.pan-link{ :href => "/tasks?filter_type=ongoing" }
             %b
               View All Task

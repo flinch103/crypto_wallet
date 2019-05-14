@@ -42,7 +42,7 @@
                     %td.text-center= task.vodeer&.full_name
                     %td.text-center= task.wage
                     %td.text-center
-                      = task.created_at&.strftime("%d/%m/%Y")
+                      = task.start_date&.strftime("%d/%m/%Y")
                     %td.text-center
                       = task.end_date&.strftime("%d/%m/%Y")
                     %td.text-center= task.status.humanize
@@ -50,7 +50,8 @@
                       %a.pan-link.btn.btn-default{ :href => task_path(task) }
                         Detail
       .panel-footer
-        .text-right
+        = will_paginate @tasks
+        .text-right{class: @tasks.total_pages > 1 ? 'text-right-vodeer' : ''}
           %a.pan-link{ :href => "/tasks" }
             %b
               View All Task
