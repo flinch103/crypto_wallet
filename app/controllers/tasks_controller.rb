@@ -9,8 +9,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.get_tasks(params[:filter_type], current_user)
-    @tasks = @tasks.select{|task| task.is_valid? }.paginate(page: params[:page], per_page: 10) if current_user.vodeer?
-    @tasks = @tasks.paginate(page: params[:page], per_page: 10) unless current_user.vodeer?
+    @tasks = @tasks.select{|task| task.is_valid? } if current_user.vodeer?
+    @tasks = @tasks.paginate(page: params[:page], per_page: 10)
     @task_type = "Open Microtasks" unless current_user.arbiter?
     @task_type = "Assigned Microtasks" if current_user.arbiter?
     @filter_type = params[:filter_type]
