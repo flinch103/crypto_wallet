@@ -49,3 +49,6 @@
 :javascript
   var walletId = "#{current_user.wallet.id}"
   var walletAddress = "#{current_user.wallet.address}"
+  var updatedAt = "#{@task.updated_at}"
+  var updated_at = new Date(updatedAt);
+  var FIVE_MINUTES = 5 * 60 * 1000;
