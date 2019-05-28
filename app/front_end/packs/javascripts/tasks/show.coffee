@@ -180,7 +180,9 @@ $(document).ready ->
         $('.complete-buttons').hide()
         $('.status-p').text('Approved')
         toastr.info(result.response.message)
-        window.location.href = result.response.url
+        setTimeout (->
+          window.location.href = result.response.url
+        ), 5000
       error: (err) ->
         toastr.error(err.responseText.message)
 
@@ -273,7 +275,12 @@ $(document).ready ->
     $('#task-stake-accept').modal({backdrop: 'static',keyboard: false,show: true})
     
   $('.vodeer-task-submit').unbind('click').click (event) ->
-    $('#task-stake-accept').modal({backdrop: 'static',keyboard: false,show: true})
+    isFiveMinPast = ((new Date) - updated_at) > FIVE_MINUTES
+    if (isFiveMinPast)
+      $('#task-stake-accept').modal({backdrop: 'static',keyboard: false,show: true})
+    else
+      toastr.error('You need to work for atleast 5 min on the task before submitting')
+      return false
     # $('.start-task-stack-button').text('Stake Token and Submit Task')
 
   $(".task-progress-dash").on "click", ->
