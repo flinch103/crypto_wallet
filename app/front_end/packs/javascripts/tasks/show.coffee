@@ -124,7 +124,9 @@ $(document).ready ->
         $('.raise-dispute-button').hide()
         $('.vodeer-dispute-status').text('Disputed')
         toastr.info(result.response.message)
-        window.location.href = result.response.url
+        setTimeout (->
+          window.location.href = result.response.url
+        ), 5000
       error: (err) ->
         toastr.error(err.responseText.message)
     return
@@ -220,7 +222,9 @@ $(document).ready ->
         $('.complete-buttons').hide()
         $('.status-p').text('Rejected')
         toastr.info(result.response.message)
-        window.location.href = result.response.url
+        setTimeout (->
+          window.location.href = result.response.url
+        ), 5000
       error: (err) ->
         toastr.error(err.responseText.message)
     return
@@ -265,7 +269,9 @@ $(document).ready ->
         $('.vodeer-task-submit').hide()
         $('.status-v').text(to_status)
         $('.full-name').text(name) if status == "open"
-        window.location.href = result.response.url
+        setTimeout (->
+          window.location.href = result.response.url
+        ), 5000
     return
 
   $('.cancel-task-stake-button').click (event) ->
